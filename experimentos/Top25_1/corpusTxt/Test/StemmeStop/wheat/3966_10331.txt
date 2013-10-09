@@ -1,0 +1,238 @@
+  world supplydemand estim issu usda      washington, april  - u.s. 
+agricultur depart made follow  project world supplydemand report, comparisons, mln tonnes, except note --     total world grain                                              produc  ,. 
+ ,. 
+ ,. 
+ ,. 
+ total  suppli  ,. 
+ ,. 
+ ,. 
+ ,. 
+ trade-x   . 
+   . 
+   . 
+   . 
+ usag   ,. 
+ ,. 
+ ,. 
+ ,. 
+ end stk  . 
+   . 
+   . 
+   . 
+ x-base export estimate. 
+    wheat                                 start stk  . 
+  . 
+  . 
+  . 
+ product  . 
+  . 
+  . 
+  . 
+ import      . 
+   . 
+   . 
+   . 
+ feed us    . 
+  . 
+   . 
+   . 
+ total dome . 
+  . 
+  . 
+  . 
+ export     . 
+  . 
+   . 
+   . 
+ end stock  . 
+  . 
+  . 
+  . 
+  note - world importsexport balanc due differ market years, grain transit report discrepancies. 
+    coars grain                                              start stck . 
+ . 
+   . 
+ . 
+ product  . 
+ . 
+   . 
+ . 
+ import      . 
+  . 
+    . 
+  . 
+ feed us    . 
+ . 
+   . 
+ . 
+ total dome . 
+ . 
+   . 
+ . 
+ export      . 
+  . 
+    . 
+  . 
+ end stock  . 
+ . 
+   . 
+ . 
+  note - world importsexport balanc due differ market years, grain transit report discrepancies. 
+    corn (mln tonnes)                                              start stck . 
+ . 
+    . 
+  . 
+ product  . 
+ . 
+   . 
+ . 
+ import      . 
+  . 
+    . 
+  . 
+ feed us    . 
+ . 
+   . 
+ . 
+ ttl dome   . 
+ . 
+   . 
+ . 
+ export      . 
+  . 
+    . 
+  . 
+ end stock  . 
+ . 
+   . 
+ . 
+  note - world importsexport balanc due differ market years, grain transit report discrepancies. 
+    soybean                                              start stck  . 
+  . 
+   . 
+  . 
+ product   . 
+  . 
+   . 
+  . 
+ import      . 
+  . 
+   . 
+  . 
+ crush    . 
+  . 
+   . 
+  . 
+ ttl dome    . 
+  . 
+   . 
+  . 
+ export      . 
+  . 
+   . 
+  . 
+ end stock   . 
+  . 
+   . 
+  . 
+  note - import export balanc due differ market year time lag between report export imports. 
+    soybean meal                                               start stock  . 
+   . 
+    . 
+   . 
+ product   . 
+  . 
+   . 
+  . 
+ import      . 
+  . 
+   . 
+  . 
+ consumpt  . 
+  . 
+   . 
+  . 
+ export      . 
+  . 
+   . 
+  . 
+ end stock    . 
+   . 
+    . 
+   . 
+  note - import export balanc due differ market year time lag between report export imports. 
+    soybean oil                                             start stock  . 
+  . 
+      . 
+  . 
+ product   . 
+ . 
+     . 
+ . 
+ import       . 
+  . 
+      . 
+  . 
+ consumpt  . 
+ . 
+     . 
+ . 
+ export       . 
+  . 
+      . 
+  . 
+ end stock    . 
+  . 
+      . 
+  . 
+   note - import export balanc due differ market year time lag between report export imports. 
+    cotton (mln bales)                                           start stck . 
+  . 
+   . 
+  . 
+ product  . 
+  . 
+   . 
+  . 
+ import     . 
+  . 
+   . 
+  . 
+ mill us    . 
+  . 
+   . 
+  . 
+ export     . 
+  . 
+   . 
+  . 
+ end stock  . 
+  . 
+   . 
+  . 
+  note - import export balanc due cotton transit report discrep countries. 
+    rice (mill basis)                                             start stock . 
+  . 
+    . 
+  . 
+ product  . 
+ . 
+   . 
+ . 
+ import      . 
+  . 
+    . 
+  . 
+ dom. 
+us    . 
+ . 
+   . 
+ . 
+ export      . 
+  . 
+    . 
+  . 
+ end stock   . 
+  . 
+    . 
+  .

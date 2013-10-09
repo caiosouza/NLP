@@ -1,0 +1,156 @@
+  coars grain supplydemand countri -- usda      washington, april  - u.s. 
+agricultur depart detail world supplydemand data major import export coars grains, country, follow mln tonn --     ussr coars grain                                            start stck  n.a. 
+   n.a. 
+     n.a. 
+   n.a. 
+ product . 
+ . 
+    . 
+  . 
+ import     . 
+  . 
+    . 
+  . 
+ dome us  . 
+ . 
+   . 
+ . 
+ export       nil     nil       nil     nil  end stock   n.a. 
+   n.a. 
+     n.a. 
+   n.a. 
+ n.a. 
+- available. 
+    ec- coars grain, mln tonn --                                           start stck . 
+  . 
+   . 
+  . 
+ product  . 
+  . 
+   . 
+  . 
+ import     . 
+  . 
+   . 
+  . 
+ dom us     . 
+  . 
+   . 
+  . 
+ export     . 
+  . 
+   . 
+  . 
+ end stock  . 
+  . 
+   . 
+  . 
+    eastern europ coars grain, mln tonn --                                             start stck  . 
+   . 
+    . 
+   . 
+ product  . 
+  . 
+   . 
+  . 
+ import      . 
+   . 
+    . 
+   . 
+ dom us     . 
+  . 
+   . 
+  . 
+ export      . 
+   . 
+    . 
+   . 
+ end stock   . 
+   . 
+    . 
+   . 
+    japan coars grain, mln tonn --                                          start stck . 
+   . 
+    . 
+   . 
+ product  . 
+   . 
+    . 
+   . 
+ import    . 
+  . 
+   . 
+  . 
+ dom us    . 
+  . 
+   . 
+  . 
+ export      nil     nil      nil     nil  end stock  . 
+   . 
+    . 
+   . 
+    argentina coars grain, mln tonn --                                             start stck  . 
+   . 
+    . 
+   . 
+ product  . 
+  . 
+   . 
+  . 
+ import      . 
+    nil      nil     nil  dome us    . 
+   . 
+    . 
+   . 
+ export      . 
+   . 
+    . 
+   . 
+ end stock   . 
+   . 
+    . 
+   . 
+    canada coars grain, mln tonn --                                           start stck . 
+   . 
+    . 
+   . 
+ product . 
+  . 
+   . 
+  . 
+ import     . 
+   . 
+    . 
+   . 
+ dom us    . 
+  . 
+   . 
+  . 
+ export     . 
+   . 
+    . 
+   . 
+ end stock  . 
+   . 
+    . 
+   . 
+    thailand coars grains, mln tonn --                                             start stck  . 
+   . 
+    . 
+  . 
+ product   . 
+   . 
+    . 
+  . 
+ import       nil     nil      nil    nil  dome us    . 
+   . 
+    . 
+  . 
+ export      . 
+   . 
+    . 
+  . 
+ end stock   . 
+   . 
+    . 
+  .

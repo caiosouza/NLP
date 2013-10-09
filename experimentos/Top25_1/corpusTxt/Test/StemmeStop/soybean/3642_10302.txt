@@ -1,0 +1,390 @@
+  net chang export commit -- usda      washington, april  - u.s. 
+agricultur depart gave net chang export commitments, includ sales, cancellations, foreign purchas cumul exports, current season through week end april , comparisons, follows, tonnes, except note --                            prev week             wheat   ,    ,                  corn ,,    ,              soybean   ,    ,          soi cakem  ,    ,           soybean oil     ,-x    ,             cotton-i     ,     ,    x-minu total. 
+y-run bales. 
+    indic total includ report commit both name unnam destinations, sale export account option origin sale plu actual export alreadi made dure respect market seasons. 
+    usda caution report outstand sale subject modification, deferr cancel unlik report quantiti exported. 
+    usda gave detail breakdown   season follows, thousand tonn unless state --  (a) - firm sale declar destination. 
+ (b) - ultim destin declared. 
+ (c) - sale made export account. 
+ (d) - export hold option fill commit suppli  origin u.s. 
+ (e) - accumul export season began base data  report exporters. 
+ (f) - indic total season. 
+ (g) - usda-project export season. 
+ note -- total add due rounding. 
+     wheat                                               prev wk   prev wk  named-a    ,. 
+  ,. 
+,. 
+,. 
+ unnamed-b    . 
+    . 
+   . 
+   . 
+ e.o.a.-c       . 
+      . 
+    nil     nil  o.o.p.-d       nil       nil     nil     nil  gr total   ,. 
+  ,. 
+,. 
+,. 
+ ay expd- ,. 
+ ,. 
+ ind ttl-f ,. 
+ ,. 
+ usdaprj-g ,. 
+ ,. 
+    soybean                                               prev wk     prev wk  named-a    ,. 
+ ,. 
+    . 
+  . 
+ unnamed-b    . 
+   . 
+      nil    . 
+ e.o.a.-c      . 
+    . 
+      nil     nil  o.o.p.-d       nil      nil       nil     nil  gr total   ,. 
+ ,. 
+    . 
+  . 
+ ay expd- ,. 
+,. 
+ ind ttl-f ,. 
+,. 
+ usdaprj-g ,. 
+,. 
+    corn                                               prev wk     prev wk  named-a    ,. 
+  ,. 
+   . 
+  . 
+ unnamed-b    . 
+    . 
+     nil     nil  e.o.a-c       . 
+     . 
+     nil     nil  o.o.p-d      . 
+    . 
+     nil     nil  gr total   ,. 
+  ,. 
+   . 
+  . 
+ ay expd- ,. 
+ ,. 
+ ind ttl-f ,. 
+ ,. 
+ usdaprj-g ,. 
+ ,. 
+    sorghum                                             prev wk     prev wk  named-a      . 
+   . 
+    nil      nil  unnamed-b    . 
+   . 
+    .-x   nil  e.o.a-c        nil      nil     nil      nil  o.o.p-d      . 
+   . 
+    nil      nil  gr total   ,. 
+ ,. 
+    .-x   nil  ay expd-  ,. 
+ ,. 
+ ind ttl-f  ,. 
+ ,. 
+ usdaprj-g  ,. 
+ ,. 
+ x-minu total      wheat product                                           prev wk      prev wk  named-a     . 
+  . 
+      nil    nil  unnamed-b     nil     nil       nil    nil  e.o.a.-c      nil     nil       nil    nil  o.o.p.-d      nil     nil       nil    nil  gr total    . 
+  . 
+      nil    nil  ay expd-   . 
+  . 
+ ind ttl-f ,. 
+,. 
+  note - includ bulgur, semolina, farina, rolled, crack crush wheat. 
+    soybean oil                                         prev wk      prev wk  named-a      . 
+   . 
+     nil     nil  unnamed-b    . 
+   . 
+     nil     nil  e.o.a-c      nil     nil      nil     nil  o.o.p-d      nil     nil      nil     nil  gr total    . 
+   . 
+     nil     nil  ay expd-  . 
+  . 
+ ind ttl-f  . 
+  . 
+ usdaprj-g  . 
+  . 
+    soybean cake meal                                              prev wk     prev wk  named-a      . 
+   . 
+   . 
+     . 
+ unnamed-b     . 
+    . 
+    nil       nil  e.o.a-c        . 
+     . 
+    nil       nil  o.o.p-d        nil      nil     nil       nil  gr total     . 
+   . 
+   . 
+     . 
+ ay expd-  ,. 
+ ,. 
+ ind ttl-f  ,. 
+ ,. 
+ usdaprj-g  ,. 
+ ,. 
+     cottonse oil                                           prev wk      prev wk  named-a      . 
+    . 
+      nil     nil  unnamed-b    . 
+    . 
+      nil     nil  e.o.a.-c     nil     nil       nil     nil  o.o.p.-d     . 
+    . 
+      nil     nil  gr total    . 
+   . 
+      nil     nil     upland domest raw cotton-i                                              prev wk     prev wk  named-a    ,. 
+ ,. 
+    . 
+  . 
+ unnamed-b     . 
+    . 
+      nil     nil  e.o.a-c        nil      nil       nil     nil  o.o.p-c        nil      nil       nil     nil  gr total   ,. 
+ ,. 
+    . 
+  . 
+ ay expd-  ,. 
+ ,. 
+ ind ttl-f  ,. 
+ ,. 
+ usdaprj-g  ,. 
+ ,. 
+  y-in thousand run bales. 
+    barlei                                              prev wk      prev wk  named-a      . 
+   . 
+     nil      nil  unnamed-b     . 
+    . 
+     nil      nil  e.o.a.-c       nil      nil      nil      nil  o.o.p.-d      . 
+    . 
+     nil      nil  gr total     . 
+   . 
+     nil      nil  ay expt-  ,. 
+ ,. 
+ ind ttl-f  ,. 
+ ,. 
+ usdaprj-g  ,. 
+ ,. 
+    oat                                       prev wk      prev wk  named-a     nil    nil       nil    nil  unnamed-b   nil    nil       nil    nil  e.o.a.-c    nil    nil       nil    nil  o.o.p.-d    nil    nil       nil    nil  gr total    nil    nil       nil    nil  ay expd-   . 
+   . 
+ ind ttl-f   . 
+   . 
+ usdaprj-g  . 
+  . 
+    rice                                             prev wk      prev wk  named-a      . 
+   . 
+     nil     nil  unnamed-b      . 
+     . 
+     nil     nil  e.o.a-c        nil      nil      nil     nil  o.o.p-d        nil      nil      nil     nil  gr total     . 
+   . 
+     nil     nil  ay expd-  ,. 
+ ,. 
+ ind ttl-f  ,. 
+ ,. 
+ usdaprj-g  ,. 
+ ,. 
+    hard red winter wheat                                           prev wk       prev wk  named-a   ,. 
+ ,. 
+    . 
+  . 
+ unnamed-b    . 
+    . 
+    . 
+   . 
+ e.o.a.-c      nil      nil       nil     nil  o.o.p.-d      nil      nil       nil     nil  gr total  ,. 
+ ,. 
+  ,. 
+,. 
+ ay exp-  ,. 
+ ,. 
+ ind tl-f ,. 
+,. 
+    white wheat                                           prev wk       prev wk  named-a     . 
+   . 
+    . 
+   . 
+ unnamed-b    .-x   .-x    .-x   .-x  e.o.a.-c      nil      nil      nil     nil  o.o.p.-d      nil      nil      nil     nil  gr total    . 
+   . 
+    . 
+   . 
+ ay exp-  ,. 
+ ,. 
+ ind tl-f  ,. 
+ ,. 
+  x - denot minu figur     hard red spring wheat                                          prev wk       prev wk  named-a    . 
+   . 
+   . 
+  . 
+ unnamed-b   . 
+    . 
+     nil     nil  e.o.a.-c     . 
+     . 
+     nil     nil  o.o.p.-d     nil      nil      nil     nil  gr total   . 
+   . 
+   . 
+  . 
+ ay exp- ,. 
+ ,. 
+ ind tl-f ,. 
+ ,. 
+     durum wheat                                            prev wk      prev wk  named-a    . 
+   . 
+     . 
+  . 
+ unnamed-b   . 
+    . 
+      nil    nil  e.o.a.-c     . 
+     . 
+      nil    nil  o.o.p.-d     nil      nil       nil    nil  gr total   . 
+   . 
+     . 
+  . 
+ ay exp- ,. 
+ ,. 
+ ind tl-f ,. 
+ ,. 
+    soft red winter wheat                                            prev wk       prev wk  named-a     . 
+   . 
+   . 
+  . 
+ unnamed-b     nil      nil     .-x  .-x  e.o.a.-c      . 
+     . 
+     nil     nil  o.o.p.-d      nil      nil      nil     nil  gr total    . 
+   . 
+   . 
+  . 
+ ay exp-  ,. 
+ ,. 
+ ind tl-f  ,. 
+ ,. 
+ x-minu figur     countri destin identifi sale commod report export week end april  respect market season detail usda follows, comparison previou week, thousand tonnes, except noted--   wheat                                               prev wk      prev wk  e.c. 
+         nil     nil      . 
+   . 
+ west  europ      . 
+  . 
+      nil     nil  east europ . 
+  . 
+     . 
+   . 
+    wheat continu                                              prev wk      prev wk  ussr           nil      nil      nil     nil  japan        . 
+   . 
+     nil     nil  china         . 
+    . 
+   . 
+  . 
+ taiwan       . 
+   . 
+   . 
+  . 
+ asia  oceania      . 
+   . 
+    . 
+   . 
+ africa       . 
+ ,. 
+   . 
+  . 
+ western  hemispher   . 
+   . 
+   . 
+  . 
+ soybean                                    prev wk      prev wk  e.c. 
+       . 
+    . 
+   . 
+    . 
+ west  europ       . 
+     . 
+    nil      nil  east europ . 
+    . 
+    nil      nil  japan       . 
+    . 
+    nil      nil  china         nil       nil     nil      nil  taiwan      . 
+    . 
+   . 
+    . 
+ asia  oceania     . 
+    . 
+    nil      nil  africa        nil       nil     nil      nil  western  hemispher  . 
+    . 
+    . 
+   . 
+    soybean oil                                      prev wk      prev wk  e.c. 
+       . 
+    . 
+     nil     nil  india       nil     nil      nil     nil  asia  oceania     nil     nil      nil     nil  africa      nil     nil      nil     nil  western  hemispher  . 
+    . 
+     nil     nil     soybean cakem                                              prev wk      prev wk  e.c. 
+       . 
+  . 
+    . 
+  . 
+ west  europ        nil     nil      nil    nil  east europ   nil    . 
+     nil    nil  japan         nil     . 
+     nil    nil  asia  oceania      . 
+   . 
+     nil    nil  africa       . 
+   . 
+     nil    nil  western  hemispher  . 
+  . 
+     . 
+   . 
+    corn                                       prev wk     prev wk  e.c. 
+          . 
+    . 
+      . 
+    . 
+ west  europ          nil      . 
+      nil     nil  e. 
+europ      . 
+    . 
+     . 
+   . 
+ ussr        ,. 
+ ,. 
+      nil     nil  japan       ,. 
+ ,. 
+     . 
+   . 
+ china         . 
+   . 
+      nil     nil  taiwan        . 
+   . 
+    . 
+  . 
+ asia  oceania       . 
+   . 
+    . 
+    nil  africa        . 
+   . 
+      nil     nil  westhem     ,. 
+ ,. 
+     . 
+   . 
+    upland cotton (in thousand bales)                                            prev wk      prev wk  e.c. 
+       . 
+   . 
+    . 
+   . 
+ west  europ       . 
+    . 
+     . 
+    . 
+ e. 
+europ     . 
+     . 
+     nil     nil  japan       . 
+   . 
+    . 
+   . 
+ taiwan      . 
+   . 
+    . 
+   . 
+ asia  oceania     . 
+   . 
+   . 
+  . 
+ africa       . 
+    . 
+     nil     nil  western  hemispher   . 
+    . 
+     . 
+    .

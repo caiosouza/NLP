@@ -1,0 +1,350 @@
+  u.s. 
+supplydemand detail usda      washington, april  - u.s. 
+agricultur depart made follow supplydemand project  seasons, mln bushels, comparisons, unless note --     corn --                                   acreag (mln acres) --      plant   . 
+   . 
+    . 
+   . 
+   harvest   . 
+   . 
+    . 
+   . 
+  yield (bu)  . 
+  . 
+   . 
+  . 
+ suppli (mln bu) --   start stock  ,   ,    ,   ,   product  ,   ,    ,   ,      total-x ,  ,   ,  ,   x-includ imports. 
+    corn (cont.)                                               usage: feed  ,    ,     ,    ,         ,    ,     ,    ,   ttl domest  ,    ,     ,    ,      export  ,    ,     ,    ,    total us  ,    ,     ,    ,   end stock  ,    ,     ,    ,  farmer reser ,    ,                ccc stock  ,    ,               free stock  ,    ,     ,    ,   avgpric  .-. 
+ .-. 
+ . 
+    . 
+  note - price dlr per bu. 
+corn season begin sept . 
+    wheat -                                               acreag (mln acres) --      plant   . 
+   . 
+    . 
+   . 
+   harvest   . 
+   . 
+    . 
+   . 
+       yield   . 
+   . 
+    . 
+   . 
+ suppli (mln bu) --  start stck  ,   ,    ,   ,   product  ,   ,    ,   ,        total     supply-x  ,   ,    ,   ,  x - includ imports. 
+    wheat                 (cont.)         usage: food                            seed                                feed                      ttl domest  ,  ,     ,  ,      export  ,  ,               total us  ,  ,     ,  ,   end stock  ,  ,     ,  ,  farmer reser                     ccc stock                     free stock                      avg price  .-  .-   . 
+  . 
+ note - price dlr per bushel. 
+wheat season begin june . 
+    soybean -                                               acreag (mln acres) --       plant   . 
+  . 
+    . 
+  . 
+    harvest   . 
+  . 
+    . 
+  . 
+   yield (bu)   . 
+  . 
+    . 
+  . 
+ suppli (mln bu) --  start stock                      product  ,  ,    ,  ,         total  ,  ,    ,  ,     soybean (cont.)                                                    usag --   crush  ,   ,      ,   ,     export                        seed, feed    residu                            total us  ,   ,      ,   ,  end stock                        avg price .-. 
+.-. 
+  . 
+   . 
+ note - averag price dlr per bushel. 
+soybean season begin june . 
+    feedgrain - x                                               acreag (mln acres) --       plant  . 
+  . 
+    . 
+  . 
+    harvest  . 
+  . 
+    . 
+  . 
+ yld (tonnes)   . 
+   . 
+     . 
+   . 
+ suppli (mln tonnes) --  start stock  . 
+  . 
+     . 
+   . 
+   product  . 
+  . 
+    . 
+  . 
+      import    . 
+    . 
+      . 
+    . 
+        total  . 
+  . 
+    . 
+  . 
+ x - includ corn, sorghum, barley, oats. 
+    feedgrain - x (cont.)                                              usage: feed  . 
+  . 
+    . 
+  . 
+         . 
+   . 
+     . 
+   . 
+  ttl domest  . 
+  . 
+    . 
+  . 
+     export   . 
+   . 
+     . 
+   . 
+   total us  . 
+  . 
+    . 
+  . 
+  end stock  . 
+  . 
+    . 
+  . 
+ farmer reser  . 
+   . 
+     . 
+   . 
+  ccc stock   . 
+   . 
+     . 
+   . 
+ free stock   . 
+   . 
+     . 
+   . 
+ x - includ corn, sorghum, oats, barley. 
+season oats, barlei began june , corn sorghum sept . 
+    soybean oil -                                               suppli (mln lbs) --  start stck                         product  ,  ,    ,  ,      import     nil     nil                        total  ,  ,    ,  ,  note -  product estim base octob year crush , mln bushels. 
+    soybean oil (cont.) -                                                usag (mln lbs) --   domest  ,    ,    ,   ,    export   ,     ,     ,    ,      total  ,    ,    ,   ,  end stck   ,     ,               avgpric  .-. 
+ .-. 
+ . 
+   . 
+ note - averag price cent per lb. 
+season soybean oil begin oct . 
+    soybean cakemeal, thousand short ton --                                               start stck                         product  ,  ,    ,  ,        total  ,  ,    ,  ,  note -  product estim base octob year crush , mln bushels. 
+    soi cakem (cont.) -                                             usag (thou short tons) --   domest   ,  ,    ,  ,    export    ,   ,     ,   ,      total   ,  ,    ,  ,  end stck                          avgpric  -  -   . 
+ . 
+  note - price dlr per short ton. 
+season soybean cake meal begin oct . 
+    cotton --                                               area (mln acres) --       plant  . 
+  . 
+    . 
+  . 
+    harvest   . 
+   . 
+    . 
+  . 
+  yield (lbs)                       suppli (mln -lb bales) --  start stks-x   . 
+   . 
+     . 
+   . 
+   product   . 
+   . 
+    . 
+  . 
+ ttl supply-i  . 
+  . 
+    . 
+  . 
+  x - base censu bureau data. 
+y - includ imports. 
+    cotton (cont.) -                                              usag --    domest   . 
+   . 
+    . 
+   . 
+    export   . 
+   . 
+    . 
+   . 
+      total  . 
+  . 
+    . 
+   . 
+ end stock   . 
+   . 
+    . 
+   . 
+ avg price  .-x  .-x   . 
+  . 
+ x -  price weight averag first five month market year, project . 
+averag price cent per lb. 
+cotton season begin august . 
+    rice                                             acreag (mln acres) --      plant   . 
+   . 
+     . 
+   . 
+   harvest   . 
+   . 
+     . 
+   . 
+ yield (lbs)  ,   ,     ,   ,  suppli (mln cwts) --  start stck   . 
+   . 
+     . 
+   . 
+  product  . 
+  . 
+    . 
+  . 
+     import    . 
+    . 
+      . 
+    . 
+       total  . 
+  . 
+    . 
+  . 
+    rice (cont.)                                               usag (mln cwts) --     domest   . 
+   . 
+     . 
+   . 
+     export   . 
+   . 
+     . 
+   . 
+     total-i  . 
+  . 
+    . 
+  . 
+  end stock   . 
+   . 
+     . 
+   . 
+  ccc stock   . 
+   . 
+     . 
+   . 
+ free stock   . 
+   . 
+     . 
+   . 
+   avgpric .-. 
+.-. 
+ . 
+   . 
+ note - averag price dlr per cwt. 
+y-rough equivalent. 
+n.a.-not available, usda revis price definit due market loan. 
+rice season begin august . 
+    sorghum                                              yield (bu)  . 
+   . 
+    . 
+   . 
+ suppli (mln bu) --  start stck                      product            ,   ,        total ,   ,    ,   ,   usag (mln bu) --         feed                                                    ttl domest                        sorghum (cont.) -                                                  export                         total us                        end stock                        avg price  .-  .-    . 
+   . 
+ note - price dlr per bushel. 
+sorghum season begin sept . 
+    barlei                                                 yield (bu)  . 
+   . 
+     . 
+   . 
+ start stock                        product                           import                                     total                         barlei (cont.)                                         usag (mln bu) --        feed                                          ttl domest                      export                      total us                   end stock                    avgpric .-  .-  . 
+  . 
+ note - averag price dlr per bushel. 
+barlei season begin june . 
+    oat - mln bushel                                              yield (bu)  . 
+  . 
+     . 
+  . 
+ start stck                     product                        import                              total                       oats, mln bushel (cont.)                                                 usag --       feed                                                   ttl dome                        export                                  total                      end stck                      avgpric .-  .-    . 
+   . 
+  note - averag price dlr per bushel. 
+oat season begin june . 
+    long grain rice, mln cwt ( lbs) --                                                 harvest --  acr (mln)   . 
+   . 
+    . 
+   . 
+ yield (lbs)  ,   ,    ,   ,   start stk   . 
+   . 
+    . 
+   . 
+  product   . 
+   . 
+   . 
+  . 
+  ttl suppli  . 
+  . 
+   . 
+  . 
+ note -- start stock includ broken kernel -- suppli minu us equal end stock breakdowns. 
+total suppli includ import broken kernels. 
+    long grain rice, mln cwt ( lbs), cont. 
+--                                               domest us   . 
+   . 
+     . 
+   . 
+      export   . 
+   . 
+     . 
+   . 
+    total us  . 
+  . 
+     . 
+   . 
+ end stocks-x   . 
+   . 
+     . 
+   . 
+    avgpric .-. 
+.-. 
+  . 
+   . 
+ note - averag price dlr per cwt. 
+x-broken kernel includ -- suppli minu us equal end stock breakdowns. 
+rice season begin august . 
+    medium, short grain rice - mln cwt ( lbs) --                                                 harvest --  acr (mln)   . 
+   . 
+    . 
+   . 
+ yield (lbs)  ,   ,    ,   ,   start stk   . 
+   . 
+    . 
+   . 
+  product   . 
+   . 
+    . 
+   . 
+  ttl suppli   . 
+   . 
+    . 
+   . 
+ note -- start stock includ broken kernel -- suppli minu us equal end stock breakdowns. 
+total suppli includ import broken kernels. 
+    medium, short grain rice, mln cwt ( lbs), cont. 
+--                                              domest us   . 
+   . 
+     . 
+   . 
+      export   . 
+   . 
+     . 
+   . 
+    total us   . 
+   . 
+     . 
+   . 
+ end stocks-x   . 
+   . 
+     . 
+   . 
+    avgpric .-. 
+ .-. 
+ . 
+   . 
+ note - averag price dlr per cwt. 
+x-broken kernel includ - suppli minu us equal end stock breakdowns. 
+rice season begin august . 
+    note u.s. 
+supplydemand tabl     -- n.a. 
+- available. 
+    -- total add due rounding. 
+    -- figur  midpoint usda range. 
+    -- feed usag corn, wheat, soybean, feedgrains, sorghum, barley, oat includ residu amount. 
+    -- residu amount includ rice mediumshort grain rice domest usage. 
+    -- rice, long grain, mediumshort grain rice averag price  estim  project market price exclud cash retain under market loan april, .

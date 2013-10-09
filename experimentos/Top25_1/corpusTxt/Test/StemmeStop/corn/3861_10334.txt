@@ -1,0 +1,125 @@
+  corn supplydemand countri -- usda      washington, april  - u.s. 
+agricultur depart detail world supplydemand data major import export corn, country, follow mln tonn --     ussr corn                                               start stock  n.a. 
+   n.a. 
+    n.a. 
+   n.a. 
+ product   . 
+  . 
+   . 
+  . 
+ import       . 
+   . 
+   . 
+  . 
+ dome us    . 
+  . 
+   . 
+  . 
+ export        nil     nil      nil     nil  end stock    n.a. 
+   n.a. 
+    n.a. 
+   n.a. 
+ n.a. 
+- available. 
+    south africa corn, mln tonn --                                           start stck  . 
+  . 
+    . 
+  . 
+ product   . 
+  . 
+    . 
+  . 
+ import       nil    nil     . 
+  . 
+ dome us    . 
+  . 
+    . 
+  . 
+ export      . 
+  . 
+    . 
+  . 
+ end stock   . 
+  . 
+    . 
+  . 
+    ec- corn, mln tonn --                                              start stck  . 
+   . 
+     . 
+   . 
+ product  . 
+  . 
+    . 
+  . 
+ import     . 
+  . 
+    . 
+  . 
+ dome us   . 
+  . 
+    . 
+  . 
+ export      . 
+   . 
+     . 
+   . 
+ end stock   . 
+   . 
+     . 
+   . 
+    argentina corn, mln tonn --                                            start stck  . 
+  . 
+      . 
+  . 
+ product  . 
+ . 
+     . 
+ . 
+ import       nil    nil        nil    nil  dome us    . 
+  . 
+      . 
+  . 
+ export      . 
+  . 
+      . 
+  . 
+ end stock   . 
+  . 
+      . 
+  . 
+    thailand corn, mln tonn --                                            start stock . 
+  . 
+     . 
+  . 
+ product   . 
+  . 
+     . 
+  . 
+ import       nil    nil       nil    nil  domest us . 
+  . 
+     . 
+  . 
+ export      . 
+  . 
+     . 
+  . 
+ end stock   . 
+  . 
+     . 
+  . 
+    japan corn, mln tonn --                                            start stck  . 
+  . 
+      . 
+  . 
+ product    nil    nil        nil    nil  import     . 
+ . 
+     . 
+ . 
+ dome us   . 
+ . 
+     . 
+ . 
+ export       nil    nil        nil    nil  end stock   . 
+  . 
+      . 
+  .

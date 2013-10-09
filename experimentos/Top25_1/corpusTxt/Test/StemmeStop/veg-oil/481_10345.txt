@@ -1,0 +1,89 @@
+  soybean oil supplydemand countri -- usda      washington, april  - u.s. 
+agricultur depart detail world supplydemand data major import export soybean oil, country, mln tonn --     argentina --                                             start stck  . 
+  . 
+     . 
+  . 
+ product   . 
+  . 
+     . 
+  . 
+ import       nil    nil       nil    nil  dome us    . 
+  . 
+     . 
+  . 
+ export      . 
+  . 
+     . 
+  . 
+ end stock   . 
+  . 
+     . 
+  . 
+    brazil soybean oil, mln tonn --                                             start stck  . 
+  . 
+     . 
+  . 
+ product   . 
+  . 
+     . 
+  . 
+ import      . 
+  . 
+     . 
+  . 
+ dome us    . 
+  . 
+     . 
+  . 
+ export      . 
+  . 
+     . 
+  . 
+ end stock   . 
+  . 
+     . 
+  . 
+    ec- soybean oil, mln tonn --                                             start stck  . 
+  . 
+     . 
+  . 
+ product   . 
+  . 
+     . 
+  . 
+ import      . 
+  . 
+     . 
+  . 
+ dome us    . 
+  . 
+     . 
+  . 
+ export      . 
+  . 
+     . 
+  . 
+ end stock   . 
+  . 
+     . 
+  . 
+    india soybean oil --                                             start stck  . 
+  . 
+     . 
+  . 
+ product   . 
+  . 
+     . 
+  . 
+ import      . 
+  . 
+     . 
+  . 
+ dome us    . 
+  . 
+     . 
+  . 
+ export       nil    nil       nil    nil  end stock   . 
+  . 
+     . 
+  .

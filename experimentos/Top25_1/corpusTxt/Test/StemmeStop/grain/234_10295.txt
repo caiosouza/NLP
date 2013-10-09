@@ -1,0 +1,10 @@
+  wheat class breakdown      washington, april  - u.s. 
+agricultur depart gave  breakdown suppli distribut wheat classes, mln bushels, comparisons, follows. 
+    hard winter --                                              start stock ,   ,             product   ,   ,    ,   ,  ttl supply-x ,   ,    ,   ,  domest us                     export                          total us    ,   ,             end stock              ,   ,  note - season begin june . 
+x-includ import     hard spring --                                              start stock                     product                       ttl supply-x                     domest us                     export                          total us                        end stock                       note - season begin june . 
+x-includ imports. 
+    soft red --                                            start stock                      product                    ttl supply-x                  domest us                  export                       total us                     end stock                        note - season begin june . 
+x-includ import     white --                                            start stock                  product                    ttl supply-x                  domest us                      export                       total us                     end stock                    note - season begin june . 
+x-includ imports. 
+    durum --                                               start stock                   product                       ttl supply-x                   domest us                       export                            total us                        end stock                       note - season begin june . 
+x-includ imports.

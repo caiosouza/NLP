@@ -1,0 +1,21 @@
+  rice supplydemand thailand -- usda      washington, april  - u.s. 
+agricultur depart detail rice supplydemand milled-basi data thailand, world major rice exporter, follow mln tonn --                                             start stck  . 
+  . 
+      . 
+  . 
+ product  . 
+ . 
+     . 
+ . 
+ import       nil    nil        nil    nil  dome us    . 
+  . 
+      . 
+  . 
+ export      . 
+  . 
+      . 
+  . 
+ end stock   . 
+  . 
+      . 
+  .

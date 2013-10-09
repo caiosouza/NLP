@@ -1,0 +1,89 @@
+  soybean supplydemand countri -- usda      washington, april  - u.s. 
+agricultur depart detail world supplydemand data major import export soybeans, country, follow mln tonn --     brazil soybean                                               start stock  . 
+   . 
+    . 
+   . 
+ product   . 
+  . 
+   . 
+  . 
+ import       . 
+   . 
+    . 
+   . 
+ domest us . 
+  . 
+   . 
+  . 
+ export       . 
+   . 
+    . 
+   . 
+ end stock    . 
+   . 
+    . 
+   . 
+    argentina soybeans, mln tonn --                                               start stock  . 
+   . 
+    . 
+   . 
+ product    . 
+   . 
+    . 
+   . 
+ import        nil     nil      nil     nil  domest us  . 
+   . 
+    . 
+   . 
+ export       . 
+   . 
+    . 
+   . 
+ end stock    . 
+   . 
+    . 
+   . 
+    ec- soybeans, mln tonn --                                              start stock  . 
+  . 
+      . 
+  . 
+ product    . 
+  . 
+      . 
+  . 
+ import      . 
+ . 
+     . 
+ . 
+ domest us . 
+ . 
+     . 
+ . 
+ export       . 
+  . 
+      . 
+  . 
+ end stock    . 
+  . 
+      . 
+  . 
+    japan soybeans, mln tonn --                                             start stck  . 
+  . 
+     . 
+  . 
+ product   . 
+  . 
+     . 
+  . 
+ import      . 
+  . 
+     . 
+  . 
+ dome us    . 
+  . 
+     . 
+  . 
+ export       nil    nil       nil    nil  end stock   . 
+  . 
+     . 
+  .

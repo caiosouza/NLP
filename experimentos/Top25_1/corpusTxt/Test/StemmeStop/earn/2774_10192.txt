@@ -1,0 +1,9 @@
+  baybank inc bbnk st qtr net      boston, april  -     oper shr . 
+dlr vs  ct     oper shr dilut . 
+dlr vs  ct     oper net . 
+mln vs . 
+mln     avg shr . 
+mln vs . 
+mln     avg shr . 
+mln vs . 
+mln     note:  net exclud gain ,, dlr cumul effect chang calcul depreci expense.

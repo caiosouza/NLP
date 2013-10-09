@@ -1,0 +1,8 @@
+  vernitron corp vrn th qtr year loss      lake success, n.y., march  -     oper shr loss  ct vs loss  ct     oper net loss ,, vs loss ,     rev . 
+mln vs . 
+mln      mth     oper shr loss  ct vs profit  ct     oper net loss ,, vs profit ,,     rev . 
+mln vs . 
+mln     note: qtr  prior qtr exclud loss discontinu oper ,, ,,, respectively. 
+    year  prior exclud loss discontinu oper ,, ,,, respectively. 
+    qtr year  exclud tax loss ,, loss ,, respectively. 
+    qtr year prior exclud tax gain , ,,, respectively.
