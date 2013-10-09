@@ -1,0 +1,11 @@
+Passos:
+
+1- Pegar arquivos do csv extraido do banco e gerar arquivo com todos os textos (manual - ReutersTrainTop100.txt)
+2- Pegar arquivo anterior realizar stemme e remocao de stopwords, e juntar em um unico arquivo txt (ReutersTrainTop100SS.txt) executando PulaLinha.exec
+3- Roda algoritmo de clusterizacao no MatLab
+4- Pega o arquivo gerado anteriormente, e junta com a clusterização gerada no MatLab e calcula as entropias usando InformationEntropy.exec, salva resultados em termoEntropia/termosEntropiaTrainTop100SS.txt
+5- Ordena os termos de acordo com a menor entropia, maior frequencia e numero do cluster e salva em termoEntropia/termosEntropiaTrainTop100SSOrdered.csv (manual)
+6- Atualiza termosEntropiaTrainTop100SSOrdered.csv com a categoria dos termos e salva em termosCategorias/EntropiaTrainTop100SS.txt usando ClusterEntropyClassifier.consolidaTermoEntropiaCategoria
+7- Gera arquivo termoCategoriaTopN.txt usando o termosCategorias/EntropiaTrainTop100SS.txt e o topN termos a serem utilizados usando ClusterEntropyClassifier.montaDicionario
+8- Roda a heuristica, recebe o topN, usa o arquivo respectivo e salva o resultado em classificationFiles/categoriasEncontradas<topN>.txt
+9- Compara resultado encontrado com o gabarito e calcula taxa de acerto. usando o CalculaAcerto.exec
