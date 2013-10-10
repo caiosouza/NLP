@@ -15,7 +15,7 @@ import utils.Utils;
 
 public class ClusterEntropyClassifier {
 	
-	public static final String experimentoFolder = "experimentos/Top25_1/";
+	public static final String experimentoFolder = "experimentos/Top25_2/";
 	private static final int topN = 1;
 	private static final String termoCategoriaTXT = experimentoFolder+"termoCategoria/termoCategoriaDominio"+topN+".txt";
 	
@@ -27,7 +27,7 @@ public class ClusterEntropyClassifier {
 	
 	private static final String gabaritoTermoCategoria = experimentoFolder+"DicionarioTermoCategoria.csv";
 	//private static final String termosEntropiaArquivo = experimentoFolder+"termosEntropia/termosEntropiaTrainTop100SS.txt";
-	private static final String termosEntropiaCategoria = experimentoFolder+"termoCategoria/termosCategoriaDominio.csv"; 
+	private static final String termosEntropiaCategoria = experimentoFolder+"termoCategoria/termosCategoriaDominio.txt"; 
 	//+		"termosEntropia/termosEntropiaCategoriaTrainTop100SS.txt";
 	//private static final String termosNaoMapeadosTxt = experimentoFolder+ "termosNaoMapeados.txt";
 	private static final String termosEntropiaArquivoOrdenados = experimentoFolder + "termoEntropia/termosEntropiaTrainTop100SSOrdered.csv";

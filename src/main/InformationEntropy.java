@@ -23,8 +23,8 @@ import com.google.common.collect.Multiset;
 
 public class InformationEntropy {
 
-	private static final int topWordsNum = 100;
-	private static final String experimentoFolder = "experimentos/Top25_1/";
+	private static final int topWordsNum = 1000000000;
+	private static final String experimentoFolder = "experimentos/Top25_2/";
 	//private static final String termosEntropiaTXT = experimentoFolder + "termoEntropia/"+"termosEntropiaTrainTop100SS.txt";
 	private static final String termosEntropiaTXT = experimentoFolder + "termoEntropia/"+"termosEntropiaDominio.txt";
 	//private static final String clusterOrderFile = experimentoFolder + "clusterResult/cluster_ReutersTrainTop100SS.csv";
@@ -65,6 +65,10 @@ public class InformationEntropy {
 			termoFrequencia = categoriasTermosFrequencia.get(i);
 			for (Map.Entry<String, Integer> entry : termoFrequencia.entrySet()) {
 				String termo = entry.getKey() ;
+				if (termo.compareTo("ct") == 0){
+					@SuppressWarnings("unused")
+					int ddi = 2;
+				}
 				int frequencia = entry.getValue();
 				
 				HashMap<Integer, Integer> categoriasFrequencia = new HashMap<Integer, Integer>();
@@ -92,8 +96,6 @@ public class InformationEntropy {
 			int maiorFrequencia = 0;
 			
 			HashMap<Integer, Integer> categoriasFrequencia = new HashMap<Integer, Integer>();
-			//int numCategorias = categoriasFrequencia.size();
-			//pxi
 			
 			categoriasFrequencia = entryTermos.getValue();
 			for (Entry<Integer,Integer> entryCategoria : categoriasFrequencia.entrySet()) {
@@ -111,10 +113,13 @@ public class InformationEntropy {
 				entropia = entropia + pxi * Math.log(pxi);
 			}
 			
-			//entropia = entropia * -1;
-			//System.out.println(termo + ": " + entropia);
-			//termo = termo.replaceAll(",", "");
-			termosEntropia.add(termo+";"+entropia+";"+frequenciaTotal+";"+categoriaPrincipal);
+			if (entropia != 0 )
+				entropia = entropia * -1;
+			//concatena os campos separados por ; e substitui . por ,
+			String linha = ""+ entropia;
+			linha = linha.replace(".", ",");
+			linha = termo+";"+linha+";"+frequenciaTotal+";"+categoriaPrincipal;
+			termosEntropia.add(linha);
 			
 		}
 		
@@ -189,7 +194,8 @@ public class InformationEntropy {
 		List<String> wordArray = new ArrayList<String>();
 		
 		for(String w : vectorWords){
-			arrayWords.add(w);
+			if (w.trim().length()>1)
+				arrayWords.add(w);
 		}
 		
 		Multiset<String> words = HashMultiset.create(arrayWords);

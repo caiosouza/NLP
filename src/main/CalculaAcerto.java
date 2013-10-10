@@ -11,7 +11,7 @@ public class CalculaAcerto {
 	 * @param args
 	 */
 	private static final int topN = 1;
-	public static final String experimentoFolder = "experimentos/Top25_1/";
+	public static final String experimentoFolder = "experimentos/Top25_2/";
 	
 	//private static final String categoriasEncontradasTXT = experimentoFolder+ "classificationFiles/categoriasEncontradas"+topN+".txt";
 	//private static final String categoriasEncontradasTXT = experimentoFolder+ "classificationFiles/categoriasEncontradasTest"+topN+".txt";
