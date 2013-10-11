@@ -1,11 +1,6 @@
-numero arquivos:2263
-Nao Encontrados: 2131 0.9416703490941228
- 
-acertos em documentos definidos: 131
-total definido: 132
-Acuracia: 0.9924242424242424
- 
-Acuracia em todos os documentos: 0.05788775961113566
+numero arquivos;Não Encontrados;% Não Encontrados;Acertos em documentos definidos;Total Definido;Acurácia em Definidos;Acurácia Global
+2263;2127;0.9399027839151569;136;136;1.0;0.06009721608484313
+
 matriz de confusao
  acq bop cocoa coffee corn cpi crude dlr earn gnp gold grain interest livestock money-fx money-supply nat-gas oilseed reserves ship soybean sugar trade veg-oil wheat
 acq 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -14,7 +9,7 @@ cocoa 0 0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 coffee 0 0 0 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 corn 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 cpi 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-crude 0 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+crude 0 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 dlr 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 earn 0 0 0 0 0 0 0 0 45 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 gnp 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -30,8 +25,8 @@ reserves 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0
 ship 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0
 soybean 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0
 sugar 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 6 0 0 0
-trade 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-veg-oil 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+trade 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0
+veg-oil 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0
 wheat 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
  
 precision
@@ -41,7 +36,7 @@ cocoa: 1.0
 coffee: 1.0
 corn: 1.0
 cpi: 1.0
-crude: 0.8333333333333334
+crude: 1.0
 dlr: 1.0
 earn: 1.0
 gnp: 1.0
@@ -57,8 +52,8 @@ reserves: 1.0
 ship: 1.0
 soybean: 1.0
 sugar: 1.0
-trade: NaN
-veg-oil: NaN
+trade: 1.0
+veg-oil: 1.0
 wheat: 1.0
  
 recall
@@ -84,6 +79,6 @@ reserves: 1.0
 ship: 1.0
 soybean: 1.0
 sugar: 1.0
-trade: NaN
-veg-oil: NaN
-wheat: 0.5
+trade: 1.0
+veg-oil: 1.0
+wheat: 1.0

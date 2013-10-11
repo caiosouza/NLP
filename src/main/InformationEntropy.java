@@ -23,7 +23,7 @@ import com.google.common.collect.Multiset;
 
 public class InformationEntropy {
 
-	private static final int topWordsNum = 1000000000;
+	private static final int topWordsNum = 2000000000;
 	private static final String experimentoFolder = "experimentos/Top25_2/";
 	//private static final String termosEntropiaTXT = experimentoFolder + "termoEntropia/"+"termosEntropiaTrainTop100SS.txt";
 	private static final String termosEntropiaTXT = experimentoFolder + "termoEntropia/"+"termosEntropiaDominio.txt";
@@ -65,10 +65,7 @@ public class InformationEntropy {
 			termoFrequencia = categoriasTermosFrequencia.get(i);
 			for (Map.Entry<String, Integer> entry : termoFrequencia.entrySet()) {
 				String termo = entry.getKey() ;
-				if (termo.compareTo("ct") == 0){
-					@SuppressWarnings("unused")
-					int ddi = 2;
-				}
+		
 				int frequencia = entry.getValue();
 				
 				HashMap<Integer, Integer> categoriasFrequencia = new HashMap<Integer, Integer>();
@@ -237,7 +234,7 @@ public class InformationEntropy {
 		String clusterText = "";
 		for(i = 0; i < docs.size(); i=i+2){			
 			if(clusters.get(i/2).equals(c)){
-				clusterText += docs.get(i).replaceAll("[.,1234567890#$@!&();/?+=]", "");		
+				clusterText += docs.get(i).replaceAll("[.,1234567890#$@!&*();/?+=-]", " ");		
 			}
 		}
 		return clusterText;

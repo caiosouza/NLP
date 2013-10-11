@@ -16,7 +16,7 @@ import utils.Utils;
 public class ClusterEntropyClassifier {
 	
 	public static final String experimentoFolder = "experimentos/Top25_2/";
-	private static final int topN = 1;
+	private static final int topN = 900;
 	private static final String termoCategoriaTXT = experimentoFolder+"termoCategoria/termoCategoriaDominio"+topN+".txt";
 	
 	//private static final String categoriasEncontradas = experimentoFolder+"classificationFiles/categoriasEncontradas"+topN+".txt";
@@ -184,7 +184,7 @@ public class ClusterEntropyClassifier {
 		
 		for (String doc : docs) {
 			if (doc.trim().length() > 0){
-				String categoria = verificaCategoria(doc.toLowerCase().replaceAll("[.,1234567890#$@!&();/?+=]", ""), termosCategorias);
+				String categoria = verificaCategoria(doc.toLowerCase().replaceAll("[.,1234567890#$@!&*();/?+=-]", " "), termosCategorias);
 				categorias.add(categoria);
 			}
 			
@@ -228,6 +228,7 @@ public class ClusterEntropyClassifier {
 			if (pontosCategoria > maxPontos){
 				maxPontos = pontosCategoria;
 				categoriaEscolhida = categoria;
+				
 			}
 			
 		} 

@@ -10,7 +10,7 @@ public class CalculaAcerto {
 	/**
 	 * @param args
 	 */
-	private static final int topN = 1;
+	private static final int topN = 900;
 	public static final String experimentoFolder = "experimentos/Top25_2/";
 	
 	//private static final String categoriasEncontradasTXT = experimentoFolder+ "classificationFiles/categoriasEncontradas"+topN+".txt";
@@ -77,8 +77,8 @@ public class CalculaAcerto {
 		int total = 0;
 
 		
-		outPut.add("numero arquivos:" + size);
-		outPut.add("Nao Encontrados: " + naoEncontrado + " "+ 1.0 *naoEncontrado/size);
+		//outPut.add("numero arquivos:" + size);
+		//outPut.add("Nao Encontrados: " + naoEncontrado + " "+ 1.0 *naoEncontrado/size);
 		
 		for (int i = 0; i < numCategorias; i++) {
 			for (int j = 0; j < numCategorias; j++) {
@@ -93,14 +93,19 @@ public class CalculaAcerto {
 			total = total + somaColuna[i];
 		}
 		
-		outPut.add(" ");
-		outPut.add("acertos em documentos definidos: "+ acertos);
-		outPut.add("total definido: "+ (size-naoEncontrado));
-		outPut.add("Acuracia: "+ 1.0*acertos/(size-naoEncontrado));
+		//outPut.add(" ");
+		//outPut.add("acertos em documentos definidos: "+ acertos);
+		//outPut.add("total definido: "+ (size-naoEncontrado));
+		//outPut.add("Acuracia: "+ 1.0*acertos/(size-naoEncontrado));
 		
-		outPut.add(" ");
-		outPut.add("Acuracia em todos os documentos: "+ 1.0*acertos/size);
+		//outPut.add(" ");
+		//outPut.add("Acuracia em todos os documentos: "+ 1.0*acertos/size);
 		
+		outPut.add("numero arquivos;N‹o Encontrados;% N‹o Encontrados;Acertos em documentos definidos;Total Definido;" +
+				"Acur‡cia em Definidos;Acur‡cia Global");
+		outPut.add(size+";"+naoEncontrado+";"+1.0 *naoEncontrado/size+";"+acertos+";"+(size-naoEncontrado)
+				+";"+1.0*acertos/(size-naoEncontrado)+";"+1.0*acertos/size);
+		outPut.add("");
 		outPut.add("matriz de confusao");
 		
 		
