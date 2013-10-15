@@ -10,34 +10,32 @@ public class CalculaAcerto {
 	/**
 	 * @param args
 	 */
-	private static final int topN = 900;
-	public static final String experimentoFolder = "experimentos/Top25_2/";
-	
 	//private static final String categoriasEncontradasTXT = experimentoFolder+ "classificationFiles/categoriasEncontradas"+topN+".txt";
 	//private static final String categoriasEncontradasTXT = experimentoFolder+ "classificationFiles/categoriasEncontradasTest"+topN+".txt";
-	private static final String categoriasEncontradasTXT = experimentoFolder+ "classificationFiles/categoriasEncontradasDominio"+topN+".txt";
+	private String categoriasEncontradasTXT;
 	
-	private static final String categoriasOriginaisTXT = experimentoFolder+ "classificationFiles/ordemCategoriasTrainTop100SS.txt";
+	private String categoriasOriginaisTXT;
 	//private static final String categoriasOriginaisTXT = experimentoFolder+ "classificationFiles/ordemCategoriasTestSS.txt";
 	
 	//private static final String resultados = experimentoFolder+"resultados/"+topN+"resultado.txt";
-	private static final String resultados = experimentoFolder+"resultados/"+topN+"resultadoDominio.txt";
-	private static final String[] categorias = {"acq","bop","cocoa","coffee","corn","cpi","crude","dlr","earn","gnp","gold","grain","interest",
-		"livestock","money-fx","money-supply","nat-gas","oilseed","reserves","ship","soybean","sugar","trade","veg-oil","wheat"};
+	private String resultados;
+	private String[] categorias;
 	
-	public static void main(String[] args) {
+	public CalculaAcerto(String categoriasEncontradasTXT, String categoriasOriginaisTXT,
+			String resultados, String[] categorias) {
 		
-		CalculaAcerto calc = new CalculaAcerto();
-		calc.exec();
-		
+		this.categoriasEncontradasTXT = categoriasEncontradasTXT;
+		this.categoriasOriginaisTXT = categoriasOriginaisTXT;
+		this.resultados = resultados;
+		this.categorias = categorias;
 	}
 
-	private void exec() {
+	public void exec() {
 		
 		List<String> categoriasCorretas = ArquivoUtils.abreArquivo(categoriasOriginaisTXT);
 		List<String> categoriasEncontradas = ArquivoUtils.abreArquivo(categoriasEncontradasTXT);
 		
-		int acertos = 0;
+		//int acertos = 0;
 		String categoriaCorreta;
 		String categoriaEncontrada;
 		int idCategoriaCorreta;

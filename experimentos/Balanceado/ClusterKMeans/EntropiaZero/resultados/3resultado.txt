@@ -1,0 +1,84 @@
+numero arquivos;Não Encontrados;% Não Encontrados;Acertos em documentos definidos;Total Definido;Acurácia em Definidos;Acurácia Global
+2263;1664;0.7353071144498453;270;599;0.4507512520868113;0.11931064958020327
+
+matriz de confusao
+ acq bop cocoa coffee corn cpi crude dlr earn gnp gold grain interest livestock money-fx money-supply nat-gas oilseed reserves ship soybean sugar trade veg-oil wheat
+acq 5 0 0 0 0 0 0 0 0 0 2 0 0 0 0 6 0 0 0 0 0 0 0 0 0
+bop 0 6 0 1 0 0 0 0 0 1 0 0 0 0 0 13 0 0 0 0 0 0 1 0 0
+cocoa 0 0 3 1 0 0 0 0 0 0 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0
+coffee 0 0 1 24 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0
+corn 0 0 1 0 7 0 0 0 0 0 0 0 0 2 1 13 0 2 0 0 0 0 0 0 1
+cpi 0 1 0 0 0 4 0 0 0 1 0 0 0 0 0 9 0 0 2 0 0 0 0 0 0
+crude 0 0 0 0 0 0 14 0 0 0 0 0 0 0 0 9 6 0 0 4 0 0 0 0 0
+dlr 0 2 0 0 0 1 0 13 0 0 0 0 0 0 0 28 0 0 0 0 0 0 3 0 0
+earn 0 0 0 0 0 0 0 0 24 0 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0
+gnp 0 5 0 2 0 2 0 2 1 5 0 0 0 0 1 10 0 0 1 0 0 0 0 0 0
+gold 0 0 0 0 0 0 0 0 0 0 29 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+grain 0 0 0 0 3 0 0 0 0 0 0 5 0 1 1 13 0 0 0 0 0 1 0 0 8
+interest 0 0 0 0 0 0 0 1 0 1 0 0 5 0 0 15 0 0 0 0 0 0 0 0 0
+livestock 0 0 0 0 0 0 0 0 0 0 0 0 0 13 0 2 0 0 0 0 0 1 0 0 0
+money-fx 0 0 0 0 0 1 0 8 0 1 0 0 3 0 4 15 0 0 0 0 0 0 0 0 0
+money-supply 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 39 0 0 0 0 0 0 0 0 0
+nat-gas 0 0 0 0 0 0 9 0 0 0 0 0 0 0 0 2 7 0 0 0 0 1 0 0 0
+oilseed 0 0 0 0 4 0 0 0 0 0 0 2 0 2 0 6 0 9 0 0 0 1 0 3 1
+reserves 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 0 0 2 0 0 0 0 0 0
+ship 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 11 0 0 0 1 0
+soybean 0 0 0 1 4 0 0 0 0 0 0 1 0 2 0 5 0 8 0 0 3 0 0 2 1
+sugar 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0 0 0 1 8 0 0 0
+trade 0 1 0 0 0 1 0 1 0 1 0 0 0 1 1 11 0 0 0 0 0 0 8 0 0
+veg-oil 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 3 0 0 14 0
+wheat 0 0 0 0 2 0 0 0 0 0 0 2 0 2 0 7 0 0 0 0 0 0 0 0 8
+ 
+precision
+acq: 0.38461538461538464
+bop: 0.2727272727272727
+cocoa: 0.3333333333333333
+coffee: 0.9230769230769231
+corn: 0.25925925925925924
+cpi: 0.23529411764705882
+crude: 0.42424242424242425
+dlr: 0.2765957446808511
+earn: 0.8275862068965517
+gnp: 0.1724137931034483
+gold: 1.0
+grain: 0.15625
+interest: 0.22727272727272727
+livestock: 0.8125
+money-fx: 0.125
+money-supply: 0.9512195121951219
+nat-gas: 0.3684210526315789
+oilseed: 0.32142857142857145
+reserves: 0.2222222222222222
+ship: 0.8461538461538461
+soybean: 0.1111111111111111
+sugar: 0.5714285714285714
+trade: 0.32
+veg-oil: 0.7368421052631579
+wheat: 0.38095238095238093
+ 
+recall
+acq: 1.0
+bop: 0.4
+cocoa: 0.5
+coffee: 0.8
+corn: 0.35
+cpi: 0.4
+crude: 0.6086956521739131
+dlr: 0.52
+earn: 0.96
+gnp: 0.5
+gold: 0.9354838709677419
+grain: 0.5
+interest: 0.625
+livestock: 0.5416666666666666
+money-fx: 0.4444444444444444
+money-supply: 0.17333333333333334
+nat-gas: 0.5384615384615384
+oilseed: 0.47368421052631576
+reserves: 0.4
+ship: 0.7333333333333333
+soybean: 0.375
+sugar: 0.6666666666666666
+trade: 0.6666666666666666
+veg-oil: 0.7
+wheat: 0.42105263157894735

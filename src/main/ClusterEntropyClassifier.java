@@ -6,92 +6,81 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.google.common.collect.Multiset.Entry;
-
 import utils.ArquivoUtils;
 import utils.ContaPalavras;
-import utils.Utils;
 
 
 public class ClusterEntropyClassifier {
 	
-	public static final String experimentoFolder = "experimentos/Top25_2/";
-	private static final int topN = 900;
-	private static final String termoCategoriaTXT = experimentoFolder+"termoCategoria/termoCategoriaDominio"+topN+".txt";
+	private int topN;
+	private boolean balanceado;
 	
-	//private static final String categoriasEncontradas = experimentoFolder+"classificationFiles/categoriasEncontradas"+topN+".txt";
-	private static final String categoriasEncontradas = experimentoFolder+"classificationFiles/categoriasEncontradasDominio"+topN+".txt";
+	/*SAIDA*/
+	private String termoCategoriaTXT;
+	private String categoriasEncontradas;
+	//private static final String categoriasEncontradas = experimentoFolder+"classificationFiles/categoriasEncontradasDominio"+topN+".txt";
 	
-	private static final String baseDocumentos = experimentoFolder+"allTextBaseTxtFile/ReutersTrainTop100SS.txt";
+	/*Entrada*/
+	private String baseDocumentos;
 	//private static final String baseDocumentos = experimentoFolder+"allTextBaseTxtFile/ReutersTestSS.txt";
-	
-	private static final String gabaritoTermoCategoria = experimentoFolder+"DicionarioTermoCategoria.csv";
 	//private static final String termosEntropiaArquivo = experimentoFolder+"termosEntropia/termosEntropiaTrainTop100SS.txt";
-	private static final String termosEntropiaCategoria = experimentoFolder+"termoCategoria/termosCategoriaDominio.txt"; 
+	//private static final String termosEntropiaCategoria = experimentoFolder+"termoCategoria/termosCategoria.txt"; 
+	private String termosOrdenadosTXT;
 	//+		"termosEntropia/termosEntropiaCategoriaTrainTop100SS.txt";
-	//private static final String termosNaoMapeadosTxt = experimentoFolder+ "termosNaoMapeados.txt";
-	private static final String termosEntropiaArquivoOrdenados = experimentoFolder + "termoEntropia/termosEntropiaTrainTop100SSOrdered.csv";
-	private static final String[] categorias = {"acq","bop","cocoa","coffee","corn","cpi","crude","dlr","earn","gnp","gold","grain","interest",
-		"livestock","money-fx","money-supply","nat-gas","oilseed","reserves","ship","soybean","sugar","trade","veg-oil","wheat"};
+	private String termosCategoriaFull;
 	
-	public static void main(String[] args) {
+	private String[] categorias;
+	
+	
+	/*nao utilizado*/
+	//private static final String gabaritoTermoCategoria = experimentoFolder+"DicionarioTermoCategoria.csv";
+	//private static final String termosEntropiaArquivoOrdenados = experimentoFolder + "termoEntropia/termosEntropiaTrainTop100SSOrdered.csv";
+	//private static final String termosNaoMapeadosTxt = experimentoFolder+ "termosNaoMapeados.txt";
+
+	
+	
+	public ClusterEntropyClassifier(int topN, boolean balanceado, String termoCategoriaTXT, String categoriasEncontradas,
+			String baseDocumentos, String termosOrdenadosTXT, String termosCategoriaFull, String[] categorias) {
 		
-		ClusterEntropyClassifier classificador = new ClusterEntropyClassifier();
-		//classificador.filtraDicionario();
-		//classificador.consolidaTermoEntropiaCategoria();
-		classificador.montaDicionario();
-		classificador.rodaHeuristica();
-		
-		
+		this.topN = topN;
+		this.termoCategoriaTXT = termoCategoriaTXT;
+		this.categoriasEncontradas = categoriasEncontradas;
+		this.baseDocumentos = baseDocumentos;
+		this.termosOrdenadosTXT = termosOrdenadosTXT;
+		this.termosCategoriaFull = termosCategoriaFull;
+		this.categorias = categorias;
+		this.balanceado = balanceado;
 	}
 
-	private void consolidaTermoEntropiaCategoria() {
+	public void montaDicionario() {
 		
-		List<String> termosEntropias = ArquivoUtils.abreArquivo(termosEntropiaArquivoOrdenados);
-		Map<String,String> termoCategoria = new HashMap<String, String>();
-		List<String> linhasDicionario = ArquivoUtils.abreArquivo(gabaritoTermoCategoria);
-		
-		for (String linha : linhasDicionario) {
-			String[] tokens = linha.split(";");
-			termoCategoria.put(tokens[0].toLowerCase().replaceAll("[.,1234567890#$@!&();/?+=]", ""), tokens[1]);
-		}
-		
-		String[] tokens;
-		List<String> termosEntropiaCategorias = new ArrayList<String>();
-		for (String termoEntropia : termosEntropias) {
-			tokens = termoEntropia.split(";");
-			if(termoCategoria.containsKey(tokens[0])){
-				termoEntropia = termoEntropia + ";"+ termoCategoria.get(tokens[0]);
-			}
-			else termoEntropia = termoEntropia + ";" + "termoNaoMapeado";
-			termosEntropiaCategorias.add(termoEntropia);
-		}
-		ArquivoUtils.salvaArquivo(termosEntropiaCategorias, termosEntropiaCategoria);
-	}
-
-	private void montaDicionario() {
-		
-		List<String> termosEntropiaLinha = ArquivoUtils.abreArquivo(termosEntropiaCategoria);
-		Map<String, Integer> categoriaAchadas = loadCategoriaAchadas();
-		
+		//abre o arquivo com os termos ordenados e o com o mapeamento entre <termo;categoria>
+		List<String> termosEntropiaLinha = ArquivoUtils.abreArquivo(termosOrdenadosTXT);
 		Map<String, String> termoCategoria = loadTermoCategoria();
-		List<String> termoCategoriaTopN = new ArrayList<String>();
 		
-		List<String> prioridade = new ArrayList<String>();
-		int numLinhaAtual = 0;
-		String linhaAtual = "";
+		
+		Map<String, Integer> categoriaAchadas = loadCategoriaAchadas();
+		Map<String,List<String>> categoriaTermos = new HashMap<String, List<String>>();
+		List<String> termosCategoriaLida = new ArrayList<String>();
+		
 		String termo = "";
 		String[] tokens;
+		String linhaAtual = "";
 		String categoria = "";
+		int numLinhaAtual = 0;
 		int faltam = topN;
+		
+		//le os termos atŽ que todas as categorias tenham no minimo topN termos ou ate que todos os termos tenham sido lidos
 		while((categoriaAchadas.size()>0) && (numLinhaAtual < termosEntropiaLinha.size())){
+				
 			linhaAtual = termosEntropiaLinha.get(numLinhaAtual);
 			tokens = linhaAtual.split(";");
 			termo = tokens[0];
+			
 			if (termoCategoria.containsKey(termo)){
 				categoria = termoCategoria.get(termo);
+				
 				if (categoriaAchadas.containsKey(categoria)){
-					termoCategoriaTopN.add(termo+ ";"+ categoria);
 					faltam = categoriaAchadas.get(categoria);
 					if(faltam == 1 ){
 						categoriaAchadas.remove(categoria);
@@ -100,23 +89,52 @@ public class ClusterEntropyClassifier {
 					}
 				}
 			}
-			else{
-				//System.out.println(termo);
-				prioridade.add(termo);
-				//for (Map.Entry<String, Integer> entry : categoriaAchadas.entrySet()) {
-				//	System.out.println(entry.getKey()+";"+ entry.getValue());
-				//}
-				//System.exit(-1);
-				
+
+			if (categoriaTermos.containsKey(categoria)){
+				termosCategoriaLida = categoriaTermos.get(categoria);
+			} else {
+				termosCategoriaLida = new ArrayList<String>();
 			}
+			termosCategoriaLida.add(termo);
+			categoriaTermos.put(categoria, termosCategoriaLida);
+			
 			numLinhaAtual = numLinhaAtual + 1;
+		}
+		
+		int minEncontradas = topN;
+		List<String> termoCategoriaTopN = new ArrayList<String>();
+		
+		if(balanceado){
+			
+			//se percorreu o arquivo inteiro, eh porque algum categoria nao alcancou as topN palavras, nesse caso trunca pela menor
+			if (numLinhaAtual == termosEntropiaLinha.size()){
+				for(Map.Entry<String, Integer> entry: categoriaAchadas.entrySet()){
+					if(entry.getValue() < minEncontradas){
+						minEncontradas = topN - entry.getValue();
+					}
+				}
+			}
+			
+			//pega uma palavra de cada categoria ate que sejam adicionadas minEncontradas
+			for (int i = 0; i < minEncontradas; i++) {
+				for ( Map.Entry<String, List<String>> entry : categoriaTermos.entrySet()) {
+					termoCategoriaTopN.add(entry.getValue().get(i)+";"+entry.getKey());
+				}
+			}
+		} else {
+			
+			//pega todas as palavras de todas as categorias
+			for ( Map.Entry<String, List<String>> entry : categoriaTermos.entrySet()) {
+				for (String termoEncontrado : entry.getValue()) {
+					termoCategoriaTopN.add(termoEncontrado+";"+entry.getKey());
+				}
+			}
+			
 			
 		}
-		System.out.println(prioridade.size());
-		for (String string : prioridade) {
-			System.out.println(string);
-		}
-		ArquivoUtils.salvaArquivo(termoCategoriaTopN, experimentoFolder+ "termoCategoria/termoCategoriaDominio"+topN+ ".txt");
+		
+		ArquivoUtils.salvaArquivo(termoCategoriaTopN, termoCategoriaTXT);
+		System.out.println("Foram encontradas "+minEncontradas+" palavras para cada categoria.");
 		
 		
 	}
@@ -125,11 +143,11 @@ public class ClusterEntropyClassifier {
 		
 		Map<String, String> termoCategoria = new HashMap<String, String>();
 		
-		List<String> dicionarioTermoCategoriaLinhas = ArquivoUtils.abreArquivo(termosEntropiaCategoria);
+		List<String> dicionarioTermoCategoriaLinhas = ArquivoUtils.abreArquivo(termosCategoriaFull);
 		String[] tokens;
 		for (String linha : dicionarioTermoCategoriaLinhas) {
 			tokens = linha.split(";");
-			termoCategoria.put(tokens[0], tokens[5]);
+			termoCategoria.put(tokens[0], tokens[1]);
 		}
 		return termoCategoria;
 		
@@ -145,38 +163,10 @@ public class ClusterEntropyClassifier {
 		return categoriaAchadas;
 		
 	}
-/*
-	private void filtraDicionario() {
+
+	public void rodaHeuristica() {
 		
-		Map<String,String> termoCategoria = new HashMap<String, String>();
-		List<String> linhasDicionario = ArquivoUtils.abreArquivo(gabaritoTermoCategoria);
-		
-		for (String linha : linhasDicionario) {
-			String[] tokens = linha.split(";");
-			termoCategoria.put(tokens[0].toLowerCase().replaceAll("[.,1234567890#$@!&();/?+=]", ""), tokens[1]);
-		}
-		
-		List<String> termosFrequencias = ArquivoUtils.abreArquivo(termosEntropiaArquivo);
-		List<String> novoTermosFrequencias = new ArrayList<String>();
-		List<String> termosNaoMapeados = new ArrayList<String>();
-		for (String linha : termosFrequencias) {
-			String[] tokens = linha.split(";");
-			if(termoCategoria.containsKey(tokens[0])){
-				novoTermosFrequencias.add(linha+";"+termoCategoria.get(tokens[0]));
-			} else {
-				termosNaoMapeados.add(tokens[0]);
-			}
-			
-		}
-		
-		ArquivoUtils.salvaArquivo(novoTermosFrequencias, experimentoFolder+ "termosCategorias/EntropiaTrainTop100SS.txt");
-		ArquivoUtils.salvaArquivo(termosNaoMapeados, termosNaoMapeadosTxt);
-		
-	}
-*/
-	private void rodaHeuristica() {
-		
-		HashMap<String, String> termosCategorias = getTermoCategoria();
+		HashMap<String, String> termosCategorias = getTermoCategoriaTopN();
 		
 		List<String> docs = ArquivoUtils.abreArquivo(baseDocumentos);
 		
@@ -184,14 +174,14 @@ public class ClusterEntropyClassifier {
 		
 		for (String doc : docs) {
 			if (doc.trim().length() > 0){
-				String categoria = verificaCategoria(doc.toLowerCase().replaceAll("[.,1234567890#$@!&*();/?+=-]", " "), termosCategorias);
+				String categoria = verificaCategoria(doc, termosCategorias);
 				categorias.add(categoria);
 			}
 			
 		}
 				
 		ArquivoUtils.salvaArquivo(categorias, categoriasEncontradas);
-		System.out.println("Arquivo categoriasEncontradas.txt salvo com sucesso.");
+		System.out.println("Arquivo "+categoriasEncontradas+" salvo com sucesso.");
 	}
 
 	private String verificaCategoria(String doc, HashMap<String, String> termosCategorias) {
@@ -199,6 +189,7 @@ public class ClusterEntropyClassifier {
 		//separa lista de termos presentes na heuristica
 		Set<String> termosHeuristica = termosCategorias.keySet();
 		
+		doc = doc.toLowerCase().replaceAll("[.,:;<>{}|_1234567890!@#$%&*()/?+=-]", " ");
 		//pega do documento frequencia referente apenas aos termos da heuristica
 		Map<String, Integer> termosFrequenciaDocumento = ContaPalavras.contaFrequencia(doc, 0, termosHeuristica);
 		
@@ -236,7 +227,7 @@ public class ClusterEntropyClassifier {
 		return categoriaEscolhida;
 	}
 
-	private HashMap<String, String> getTermoCategoria() {
+	private HashMap<String, String> getTermoCategoriaTopN() {
 		
 		HashMap<String, String> termosCategorias = new HashMap<String, String>();
 		List<String> linhas = ArquivoUtils.abreArquivo(termoCategoriaTXT);

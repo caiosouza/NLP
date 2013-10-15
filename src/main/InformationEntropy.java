@@ -23,37 +23,62 @@ import com.google.common.collect.Multiset;
 
 public class InformationEntropy {
 
-	private static final int topWordsNum = 2000000000;
-	private static final String experimentoFolder = "experimentos/Top25_2/";
-	//private static final String termosEntropiaTXT = experimentoFolder + "termoEntropia/"+"termosEntropiaTrainTop100SS.txt";
-	private static final String termosEntropiaTXT = experimentoFolder + "termoEntropia/"+"termosEntropiaDominio.txt";
-	//private static final String clusterOrderFile = experimentoFolder + "clusterResult/cluster_ReutersTrainTop100SS.csv";
-	private static final String clusterOrderFile = experimentoFolder + "clusterResult/clusterDominio.csv";
-    private static final String allTextBaseTxtFile = experimentoFolder  + "allTextBaseTxtFile/ReutersTrainTop100SS.txt";
+	private int topWordsNum;
+	private String experimentoFolder;
+	
+	/*saida*/
+	////private static final String termosEntropiaTXT = experimentoFolder + "termoEntropia/"+"termosEntropiaTrainTop100SS.txt";
+	private String termosEntropiaTXT;
+	
+	/*Entrada*/
+	////private static final String clusterOrderFile = experimentoFolder + "clusterResult/cluster_ReutersTrainTop100SS.csv";
+	private String clusterOrderFile;
+    private String allTextBaseTxtFile;
 	
 	public static void main(String[] args) {
 		
-		InformationEntropy infoEntropy = new InformationEntropy();
+		int topWordsNum = 2000000000;
+		String experimentoFolder = "experimentos/ClusterGabarito/EntropiaFull/";
+		
+		/*saida*/
+		String termosEntropiaTXT = experimentoFolder + "termoEntropia/"+"termosEntropia.txt";
+		
+		/*Entrada*/
+		String clusterOrderFile = experimentoFolder + "ArquivosEntrada/clusterDominio.csv";
+		String allTextBaseTxtFile = experimentoFolder  + "ArquivosEntrada/allTextBaseTxtFile/ReutersTrainTop100SS.txt";
+		
+		InformationEntropy infoEntropy = new InformationEntropy(topWordsNum, experimentoFolder, termosEntropiaTXT, clusterOrderFile, allTextBaseTxtFile);
 		
 		infoEntropy.exec();
 	}
-	
+
+	public InformationEntropy(int topWordsNum, String experimentoFolder,
+			String termosEntropiaTXT, String clusterOrderFile,
+			String allTextBaseTxtFile) {
+		super();
+		this.topWordsNum = topWordsNum;
+		this.experimentoFolder = experimentoFolder;
+		this.termosEntropiaTXT = termosEntropiaTXT;
+		this.clusterOrderFile = clusterOrderFile;
+		this.allTextBaseTxtFile = allTextBaseTxtFile;
+	}
+
 	public void exec(){
 		
-		HashMap<Integer, HashMap<String,Integer>> categoriasTermosFrequencia = getFrequencias();
+		HashMap<Integer, HashMap<String,Integer>> categoriasTermosFrequencia = getFrequencias(allTextBaseTxtFile, clusterOrderFile, topWordsNum);
 		
 		/*
 		 * Pega todos os arquivos usados que estão em um txt que junta todos os documentos
 		 * Pega os clusteres geredos no MatLab 
 		 * Junta essas duas informações e consolida no arquivo termosEntropiaTXT
 		 */
-		calcEntropias(categoriasTermosFrequencia);
+		calcEntropias(categoriasTermosFrequencia, termosEntropiaTXT);
 		
 		
 				
 	}
 	
-	private void calcEntropias(HashMap<Integer, HashMap<String, Integer>> categoriasTermosFrequencia) {
+	private void calcEntropias(HashMap<Integer, HashMap<String, Integer>> categoriasTermosFrequencia, String termosEntropiaTXT) {
 		
 		//Set<String> allTermos = new HashSet<String>();
 		HashMap<String, Integer> termoFrequencia = new HashMap<String, Integer>();
@@ -85,7 +110,7 @@ public class InformationEntropy {
 		
 		List<String> termosEntropia = new ArrayList<String>();
 		
-		//calcula a entropia de cada termo, quanto maior (mais proximo de 0 melhor)
+		//calcula a entropia de cada termo, quanto menor (mais proximo de 0 melhor)
 		for (Entry<String, HashMap<Integer, Integer>> entryTermos : termosCategoriasFrequencia.entrySet()) {
 			int frequenciaTotal = 0;
 			String termo = entryTermos.getKey();
@@ -124,7 +149,7 @@ public class InformationEntropy {
 		System.out.println("Arquivo "+termosEntropiaTXT+" contendo o par, <termo,entropia> salvo com sucesso!");
 	}
 
-	public HashMap<Integer, HashMap<String,Integer>> getFrequencias(){
+	public HashMap<Integer, HashMap<String,Integer>> getFrequencias(String allTextBaseTxtFile, String clusterOrderFile, int topWordsNum){
 		
 		List<String> docs = ArquivoUtils.abreArquivo(allTextBaseTxtFile);
 
@@ -234,7 +259,7 @@ public class InformationEntropy {
 		String clusterText = "";
 		for(i = 0; i < docs.size(); i=i+2){			
 			if(clusters.get(i/2).equals(c)){
-				clusterText += docs.get(i).replaceAll("[.,1234567890#$@!&*();/?+=-]", " ");		
+				clusterText += docs.get(i).toLowerCase().replaceAll("[.,:;<>{}|_1234567890!@#$%&*()/?+=-]", " ");		
 			}
 		}
 		return clusterText;

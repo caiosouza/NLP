@@ -1,0 +1,39 @@
+	public static final String experimentoFolder = "experimentos/Top25_2/";
+	private static final int topN = 200;
+	private static final String termoCategoriaTXT = experimentoFolder+"termoCategoria/termoCategoriaDominio"+topN+".txt";
+	
+	//private static final String categoriasEncontradas = experimentoFolder+"classificationFiles/categoriasEncontradas"+topN+".txt";
+	private static final String categoriasEncontradas = experimentoFolder+"classificationFiles/categoriasEncontradasDominio"+topN+".txt";
+	
+	private static final String baseDocumentos = experimentoFolder+"allTextBaseTxtFile/ReutersTrainTop100SS.txt";
+	//private static final String baseDocumentos = experimentoFolder+"allTextBaseTxtFile/ReutersTestSS.txt";
+	
+	private static final String gabaritoTermoCategoria = experimentoFolder+"DicionarioTermoCategoria.csv";
+	//private static final String termosEntropiaArquivo = experimentoFolder+"termosEntropia/termosEntropiaTrainTop100SS.txt";
+	private static final String termosEntropiaCategoria = experimentoFolder+"termoCategoria/termosCategoriaDominio.txt"; 
+	//+		"termosEntropia/termosEntropiaCategoriaTrainTop100SS.txt";
+	//private static final String termosNaoMapeadosTxt = experimentoFolder+ "termosNaoMapeados.txt";
+	private static final String termosEntropiaArquivoOrdenados = experimentoFolder + "termoEntropia/termosEntropiaTrainTop100SSOrdered.csv";
+	
+private static final int topWordsNum = 2000000000;
+	private static final String experimentoFolder = "experimentos/Top25_EFCG/";
+	//private static final String termosEntropiaTXT = experimentoFolder + "termoEntropia/"+"termosEntropiaTrainTop100SS.txt";
+	private static final String termosEntropiaTXT = experimentoFolder + "termoEntropia/"+"termosEntropiaDominio.txt";
+	//private static final String clusterOrderFile = experimentoFolder + "clusterResult/cluster_ReutersTrainTop100SS.csv";
+	private static final String clusterOrderFile = experimentoFolder + "clusterResult/clusterDominio.csv";
+    private static final String allTextBaseTxtFile = experimentoFolder  + "allTextBaseTxtFile/ReutersTrainTop100SS.txt";
+	
+
+private static final int topN = 200;
+	public static final String experimentoFolder = "experimentos/Top25_2/";
+	
+	//private static final String categoriasEncontradasTXT = experimentoFolder+ "classificationFiles/categoriasEncontradas"+topN+".txt";
+	//private static final String categoriasEncontradasTXT = experimentoFolder+ "classificationFiles/categoriasEncontradasTest"+topN+".txt";
+	private static final String categoriasEncontradasTXT = experimentoFolder+ "classificationFiles/categoriasEncontradasDominio"+topN+".txt";
+	
+	private static final String categoriasOriginaisTXT = experimentoFolder+ "classificationFiles/ordemCategoriasTrainTop100SS.txt";
+	//private static final String categoriasOriginaisTXT = experimentoFolder+ "classificationFiles/ordemCategoriasTestSS.txt";
+	
+	//private static final String resultados = experimentoFolder+"resultados/"+topN+"resultado.txt";
+	private static final String resultados = experimentoFolder+"resultados/"+topN+"resultadoDominio.txt";
+	
