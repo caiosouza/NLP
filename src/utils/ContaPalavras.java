@@ -68,7 +68,7 @@ public class ContaPalavras {
          
         while (curLine != null) {
         	linhas.add(curLine);
-            //pega a prÛxima linha do arquivo
+            //pega a proxima linha do arquivo
             curLine = txtBuffer.readLine();
         }
          
@@ -114,26 +114,28 @@ public class ContaPalavras {
             
             while(m.find())
             {
-            	String token = m.group(); //pega um token  
-            	Integer freq = mapPalavras.get(token); //verifica se esse token j· est· no mapa   
-            	//totalTermos = totalTermos +1; 
-            	if(filtroTermos!= null) {
-            		if (filtroTermos.contains(token)){
-            			if (freq != null) { //se palavra existe, atualiza a frequencia
-      	            	  mapPalavras.put(token, freq+1);
-      	            	}
-      	                else { // se palavra n„o existe, insiro com um novo id e freq=1.
-      	                    mapPalavras.put(token,1);
-      	                }
-            		}
-            	} else {
-	            	if (freq != null) { //se palavra existe, atualiza a frequencia
-	            	  mapPalavras.put(token, freq+1);
+            	String token = m.group(); //pega um token
+            	if(token.length()>1){
+	            	Integer freq = mapPalavras.get(token); //verifica se esse token ja esta no mapa   
+	            	//totalTermos = totalTermos +1; 
+	            	if(filtroTermos!= null) {
+	            		if (filtroTermos.contains(token)){
+	            			if (freq != null) { //se palavra existe, atualiza a frequencia
+	      	            	  mapPalavras.put(token, freq+1);
+	      	            	}
+	      	                else { // se palavra nao existe, insiro com um novo id e freq=1.
+	      	                    mapPalavras.put(token,1);
+	      	                }
+	            		}
+	            	} else {
+		            	if (freq != null) { //se palavra existe, atualiza a frequencia
+		            	  mapPalavras.put(token, freq+1);
+		            	}
+		                else { // se palavra nao existe, insiro com um novo id e freq=1.
+		                    mapPalavras.put(token,1);
+		                }
 	            	}
-	                else { // se palavra n„o existe, insiro com um novo id e freq=1.
-	                    mapPalavras.put(token,1);
-	                }
-	            }
+            	}
             }
         }
 
@@ -148,7 +150,7 @@ public class ContaPalavras {
     
     public static String limpacaracteres(String passa) {
     		
-        passa = passa.replaceAll("[ÂÀÁÄÃ]","A");  
+    	passa = passa.replaceAll("[ÂÀÁÄÃ]","A");  
         passa = passa.replaceAll("[âãàáä]","a");  
         passa = passa.replaceAll("[ÊÈÉË]","E");  
         passa = passa.replaceAll("[êèéë]","e");  
@@ -165,8 +167,8 @@ public class ContaPalavras {
         passa = passa.replaceAll("ñ","n");  
         passa = passa.replaceAll("Ñ","N");  
         passa = passa.replaceAll("['<>|/]","");  
-        
         return passa;  
+    	
     }
     
 	public static List<String> imprimeFrequencias(Map<String, Integer> mapPalavras) {
@@ -192,14 +194,14 @@ public class ContaPalavras {
 			for (Map.Entry<String, Integer> entry : termoFrequenciaDocumento.entrySet()) {
 				String termo = entry.getKey();
 				int freqDoc = entry.getValue();
-				//verifica se ela est· no mapa da categoria
+				//verifica se ela estao no mapa da categoria
 				if (termoFrequenciaCategoria.containsKey(termo))
 				{
 					//se estiver atualiza o valor com a soma dos valores
 					int freqCategoria = termoFrequenciaCategoria.get(termo);
 					termoFrequenciaCategoria.put(termo, freqCategoria+ freqDoc);
 				} else {
-					//se n„o estiver adiciona com o valor do documento
+					//se nao estiver adiciona com o valor do documento
 					termoFrequenciaCategoria.put(termo, freqDoc);
 				}
 			}

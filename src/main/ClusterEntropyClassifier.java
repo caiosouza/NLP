@@ -18,26 +18,13 @@ public class ClusterEntropyClassifier {
 	/*SAIDA*/
 	private String termoCategoriaTXT;
 	private String categoriasEncontradas;
-	//private static final String categoriasEncontradas = experimentoFolder+"classificationFiles/categoriasEncontradasDominio"+topN+".txt";
 	
 	/*Entrada*/
 	private String baseDocumentos;
-	//private static final String baseDocumentos = experimentoFolder+"allTextBaseTxtFile/ReutersTestSS.txt";
-	//private static final String termosEntropiaArquivo = experimentoFolder+"termosEntropia/termosEntropiaTrainTop100SS.txt";
-	//private static final String termosEntropiaCategoria = experimentoFolder+"termoCategoria/termosCategoria.txt"; 
 	private String termosOrdenadosTXT;
-	//+		"termosEntropia/termosEntropiaCategoriaTrainTop100SS.txt";
 	private String termosCategoriaFull;
 	
 	private String[] categorias;
-	
-	
-	/*nao utilizado*/
-	//private static final String gabaritoTermoCategoria = experimentoFolder+"DicionarioTermoCategoria.csv";
-	//private static final String termosEntropiaArquivoOrdenados = experimentoFolder + "termoEntropia/termosEntropiaTrainTop100SSOrdered.csv";
-	//private static final String termosNaoMapeadosTxt = experimentoFolder+ "termosNaoMapeados.txt";
-
-	
 	
 	public ClusterEntropyClassifier(int topN, boolean balanceado, String termoCategoriaTXT, String categoriasEncontradas,
 			String baseDocumentos, String termosOrdenadosTXT, String termosCategoriaFull, String[] categorias) {
@@ -114,23 +101,15 @@ public class ClusterEntropyClassifier {
 					}
 				}
 			}
-			
-			//pega uma palavra de cada categoria ate que sejam adicionadas minEncontradas
-			for (int i = 0; i < minEncontradas; i++) {
-				for ( Map.Entry<String, List<String>> entry : categoriaTermos.entrySet()) {
+		}
+		
+		//pega uma palavra de cada categoria ate que sejam adicionadas minEncontradas
+		for (int i = 0; i < minEncontradas; i++) {
+			for ( Map.Entry<String, List<String>> entry : categoriaTermos.entrySet()) {
+				if(entry.getValue().size() > i){
 					termoCategoriaTopN.add(entry.getValue().get(i)+";"+entry.getKey());
 				}
 			}
-		} else {
-			
-			//pega todas as palavras de todas as categorias
-			for ( Map.Entry<String, List<String>> entry : categoriaTermos.entrySet()) {
-				for (String termoEncontrado : entry.getValue()) {
-					termoCategoriaTopN.add(termoEncontrado+";"+entry.getKey());
-				}
-			}
-			
-			
 		}
 		
 		ArquivoUtils.salvaArquivo(termoCategoriaTopN, termoCategoriaTXT);

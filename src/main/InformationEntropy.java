@@ -6,11 +6,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import utils.ArquivoUtils;
 
@@ -24,40 +22,17 @@ import com.google.common.collect.Multiset;
 public class InformationEntropy {
 
 	private int topWordsNum;
-	private String experimentoFolder;
 	
-	/*saida*/
-	////private static final String termosEntropiaTXT = experimentoFolder + "termoEntropia/"+"termosEntropiaTrainTop100SS.txt";
+	/*arquivos saida*/
 	private String termosEntropiaTXT;
 	
-	/*Entrada*/
-	////private static final String clusterOrderFile = experimentoFolder + "clusterResult/cluster_ReutersTrainTop100SS.csv";
+	/*arquivos entrada*/
 	private String clusterOrderFile;
     private String allTextBaseTxtFile;
-	
-	public static void main(String[] args) {
-		
-		int topWordsNum = 2000000000;
-		String experimentoFolder = "experimentos/ClusterGabarito/EntropiaFull/";
-		
-		/*saida*/
-		String termosEntropiaTXT = experimentoFolder + "termoEntropia/"+"termosEntropia.txt";
-		
-		/*Entrada*/
-		String clusterOrderFile = experimentoFolder + "ArquivosEntrada/clusterDominio.csv";
-		String allTextBaseTxtFile = experimentoFolder  + "ArquivosEntrada/allTextBaseTxtFile/ReutersTrainTop100SS.txt";
-		
-		InformationEntropy infoEntropy = new InformationEntropy(topWordsNum, experimentoFolder, termosEntropiaTXT, clusterOrderFile, allTextBaseTxtFile);
-		
-		infoEntropy.exec();
-	}
 
-	public InformationEntropy(int topWordsNum, String experimentoFolder,
-			String termosEntropiaTXT, String clusterOrderFile,
-			String allTextBaseTxtFile) {
+	public InformationEntropy(int topWordsNum, String termosEntropiaTXT, String clusterOrderFile, String allTextBaseTxtFile) {
 		super();
 		this.topWordsNum = topWordsNum;
-		this.experimentoFolder = experimentoFolder;
 		this.termosEntropiaTXT = termosEntropiaTXT;
 		this.clusterOrderFile = clusterOrderFile;
 		this.allTextBaseTxtFile = allTextBaseTxtFile;
@@ -69,7 +44,7 @@ public class InformationEntropy {
 		
 		/*
 		 * Pega todos os arquivos usados que estão em um txt que junta todos os documentos
-		 * Pega os clusteres geredos no MatLab 
+		 * Pega os clusteres geredos {pelo kmeans no MatLab, clusteres originais}
 		 * Junta essas duas informações e consolida no arquivo termosEntropiaTXT
 		 */
 		calcEntropias(categoriasTermosFrequencia, termosEntropiaTXT);
@@ -115,22 +90,25 @@ public class InformationEntropy {
 			int frequenciaTotal = 0;
 			String termo = entryTermos.getKey();
 			String categoriaPrincipal = "";
-			int maiorFrequencia = 0;
+			Double maiorFrequenciaRelativa = 0.0;
 			
 			HashMap<Integer, Integer> categoriasFrequencia = new HashMap<Integer, Integer>();
 			
 			categoriasFrequencia = entryTermos.getValue();
 			for (Entry<Integer,Integer> entryCategoria : categoriasFrequencia.entrySet()) {
 				frequenciaTotal = frequenciaTotal + entryCategoria.getValue();
-				if (entryCategoria.getValue() > maiorFrequencia){
-					maiorFrequencia = entryCategoria.getValue();
-					categoriaPrincipal = ""+ entryCategoria.getKey();
-				}
-				
 			}
 			
 			Double entropia = 0.0;
+			Double frequenciaRelativaAtual = 0.0;
+
 			for (Entry<Integer,Integer> entryCategoria : categoriasFrequencia.entrySet()) {
+				frequenciaRelativaAtual = 1.0 * entryCategoria.getValue()/frequenciaTotal;
+				if (frequenciaRelativaAtual > maiorFrequenciaRelativa){
+					maiorFrequenciaRelativa = frequenciaRelativaAtual;
+					categoriaPrincipal = ""+ entryCategoria.getKey();
+				}
+				
 				Double pxi = 1.0 * entryCategoria.getValue()/frequenciaTotal;
 				entropia = entropia + pxi * Math.log(pxi);
 			}
@@ -166,6 +144,7 @@ public class InformationEntropy {
 		}	
 		
 		/* RETORNA TEXTO POR CLUSTER 1 a 25 */	
+		
 		HashMap<Integer, HashMap<String,Integer>> categoriasTermosFrequencia = new HashMap<Integer,HashMap<String, Integer>>();
 		for(Integer i = 1; i <= 25; i++){
 			HashMap<String, Integer> topWordsFrequencia = new HashMap<String, Integer>();
