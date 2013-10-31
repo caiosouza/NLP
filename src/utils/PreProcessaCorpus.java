@@ -63,7 +63,7 @@ public class PreProcessaCorpus {
 		}
 	}
 
-	private List<String> preProcessaArquivo(File arquivo, Boolean removeStopWords, Boolean reduzStemme, String stopListNameFile) {
+	public static List<String> preProcessaArquivo(File arquivo, Boolean removeStopWords, Boolean reduzStemme, String stopListNameFile) {
 		
 		List<String> linhasOriginais = new ArrayList<String>();
 		List<String> linhasPreProcessadas = new ArrayList<String>();
@@ -85,6 +85,7 @@ public class PreProcessaCorpus {
 
 	public static String preProcessaLinha(String linha, Boolean removeStopWords, Boolean reduzStemme, String stopListNameFile) {
 
+		linha = linha.toLowerCase().replaceAll("[.,:;<>{}|_1234567890!@#$%&*()/?+=-']", " ");
 		String outPutText = linha;
 		
 		if (removeStopWords){

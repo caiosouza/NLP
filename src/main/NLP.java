@@ -25,6 +25,7 @@ public class NLP {
 	private String clusterOrderFileName;
 	private String allTextBaseTxtFileName;
 	private String clusterCategoriaFileName;
+	private String categoriasFileName;
 	
 	private String categoriasCorretasFileName;
 	private String categoriasEncontradasTXT;
@@ -40,6 +41,7 @@ public class NLP {
 			"livestock","money-fx","money-supply","nat-gas","oilseed","reserves","ship","soybean","sugar","trade","veg-oil","wheat"};
 	private int tipoMapeamentoTermo;
 	private String termosCategoria;
+	private String pathBase;
 	
 	
 	
@@ -71,16 +73,55 @@ public class NLP {
 		
 		//String[] args5 ={"5","1","0","0","0","0","0","0"};
 		List<String[]> experimentos = new ArrayList<String[]>();
-		//String[] args5 ={"5","1","0","0","0","0","0","0"};
+		
+		/*
+		experimentos.add(new String[]{"6","1"});
+		experimentos.add(new String[]{"6","2"});
+		experimentos.add(new String[]{"6","3"});
+		*/
+		
+		/*
+		// base reuters 25
 		experimentos.add(new String[]{"5","0","0","0","0","0","0","0"});
 		experimentos.add(new String[]{"5","0","0","1","0","0","0","0"});
 		experimentos.add(new String[]{"5","0","1","0","0","0","0","0"});
 		experimentos.add(new String[]{"5","0","1","1","0","0","0","0"});
+		*/
 		/*experimentos.add(new String[]{"5","1","0","0","0","0","0","0"});
 		experimentos.add(new String[]{"5","1","0","1","0","0","0","0"});
 		experimentos.add(new String[]{"5","1","1","0","0","0","0","0"});
 		experimentos.add(new String[]{"5","1","1","1","0","0","0","0"});
 		*/
+		// base reuters 2
+		experimentos.add(new String[]{"5","0","0","0","1","0","0","0"});
+		experimentos.add(new String[]{"5","0","0","1","1","0","0","0"});
+		//experimentos.add(new String[]{"5","0","1","0","1","0","0","0"});
+		//experimentos.add(new String[]{"5","0","1","1","1","0","0","0"});
+		// base news2
+		experimentos.add(new String[]{"5","0","0","0","2","0","0","0"});
+		experimentos.add(new String[]{"5","0","0","1","2","0","0","0"});
+		//experimentos.add(new String[]{"5","0","1","0","0","0","0","0"});
+		//experimentos.add(new String[]{"5","0","1","1","0","0","0","0"});
+		// base new3
+		experimentos.add(new String[]{"5","0","0","0","3","0","0","0"});
+		experimentos.add(new String[]{"5","0","0","1","3","0","0","0"});
+		//experimentos.add(new String[]{"5","0","1","0","0","0","0","0"});
+		//experimentos.add(new String[]{"5","0","1","1","0","0","0","0"});
+		
+		
+		/*
+		 * 
+		boolean balanceado = args[1].contentEquals("1");
+		int clusterId = Integer.parseInt(args[2]);
+		int tipoOrdenacao = Integer.parseInt(args[3]);
+		int baseId = Integer.parseInt(args[4]);
+		int clusterCategoriaId = Integer.parseInt(args[5]);
+		int tipoMapeamentoTermo = Integer.parseInt(args[6]);
+		int numHeuristica = Integer.parseInt(args[7]);
+
+		 * 
+		 * */
+		
 		for (String[] experimento : experimentos) {
 			exec(experimento);
 			System.out.println("Resultados salvos em: "+ this.experimentoFolder);
@@ -178,93 +219,85 @@ public class NLP {
 			
 			getPorperties(balanceado, baseId, clusterId, clusterCategoriaId, tipoOrdenacao, tipoMapeamentoTermo, numHeuristica);
 			
-			//carrega a base e os clusters gerados para a memoria
-			CarregaDados load = new CarregaDados(clusterOrderFileName, allTextBaseTxtFileName, clusterCategoriaFileName, categoriasCorretasFileName);
-			Map<String, List<String>> clusters = load.carregaClusters();
-			Map<String, String> mapClusterCategoria = load.carregaClusterCategoria();
+			Exec.rodaExperimento(this.clusterOrderFileName, this.allTextBaseTxtFileName, this.clusterCategoriaFileName, this.categoriasCorretasFileName, 
+					tipoOrdenacao, tipoMapeamentoTermo, balanceado, this.topNs, this.termosCategoria, numHeuristica, this.resultados,
+					this.categoriasFileName, this.experimentoFolder);
 			
-			//processa o cluster montanto a estrutura com termpocategoriafrequencia
-			ProcessaClusters clustersProcessados = new ProcessaClusters(clusters, mapClusterCategoria);
-			Map<String, Map<String, Integer>> mapTermosCategoriasFrequencias = clustersProcessados.getTermosCategoriasFrequencias();
-			Map<String, Integer> mapCategoriaNumDocs = clustersProcessados.getCategoriasNumDocs();
+		}
+		else if (opCode == 6){
 			
-			//dado os termos e suas frequencias em cada categoria, ordena os termos a serem usados
-			OrdenaTermos ordenaTermos = new OrdenaTermos(mapTermosCategoriasFrequencias);
-			List<Termo> termos = ordenaTermos.getTermosOrdenados(tipoOrdenacao);
-			
-			//descobre de maneira automatica a categoria de cada um dos termpos
-			GeraTermoCategoria geraTermoCategoria = new GeraTermoCategoria(mapTermosCategoriasFrequencias, mapCategoriaNumDocs);
-			Map<String, String> mapTermosCategorias = geraTermoCategoria.getTermosCategorias(tipoMapeamentoTermo);
-			
-			MontaListaTermos montaListaTermos = new MontaListaTermos(termos, mapTermosCategorias, categorias);
-			List<String> documentos = load.getDocumentos();
-			List<String> categoriasCorretas = load.carregaCategoriasCorretas();
-			
-			
-			List<String> resultadosGerais = new ArrayList<String>();
-			for (int topN : topNs) {
-				
-				//monta a lista de termos a ser usada nesse experimento
-				Map<String, String> topNTermosCategorias = montaListaTermos.getTopNTermos(topN, balanceado);
-				
-				List<String> topNTC = new ArrayList<String>();
-				for (Entry<String, String> topNTermoCategoria : topNTermosCategorias.entrySet()) {
-					topNTC.add(topNTermoCategoria.getKey()+";"+ topNTermoCategoria.getValue());
-				}
-				
-				String arquivoTermosCategorias = this.termosCategoria.replace(".txt", topN+".txt");
-				ArquivoUtils.salvaArquivo(topNTC, arquivoTermosCategorias);
-				
-				//pega a base, a lista de termos e gera uma lista das categorias encontradas
-				RodaHeuristica rodaHeuristica = new RodaHeuristica(documentos, topNTermosCategorias);
-				List<String> categoriasEncontradas = rodaHeuristica.exec(numHeuristica);
-				
-				//calcula acerto
-				CalculaAcertoNew calculaAcerto = new CalculaAcertoNew(categoriasCorretas, categoriasEncontradas, categorias);
-				List<String> resultado = calculaAcerto.exec();
-				
-				String arquivoResultados = this.resultados.replace(".txt", topN+".txt");
-				ArquivoUtils.salvaArquivo(resultado, arquivoResultados);
-				
-				resultadosGerais.add(resultado.get(1));
-			}
-			ArquivoUtils.salvaArquivo(resultadosGerais, resultados);
-			
-			
+			int idBase = Integer.parseInt(args[1]);
+			Exec.formatBase(getBaseName(idBase),idBase);
 		}
 		
 	}
 	
-	private void getPorperties(boolean balanceado, int baseId, int clusterId, int clusterCategoriaId, int tipoOrdenacao, int tipoMapeamentoTermo, int numHeuristica) {
+	private String getBaseName(int idBase) {
+		
+		String pathCategorias = "";
+		if (idBase == 0){
+			//base da reuters25 ja foi processada
+			pathCategorias = "";
+		} else if (idBase == 1){
+			//base reutersSS_2cat
+			pathCategorias = "ArquivosEntrada/bases/reutersSS_2cat/dataset/";
+		} else if (idBase == 2){
+			//base newsgroup_2cat
+			pathCategorias = "ArquivosEntrada/bases/newsgroup_2cat/dataset/";
+		} else if (idBase == 3){
+			//base newsgroup_3cat
+			pathCategorias = "ArquivosEntrada/bases/newsgroup_3cat/dataset/";
+		} else if (idBase == 4){
+			//novas bases
+			pathCategorias = "";
+		}
+		
+		return pathCategorias;
+	}
+
+
+	private void getPorperties(boolean balanceado, int baseId, int clusterId, int clusterCategoriaId, int tipoOrdenacao, 
+			int tipoMapeamentoTermo, int numHeuristica) {
 		
 		this.experimentoFolder = "experimentos/";
 		this.nomeExperimento = "";
 		
+		//qual base esta sendo usada
 		if (baseId == 0 ){
-			this.allTextBaseTxtFileName = "ArquivosEntrada/allTextBaseTxtFile/ReutersTrainTop100SS.txt";
-			this.categoriasCorretasFileName = "ArquivosEntrada/ordemCategoriasTrainTop100SS.txt";
+			this.pathBase = "ArquivosEntrada/bases/reuters25/";
+			this.nomeExperimento = this.nomeExperimento+ "R25";
 			
 		} else if (baseId == 1 ){
-			this.allTextBaseTxtFileName = "";
-			this.categoriasCorretasFileName ="";
-		}
+			this.pathBase = "ArquivosEntrada/bases/reutersSS_2cat/";
+			this.nomeExperimento = this.nomeExperimento+ "R2";
 		
+		}else if (baseId == 2 ){
+			this.pathBase = "ArquivosEntrada/bases/newsgroup_2cat/";
+			this.nomeExperimento = this.nomeExperimento+ "NG2";
+		
+		} else if (baseId == 3 ){
+			this.pathBase = "ArquivosEntrada/bases/newsgroup_3cat/";
+			this.nomeExperimento = this.nomeExperimento+ "NG3";
+		} 
+		
+		
+		this.allTextBaseTxtFileName = pathBase + baseId+ "_allTextBaseTxtFile.txt";
+		this.categoriasCorretasFileName = pathBase + baseId+ "_categoriasCorretas.txt";
+		this.categoriasFileName = pathBase + baseId + "_categorias.txt";
+		this.clusterCategoriaFileName = pathBase + baseId+ "_clusterCategoria.txt";
+		
+		
+		
+		//tipo de clusterizacao a ser usada
 		if (clusterId == 0 ){
 			//0 - Cluster usando as categorias como Gabarito
 			this.nomeExperimento = this.nomeExperimento+ "CG";
-			this.clusterOrderFileName = "ArquivosEntrada/clusterDominio.csv";
+			this.clusterOrderFileName = pathBase + baseId+ "_clusterGabaritoOrdem.txt";
 		} else if (clusterId == 1 ){
 			//1- Cluster usando o k-means
 			this.nomeExperimento = this.nomeExperimento+ "CK";
-			this.clusterOrderFileName = "ArquivosEntrada/cluster_ReutersTrainTop100SS.csv";
+			this.clusterOrderFileName = pathBase + baseId+ "_clusterKMeans.txt";
 		}
-		
-		if (clusterCategoriaId == 0 ){
-			this.clusterCategoriaFileName = "ArquivosEntrada/clusterCategoria.txt";
-		} else if (clusterCategoriaId == 1 ){
-			this.clusterCategoriaFileName = "";
-		}
-		
 		
 		if (tipoOrdenacao == 0 ){
 			//0 - termosByFrequenciaEntropiaZero
@@ -286,13 +319,6 @@ public class NLP {
 		this.tipoMapeamentoTermo = tipoMapeamentoTermo;
 		
 		
-		
-		if (clusterCategoriaId == 0 ){
-			this.clusterCategoriaFileName = "ArquivosEntrada/clusterCategoria.txt";
-		} else if (clusterCategoriaId == 1 ){
-			this.clusterCategoriaFileName = "";
-		}
-		
 		this.numHeuristica = numHeuristica;
 		//0 - heuristica que conta ponto por frequencia da palavra
 		
@@ -306,16 +332,7 @@ public class NLP {
 		this.experimentoFolder = this.experimentoFolder + this.nomeExperimento+ "/";
 		this.resultados = experimentoFolder+"resultados/resultado_"+this.nomeExperimento+".txt";
 		
-		
 		this.termosCategoria = this.experimentoFolder + "termosCategorias/termosCategorias_"+this.nomeExperimento+".txt";
-		/*saida*/
-		//this.topWordsNum = 2000000000;
-		//this.termosEntropiaTXT = experimentoFolder + "termoEntropia/"+"termosEntropia.txt";
-		//this.categoriasEncontradasTXT = experimentoFolder+ "classificationFiles/categoriasEncontradas.txt";
-		//this.termosOrdenadosTXT = experimentoFolder + "termoEntropia/termosOrdenados.txt";
-		/*Entrada*/
-		//String clusterOrderFile = "ArquivosEntrada/clusterDominio.csv";
-		//this.termosCategoriaFull = "ArquivosEntrada/termoCategoriaFullFR.txt";
 		
 	}
 

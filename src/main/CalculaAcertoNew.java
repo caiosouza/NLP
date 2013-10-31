@@ -8,15 +8,17 @@ public class CalculaAcertoNew {
 
 	private List<String> categoriasCorretas;
 	private List<String> categoriasEncontradas;
-	private String[] categorias;
-	private DecimalFormat df = new DecimalFormat("#,###.00");  
+	private List<String> categorias;
+	private DecimalFormat df = new DecimalFormat("#,##0.0000");  
+	private Integer topN;
 	
 	
 
-	public CalculaAcertoNew(List<String> categoriasCorretas, List<String> categoriasEncontradas, String[] categorias) {
+	public CalculaAcertoNew(List<String> categoriasCorretas, List<String> categoriasEncontradas, List<String> categorias, Integer topN) {
 		this.categoriasCorretas = categoriasCorretas;
 		this.categoriasEncontradas = categoriasEncontradas;
 		this.categorias = categorias;
+		this.topN = topN;
 	}
 	
 	public List<String> exec() {
@@ -56,10 +58,10 @@ public class CalculaAcertoNew {
 	
 		List<String> outPut = new ArrayList<String>();
 		
-		int[] somaLinha = new int[categorias.length];
-		int[] somaColuna = new int[categorias.length];
+		int[] somaLinha = new int[categorias.size()];
+		int[] somaColuna = new int[categorias.size()];
 		String linha = "";
-		int numCategorias = categorias.length;
+		int numCategorias = categorias.size();
 		
 		int acertos = 0;
 		int total = 0;
@@ -76,7 +78,7 @@ public class CalculaAcertoNew {
 			 
 		}
 		
-		for (int i = 0; i < categorias.length; i++) {
+		for (int i = 0; i < categorias.size(); i++) {
 			acertos = acertos + matrizConfusao[i][i];
 			total = total + somaColuna[i];
 		}
@@ -89,21 +91,21 @@ public class CalculaAcertoNew {
 		//outPut.add(" ");
 		//outPut.add("Acuracia em todos os documentos: "+ 1.0*acertos/size);
 		
-		outPut.add("numero arquivos;N‹o Encontrados;% N‹o Encontrados;Acertos em documentos definidos;Total Definido;" +
+		outPut.add("N;numero arquivos;N‹o Encontrados;% N‹o Encontrados;Acertos em documentos definidos;Total Definido;" +
 				"Acur‡cia em Definidos;Acur‡cia Global");
-		outPut.add(size +";"+ naoEncontrado +";"+ df.format(1.0 *naoEncontrado/size) +";"+ acertos +";"+ (size-naoEncontrado)
+		outPut.add(topN +";"+ size +";"+ naoEncontrado +";"+ df.format(1.0 *naoEncontrado/size) +";"+ acertos +";"+ (size-naoEncontrado)
 				+";"+ df.format(1.0*acertos/(size-naoEncontrado)) +";"+ df.format(1.0*acertos/size));
 		outPut.add("");
 		outPut.add("matriz de confusao");
 		
 		
 		for (int i = 0; i < numCategorias; i++) {
-			linha = linha + " " + categorias[i];  
+			linha = linha + " " + categorias.get(i);  
 		}
 		outPut.add(linha);
 		for (int i = 0; i < numCategorias; i++) {
 			//linha = matrizConfusao[i];
-			linha = categorias[i];
+			linha = categorias.get(i);
 			for (int j = 0; j < numCategorias; j++) {
 				linha = linha + " " + matrizConfusao[i][j];
 			}
@@ -114,14 +116,14 @@ public class CalculaAcertoNew {
 		
 		outPut.add(" ");
 		outPut.add("precision");
-		for (int i = 0; i < categorias.length; i++) {
-			outPut.add(categorias[i]+ ": "+ df.format(1.0*matrizConfusao[i][i]/somaLinha[i] ));
+		for (int i = 0; i < categorias.size(); i++) {
+			outPut.add(categorias.get(i)+ ": "+ df.format(1.0*matrizConfusao[i][i]/somaLinha[i] ));
 		}
 		
 		outPut.add(" ");
 		outPut.add("recall");
-		for (int i = 0; i < categorias.length; i++) {
-			outPut.add(categorias[i]+ ": "+ df.format(1.0*matrizConfusao[i][i]/somaColuna[i] ));
+		for (int i = 0; i < categorias.size(); i++) {
+			outPut.add(categorias.get(i)+ ": "+ df.format(1.0*matrizConfusao[i][i]/somaColuna[i] ));
 		}
 		
 		return outPut;
@@ -131,8 +133,8 @@ public class CalculaAcertoNew {
 	private int getIdCategoria(String categoria) {
 		
 		int id = -1;
-		for (int i = 0; i < 25; i++) {
-			if(categorias[i].compareTo(categoria) == 0) id = i;
+		for (int i = 0; i < categorias.size(); i++) {
+			if(categorias.get(i).compareTo(categoria) == 0) id = i;
 		}
 		return id;
 	}

@@ -11,10 +11,10 @@ import entities.Termo;
 
 public class OrdenaTermos {
 
-	Map<String, Map<String, Integer>> mapTermosCategoriasFrequencias;
+	Map<String, Map<String, Integer>> mapTermosClustersFrequencias;
 	
-	public OrdenaTermos(Map<String, Map<String, Integer>> mapTermosCategoriasFrequencias) {
-		this.mapTermosCategoriasFrequencias = mapTermosCategoriasFrequencias;
+	public OrdenaTermos(Map<String, Map<String, Integer>> mapTermosClustersFrequencias) {
+		this.mapTermosClustersFrequencias = mapTermosClustersFrequencias;
 	}
 	
 	public List<Termo> getTermosOrdenados(int tipoOrdenacao){
@@ -36,10 +36,10 @@ public class OrdenaTermos {
 		
 		List<Termo> termosOrdenados = new ArrayList<Termo>();
 		Termo termoAtual;
-		for(Entry<String, Map<String, Integer>> mapTermoCategoriaFrequencia: mapTermosCategoriasFrequencias.entrySet()){
+		for(Entry<String, Map<String, Integer>> mapTermoClusterFrequencia: mapTermosClustersFrequencias.entrySet()){
 			
-			termoAtual = new Termo(mapTermoCategoriaFrequencia.getKey());
-			termoAtual.setCategoriasFrequencia(mapTermoCategoriaFrequencia.getValue());
+			termoAtual = new Termo(mapTermoClusterFrequencia.getKey());
+			termoAtual.setClustersFrequencia(mapTermoClusterFrequencia.getValue());
 			termoAtual.init();
 			termosOrdenados.add(termoAtual);
 		}
@@ -57,10 +57,10 @@ public class OrdenaTermos {
 	
 		List<Termo> termosOrdenados = new ArrayList<Termo>();
 		Termo termoAtual;
-		for(Entry<String, Map<String, Integer>> mapTermoCategoriaFrequencia: mapTermosCategoriasFrequencias.entrySet()){
+		for(Entry<String, Map<String, Integer>> mapTermoClusterFrequencia: mapTermosClustersFrequencias.entrySet()){
 			
-			termoAtual = new Termo(mapTermoCategoriaFrequencia.getKey());
-			termoAtual.setCategoriasFrequencia(mapTermoCategoriaFrequencia.getValue());
+			termoAtual = new Termo(mapTermoClusterFrequencia.getKey());
+			termoAtual.setClustersFrequencia(mapTermoClusterFrequencia.getValue());
 			termoAtual.init();
 			if(termoAtual.getEntropiaF().equals(0.0)){
 				termosOrdenados.add(termoAtual);

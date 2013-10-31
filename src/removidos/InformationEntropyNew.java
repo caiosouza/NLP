@@ -34,7 +34,7 @@ public class InformationEntropyNew {
 		
 		//pega o cluster e uma lista de documentos
 		CarregaDados load = new CarregaDados(clusterOrderFile, allTextBaseTxtFile, clusterCategoriaFileName, allTextBaseTxtFile);
-		Map<String, List<String>> clustersDocumentos = load.carregaClusters();
+		Map<String, List<String>> clustersDocumentos = load.carregaClustersDocumentos();
 		
 		
 		Map<String, Termo> termos = montaTermos(clustersDocumentos);

@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 public class Termo {
 	
-	private Map<String, Integer> categoriasFrequencia;
+	private Map<String, Integer> clustersFrequencia;
 	private Map<String, Integer> categoriasPresenca;
 	private Double entropiaF;
 	private Double entropiaP;
@@ -20,8 +20,8 @@ public class Termo {
 	
 	public Termo(String termo){
 	
-		setCategoriasFrequencia(new HashMap<String, Integer>());
-		setCategoriasPresenca(new HashMap<String, Integer>());
+		setClustersFrequencia(new HashMap<String, Integer>());
+		setClustersPresenca(new HashMap<String, Integer>());
 		setTermo(termo);
 		setTotalFrequencia(0);
 		setTotalPresenca(0);
@@ -35,12 +35,12 @@ public class Termo {
 		this.termo = termo;
 	}
 
-	public Termo(Map<String, Integer> categoriasFrequencia, Map<String, Integer> categoriasPresenca, 
+	public Termo(Map<String, Integer> clustersFrequencia, Map<String, Integer> clustersPresenca, 
 			String categoriaPrincipal, int totalFrequencia, int totalPresenca, Double formulaScoreF, Double formulaScoreP) {
-		setCategoriasFrequencia(categoriasFrequencia);
-		setCategoriasPresenca(categoriasPresenca);
-		setEntropiaF(categoriasFrequencia, totalFrequencia);
-		setEntropiaP(categoriasPresenca, totalPresenca);
+		setClustersFrequencia(clustersFrequencia);
+		setClustersPresenca(clustersPresenca);
+		setEntropiaF(clustersFrequencia, totalFrequencia);
+		setEntropiaP(clustersPresenca, totalPresenca);
 		setcategoriaPrincipal(categoriaPrincipal);
 		setTotalFrequencia(totalFrequencia);
 		setTotalPresenca(totalPresenca);
@@ -59,17 +59,17 @@ public class Termo {
 		// TODO Auto-generated method stub
 		
 	}
-	public Map<String, Integer> getCategoriasFrequencia() {
-		return categoriasFrequencia;
+	public Map<String, Integer> getClustersFrequencia() {
+		return clustersFrequencia;
 	}
-	public void setCategoriasFrequencia(Map<String, Integer> categoriasFrequencia) {
-		this.categoriasFrequencia = categoriasFrequencia;
+	public void setClustersFrequencia(Map<String, Integer> clustersFrequencia) {
+		this.clustersFrequencia = clustersFrequencia;
 	}
-	public Map<String, Integer> getCategoriasPresenca() {
+	public Map<String, Integer> getClustersPresenca() {
 		return categoriasPresenca;
 	}
-	public void setCategoriasPresenca(Map<String, Integer> categoriasPresenca) {
-		this.categoriasPresenca = categoriasPresenca;
+	public void setClustersPresenca(Map<String, Integer> clustersPresenca) {
+		this.categoriasPresenca = clustersPresenca;
 	}
 	public Double getEntropiaF() {
 		return entropiaF;
@@ -117,21 +117,21 @@ public class Termo {
 	public void adicionaFrequencia(String clusterAtual, Integer value) {
 		
 		int frequencia = 0;
-		if(categoriasFrequencia.containsKey(clusterAtual)){
-			frequencia = categoriasFrequencia.get(clusterAtual);
+		if(clustersFrequencia.containsKey(clusterAtual)){
+			frequencia = clustersFrequencia.get(clusterAtual);
 		}
 		frequencia = frequencia + value;
 		totalFrequencia = totalFrequencia + value; 
 
-		categoriasFrequencia.put(clusterAtual, frequencia);
+		clustersFrequencia.put(clusterAtual, frequencia);
 		
 	}
 
 	public void calculaEntropiaF() {
 		
 		Double entropia = 0.0;
-		for (Entry<String, Integer> categoriaFrequencia : categoriasFrequencia.entrySet()) {
-			Double pxi = 1.0 * categoriaFrequencia.getValue()/totalFrequencia;
+		for (Entry<String, Integer> clusterFrequencia : clustersFrequencia.entrySet()) {
+			Double pxi = 1.0 * clusterFrequencia.getValue()/totalFrequencia;
 			entropia = entropia + pxi * Math.log(pxi);
 		}
 		
@@ -145,7 +145,7 @@ public class Termo {
 		
 		Double frequenciaRelativa = 0.0;
 		int maiorFrequencia = 0;
-		for (Entry<String, Integer> categoriaFrequencia : categoriasFrequencia.entrySet()) {
+		for (Entry<String, Integer> categoriaFrequencia : clustersFrequencia.entrySet()) {
 			
 			if (categoriaFrequencia.getValue() > maiorFrequencia){
 				maiorFrequencia = categoriaFrequencia.getValue();
@@ -159,15 +159,15 @@ public class Termo {
 		
 		//atualiza a frequencia total
 		int totalFrequencia = 0;
-		for (Entry<String, Integer> categoriaFrequencia : categoriasFrequencia.entrySet()) {
-			totalFrequencia = totalFrequencia + categoriaFrequencia.getValue();
+		for (Entry<String, Integer> clusterFrequencia : clustersFrequencia.entrySet()) {
+			totalFrequencia = totalFrequencia + clusterFrequencia.getValue();
 		}
 		setTotalFrequencia(totalFrequencia);
 		
 		//atualiza a entropia
 		Double entropiaF = 0.0;
-		for (Entry<String, Integer> categoriaFrequencia : categoriasFrequencia.entrySet()) {
-			Double pxi = 1.0 * categoriaFrequencia.getValue()/totalFrequencia;
+		for (Entry<String, Integer> clusterFrequencia : clustersFrequencia.entrySet()) {
+			Double pxi = 1.0 * clusterFrequencia.getValue()/totalFrequencia;
 			entropiaF = entropiaF + pxi * Math.log(pxi);
 		}
 		if (entropiaF != 0 )

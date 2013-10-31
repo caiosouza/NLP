@@ -11,10 +11,10 @@ public class MontaListaTermos {
 
 	private List<Termo> termos;
 	private Map<String, String> mapTermosCategorias;
-	private String[] categorias;
+	private List<String> categorias;
 
 	
-	public MontaListaTermos(List<Termo> termos, Map<String, String> mapTermosCategorias, String[] categorias) {
+	public MontaListaTermos(List<Termo> termos, Map<String, String> mapTermosCategorias, List<String> categorias) {
 		this.termos = termos;
 		this.mapTermosCategorias = mapTermosCategorias;
 		this.categorias = categorias;
@@ -92,8 +92,8 @@ public class MontaListaTermos {
 	private Map<String, Integer> loadCategoriaAchadas(int topN) {
 		
 		Map<String, Integer> categoriaAchadas = new HashMap<String, Integer>();
-		for (int i = 0; i < categorias.length; i++) {
-			categoriaAchadas.put(categorias[i], topN);
+		for (String categoria : categorias) {
+			categoriaAchadas.put(categoria, topN);
 		}
 		return categoriaAchadas;
 		

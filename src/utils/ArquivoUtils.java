@@ -238,5 +238,14 @@ public class ArquivoUtils {
 		File arquivo = new File(nomeArquivo);
 		return arquivo.getName();
 	}
+
+	public static String contatenaLinhas(List<String> linhas) {
+		
+		String linhaFinal = "";
+		for (String linha : linhas) {
+			linhaFinal = linhaFinal +" "+ linha;
+		}
+		return linhaFinal;
+	}
 	
 }

@@ -21,18 +21,49 @@ public class CarregaDados {
     private String clusterCategoriaFileName;
     private String categoriasCorretasFileName;
     private List<String> documentos;
+    private List<String> categorias;
+    
 	
-	public CarregaDados(String clusterOrderFileName, String allTextBaseTxtFileName, String clusterCategoriaFileName, String categoriasCorretasFileName) {
+	public CarregaDados(String clusterOrderFileName, String allTextBaseTxtFileName, String clusterCategoriaFileName, 
+			String categoriasCorretasFileName, String categoriasFileName) {
 		this.clusterOrderFileName = clusterOrderFileName;
 		this.allTextBaseTxtFileName = allTextBaseTxtFileName;
 		this.clusterCategoriaFileName = clusterCategoriaFileName;
 		this.categoriasCorretasFileName = categoriasCorretasFileName;
 		this.documentos = new ArrayList<String>();
+		this.setCategorias(ArquivoUtils.abreArquivo(categoriasFileName));
 	}
 
+	public Map<String, List<String>> carregaCategoriasDocumentos() {
+		
+		Map<String, List<String>> categorias = new HashMap<String, List<String>>();
+		
+		//pega a lista de clusters
+		List<String> ordemCategorias = carregaCategoriasCorretas();
+		List<String> documentos = ArquivoUtils.abreArquivo(allTextBaseTxtFileName);
+		
+		documentos = loadDocumentos(documentos);
+		setDocumentos(documentos);
+		List<String> docsAtuais = new ArrayList<String>();
+		String categoriaAtual = "";
+		
+		for (int i = 0; i < ordemCategorias.size(); i++) {
+			categoriaAtual = ordemCategorias.get(i);
+			if (categorias.containsKey(categoriaAtual)){
+				docsAtuais = categorias.get(categoriaAtual);
+			} else {
+				docsAtuais = new ArrayList<String>();
+			}
+			
+			docsAtuais.add(documentos.get(i).toLowerCase().replaceAll("[.,:;<>{}|_1234567890!@#$%&*()/?+=-]", " "));
+			categorias.put(ordemCategorias.get(i), docsAtuais);
+		}
+		
+		return categorias;
+	}
+	
 
-
-	public Map<String, List<String>> carregaClusters() {
+	public Map<String, List<String>> carregaClustersDocumentos() {
 		
 		Map<String, List<String>> clusters = new HashMap<String, List<String>>();
 		
@@ -94,6 +125,15 @@ public class CarregaDados {
 	public void setDocumentos(List<String> documentos) {
 		this.documentos = documentos;
 	}
+	
+	public List<String> getCategorias() {
+		return this.categorias;
+	}
+	
+	public void setCategorias(List<String> categorias) {
+		this.categorias = categorias;
+	}
+	
 
 	public List<String> carregaCategoriasCorretas() {
 		
