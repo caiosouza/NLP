@@ -1,0 +1,10 @@
+warn;acq
+confer;earn
+face;earn
+satisfactori;earn
+becom;acq
+specul;acq
+respon;acq
+opinion;earn
+blah;acq
+demand;earn

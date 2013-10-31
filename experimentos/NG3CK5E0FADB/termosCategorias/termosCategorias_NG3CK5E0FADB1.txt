@@ -1,0 +1,3 @@
+jaeger;alt.atheism
+pitcher;rec.sport.baseball
+quicktim;comp.graphics

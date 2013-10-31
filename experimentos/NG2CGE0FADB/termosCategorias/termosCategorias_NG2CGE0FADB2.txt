@@ -1,0 +1,4 @@
+firearm;talk.politics.guns
+atho;soc.religion.christian
+batf;talk.politics.guns
+scriptur;soc.religion.christian

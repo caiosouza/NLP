@@ -1,0 +1,15 @@
+muslim;alt.atheism
+brave;rec.sport.baseball
+hitter;rec.sport.baseball
+tracer;comp.graphics
+morri;rec.sport.baseball
+jesu;alt.atheism
+livesei;alt.atheism
+jpg;comp.graphics
+bibl;alt.atheism
+islam;alt.atheism
+quantiz;comp.graphics
+jfif;comp.graphics
+cview;comp.graphics
+predict;rec.sport.baseball
+pitch;rec.sport.baseball

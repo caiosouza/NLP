@@ -1,0 +1,15 @@
+brave;rec.sport.baseball
+jaeger;alt.atheism
+hitter;rec.sport.baseball
+pitcher;rec.sport.baseball
+gant;rec.sport.baseball
+daric;alt.atheism
+lillei;comp.graphics
+yoyo;alt.atheism
+rbi;rec.sport.baseball
+raster;comp.graphics
+quantiz;comp.graphics
+jfif;comp.graphics
+buphi;alt.atheism
+motto;alt.atheism
+quicktim;comp.graphics

@@ -1,0 +1,15 @@
+muslim;alt.atheism
+brave;rec.sport.baseball
+comp;comp.graphics
+moral;alt.atheism
+hitter;rec.sport.baseball
+sox;rec.sport.baseball
+pixel;comp.graphics
+pitcher;rec.sport.baseball
+polygon;comp.graphics
+livesei;alt.atheism
+yanke;rec.sport.baseball
+amiga;comp.graphics
+islam;alt.atheism
+atheism;alt.atheism
+tiff;comp.graphics

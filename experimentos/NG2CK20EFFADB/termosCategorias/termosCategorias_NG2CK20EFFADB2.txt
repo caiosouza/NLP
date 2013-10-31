@@ -1,0 +1,4 @@
+glock;talk.politics.guns
+homosexu;soc.religion.christian
+arsenokoitai;soc.religion.christian
+kratz;talk.politics.guns

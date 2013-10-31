@@ -1,0 +1,18 @@
+N;numero arquivos;Não Encontrados;% Não Encontrados;Acertos em documentos definidos;Total Definido;Acurácia em Definidos;Acurácia Global
+25;2766;330;0,1193;2377;2436;0,9758;0,8594
+
+matriz de confusao
+ alt.atheism comp.graphics rec.sport.baseball
+alt.atheism 719 11 10
+comp.graphics 4 776 12
+rec.sport.baseball 10 12 882
+ 
+precision
+alt.atheism: 0,9716
+comp.graphics: 0,9798
+rec.sport.baseball: 0,9757
+ 
+recall
+alt.atheism: 0,9809
+comp.graphics: 0,9712
+rec.sport.baseball: 0,9757

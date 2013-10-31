@@ -1,0 +1,12 @@
+moral;alt.atheism
+god;alt.atheism
+islam;alt.atheism
+jpeg;comp.graphics
+hit;rec.sport.baseball
+format;comp.graphics
+team;rec.sport.baseball
+game;rec.sport.baseball
+atheist;alt.atheism
+imag;comp.graphics
+pitch;rec.sport.baseball
+gif;comp.graphics

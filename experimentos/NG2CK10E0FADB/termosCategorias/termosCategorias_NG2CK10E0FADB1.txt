@@ -1,0 +1,2 @@
+homicid;talk.politics.guns
+atheism;soc.religion.christian

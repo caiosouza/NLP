@@ -1,0 +1,8 @@
+texaco;earn
+mthly;earn
+audi;earn
+reed;acq
+hutchison;earn
+transcanada;acq
+guin;acq
+blah;acq

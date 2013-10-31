@@ -1,0 +1,12 @@
+islam;alt.atheism
+hirschbeck;rec.sport.baseball
+jaeger;alt.atheism
+jpeg;comp.graphics
+jfif;comp.graphics
+clutch;rec.sport.baseball
+lopez;rec.sport.baseball
+mango;alt.atheism
+phig;comp.graphics
+rushdi;alt.atheism
+viola;rec.sport.baseball
+lillei;comp.graphics

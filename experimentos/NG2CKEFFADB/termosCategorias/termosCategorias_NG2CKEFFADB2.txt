@@ -1,0 +1,4 @@
+fbi;talk.politics.guns
+christian;soc.religion.christian
+god;soc.religion.christian
+gun;talk.politics.guns

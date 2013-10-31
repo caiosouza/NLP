@@ -1,0 +1,6 @@
+hirschbeck;rec.sport.baseball
+jaeger;alt.atheism
+jpeg;comp.graphics
+lopez;rec.sport.baseball
+phig;comp.graphics
+rushdi;alt.atheism

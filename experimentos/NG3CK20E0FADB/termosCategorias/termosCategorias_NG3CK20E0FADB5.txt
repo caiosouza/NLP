@@ -1,0 +1,15 @@
+lossless;comp.graphics
+pittsburg;rec.sport.baseball
+iraqi;alt.atheism
+hirschbeck;rec.sport.baseball
+mcc;comp.graphics
+lopez;rec.sport.baseball
+lillei;comp.graphics
+viola;rec.sport.baseball
+timmbak;alt.atheism
+motecc;comp.graphics
+imam;alt.atheism
+simmon;rec.sport.baseball
+nff;comp.graphics
+nik;alt.atheism
+mcl;alt.atheism

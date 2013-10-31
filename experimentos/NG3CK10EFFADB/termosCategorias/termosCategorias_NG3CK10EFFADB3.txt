@@ -1,0 +1,9 @@
+livesei;alt.atheism
+hirschbeck;rec.sport.baseball
+jpeg;comp.graphics
+faith;alt.atheism
+theism;alt.atheism
+jfif;comp.graphics
+clutch;rec.sport.baseball
+lopez;rec.sport.baseball
+imag;comp.graphics

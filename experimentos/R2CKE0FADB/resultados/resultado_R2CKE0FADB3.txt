@@ -1,0 +1,15 @@
+N;numero arquivos;Não Encontrados;% Não Encontrados;Acertos em documentos definidos;Total Definido;Acurácia em Definidos;Acurácia Global
+3;6333;4842;0,7646;1199;1491;0,8042;0,1893
+
+matriz de confusao
+ acq earn
+acq 346 14
+earn 278 853
+ 
+precision
+acq: 0,9611
+earn: 0,7542
+ 
+recall
+acq: 0,5545
+earn: 0,9839

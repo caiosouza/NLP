@@ -1,0 +1,9 @@
+livesei;alt.atheism
+brave;rec.sport.baseball
+hitter;rec.sport.baseball
+islam;alt.atheism
+jfif;comp.graphics
+quantiz;comp.graphics
+cview;comp.graphics
+pitch;rec.sport.baseball
+jesu;alt.atheism

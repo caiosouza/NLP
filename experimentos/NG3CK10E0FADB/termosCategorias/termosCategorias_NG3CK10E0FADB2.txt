@@ -1,0 +1,6 @@
+discipl;alt.atheism
+tracer;comp.graphics
+quran;alt.atheism
+kubei;rec.sport.baseball
+jfif;comp.graphics
+lopez;rec.sport.baseball

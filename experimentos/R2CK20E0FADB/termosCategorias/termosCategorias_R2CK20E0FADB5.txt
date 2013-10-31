@@ -1,0 +1,10 @@
+texaco;earn
+mthly;earn
+audi;earn
+reed;acq
+miguel;acq
+hutchison;earn
+transcanada;acq
+guin;acq
+porsch;earn
+blah;acq

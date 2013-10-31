@@ -1,0 +1,4 @@
+tender;acq
+vs;earn
+offer;acq
+ct;earn

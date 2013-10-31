@@ -1,0 +1,4 @@
+confer;earn
+specul;acq
+blah;acq
+demand;earn

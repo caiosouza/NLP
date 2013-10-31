@@ -1,0 +1,6 @@
+graphic;comp.graphics
+moral;alt.atheism
+team;rec.sport.baseball
+basebal;rec.sport.baseball
+atheist;alt.atheism
+imag;comp.graphics

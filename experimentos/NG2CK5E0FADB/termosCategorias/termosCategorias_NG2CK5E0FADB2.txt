@@ -1,0 +1,4 @@
+reno;talk.politics.guns
+robi;talk.politics.guns
+atheist;soc.religion.christian
+resurrect;soc.religion.christian

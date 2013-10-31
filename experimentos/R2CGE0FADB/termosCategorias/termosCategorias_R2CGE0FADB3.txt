@@ -1,0 +1,6 @@
+cyclop;acq
+qtly;earn
+twa;acq
+div;earn
+purol;acq
+mth;earn

@@ -1,0 +1,6 @@
+usair;acq
+analyst;acq
+free;earn
+regular;earn
+blah;acq
+mth;earn

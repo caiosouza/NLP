@@ -1,0 +1,4 @@
+handgun;talk.politics.guns
+homosexu;soc.religion.christian
+atheist;soc.religion.christian
+gun;talk.politics.guns

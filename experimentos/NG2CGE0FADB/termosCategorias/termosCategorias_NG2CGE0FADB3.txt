@@ -1,0 +1,6 @@
+firearm;talk.politics.guns
+handgun;talk.politics.guns
+atho;soc.religion.christian
+batf;talk.politics.guns
+atheist;soc.religion.christian
+scriptur;soc.religion.christian

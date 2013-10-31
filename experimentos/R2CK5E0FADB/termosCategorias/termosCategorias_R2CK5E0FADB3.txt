@@ -1,0 +1,6 @@
+confer;earn
+face;earn
+becom;acq
+specul;acq
+blah;acq
+demand;earn

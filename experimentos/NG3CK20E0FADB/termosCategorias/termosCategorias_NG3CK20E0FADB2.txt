@@ -1,0 +1,6 @@
+iraqi;alt.atheism
+hirschbeck;rec.sport.baseball
+mcc;comp.graphics
+lopez;rec.sport.baseball
+lillei;comp.graphics
+mcl;alt.atheism

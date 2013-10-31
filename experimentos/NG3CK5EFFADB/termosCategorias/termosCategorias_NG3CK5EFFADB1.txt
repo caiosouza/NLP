@@ -1,0 +1,3 @@
+moral;alt.atheism
+jpeg;comp.graphics
+pitch;rec.sport.baseball

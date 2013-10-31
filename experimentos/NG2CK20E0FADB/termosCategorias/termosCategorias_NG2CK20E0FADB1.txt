@@ -1,0 +1,2 @@
+buyback;talk.politics.guns
+arsenokoitai;soc.religion.christian

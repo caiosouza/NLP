@@ -1,0 +1,6 @@
+brave;rec.sport.baseball
+islam;alt.atheism
+jfif;comp.graphics
+quantiz;comp.graphics
+pitch;rec.sport.baseball
+jesu;alt.atheism

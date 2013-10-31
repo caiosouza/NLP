@@ -1,0 +1,10 @@
+firearm;talk.politics.guns
+homicid;talk.politics.guns
+handgun;talk.politics.guns
+atheism;soc.religion.christian
+arrog;soc.religion.christian
+gvg;soc.religion.christian
+militia;talk.politics.guns
+homosexu;soc.religion.christian
+atheist;soc.religion.christian
+gun;talk.politics.guns

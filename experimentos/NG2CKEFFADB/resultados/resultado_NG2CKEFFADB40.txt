@@ -1,0 +1,15 @@
+N;numero arquivos;Não Encontrados;% Não Encontrados;Acertos em documentos definidos;Total Definido;Acurácia em Definidos;Acurácia Global
+40;1907;24;0,0126;1825;1883;0,9692;0,9570
+
+matriz de confusao
+ soc.religion.christian talk.politics.guns
+soc.religion.christian 935 52
+talk.politics.guns 6 890
+ 
+precision
+soc.religion.christian: 0,9473
+talk.politics.guns: 0,9933
+ 
+recall
+soc.religion.christian: 0,9936
+talk.politics.guns: 0,9448

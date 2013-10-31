@@ -1,0 +1,15 @@
+graphic;comp.graphics
+baerga;rec.sport.baseball
+jpeg;comp.graphics
+hirschbeck;rec.sport.baseball
+theism;alt.atheism
+faith;alt.atheism
+lopez;rec.sport.baseball
+phig;comp.graphics
+imag;comp.graphics
+maynard;rec.sport.baseball
+livesei;alt.atheism
+sandvik;alt.atheism
+atheism;alt.atheism
+jfif;comp.graphics
+clutch;rec.sport.baseball

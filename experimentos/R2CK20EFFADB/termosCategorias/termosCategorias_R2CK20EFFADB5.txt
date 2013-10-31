@@ -1,0 +1,10 @@
+usair;acq
+rev;earn
+caesar;acq
+qtly;earn
+twa;acq
+loss;earn
+shr;earn
+dixon;acq
+vs;earn
+blah;acq

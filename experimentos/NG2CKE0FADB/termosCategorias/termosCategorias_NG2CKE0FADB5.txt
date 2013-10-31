@@ -1,0 +1,10 @@
+baptism;soc.religion.christian
+fbi;talk.politics.guns
+firearm;talk.politics.guns
+handgun;talk.politics.guns
+marriag;soc.religion.christian
+geneva;soc.religion.christian
+atf;talk.politics.guns
+batf;talk.politics.guns
+atheist;soc.religion.christian
+resurrect;soc.religion.christian

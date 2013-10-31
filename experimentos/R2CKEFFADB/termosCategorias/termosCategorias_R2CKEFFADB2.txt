@@ -1,0 +1,4 @@
+shr;earn
+offer;acq
+vs;earn
+blah;acq

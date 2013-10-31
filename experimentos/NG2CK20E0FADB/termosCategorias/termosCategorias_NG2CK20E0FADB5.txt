@@ -1,0 +1,10 @@
+nate;talk.politics.guns
+sfasu;talk.politics.guns
+heterosexu;soc.religion.christian
+gvg;soc.religion.christian
+buyback;talk.politics.guns
+darren;soc.religion.christian
+ordnanc;talk.politics.guns
+arsenokoitai;soc.religion.christian
+bestial;soc.religion.christian
+psygat;talk.politics.guns

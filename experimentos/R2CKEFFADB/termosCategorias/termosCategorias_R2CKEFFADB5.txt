@@ -1,0 +1,10 @@
+analyst;acq
+rev;earn
+shr;earn
+compani;acq
+bui;acq
+offer;acq
+vs;earn
+avg;earn
+blah;acq
+mth;earn

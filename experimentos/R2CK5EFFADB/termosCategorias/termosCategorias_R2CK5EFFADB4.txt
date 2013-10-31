@@ -1,0 +1,8 @@
+expect;earn
+analyst;acq
+last;earn
+loss;earn
+agreement;acq
+vs;earn
+offer;acq
+blah;acq

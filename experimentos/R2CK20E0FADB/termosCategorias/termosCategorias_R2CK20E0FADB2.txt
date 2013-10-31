@@ -1,0 +1,4 @@
+texaco;earn
+mthly;earn
+transcanada;acq
+blah;acq

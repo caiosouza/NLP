@@ -1,0 +1,10 @@
+canon;soc.religion.christian
+baptism;soc.religion.christian
+reno;talk.politics.guns
+jesus;soc.religion.christian
+chopin;talk.politics.guns
+glock;talk.politics.guns
+robi;talk.politics.guns
+smuggl;talk.politics.guns
+atheist;soc.religion.christian
+resurrect;soc.religion.christian

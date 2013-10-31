@@ -1,0 +1,15 @@
+pci;comp.graphics
+iraqi;alt.atheism
+lafayett;rec.sport.baseball
+tracer;comp.graphics
+lopez;rec.sport.baseball
+ingl;alt.atheism
+discipl;alt.atheism
+yount;rec.sport.baseball
+radiu;comp.graphics
+quran;alt.atheism
+jfif;comp.graphics
+kubei;rec.sport.baseball
+decompress;comp.graphics
+ksand;alt.atheism
+vb;rec.sport.baseball

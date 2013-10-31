@@ -1,0 +1,9 @@
+god;alt.atheism
+moral;alt.atheism
+jaeger;alt.atheism
+jpeg;comp.graphics
+pitcher;rec.sport.baseball
+format;comp.graphics
+team;rec.sport.baseball
+imag;comp.graphics
+pitch;rec.sport.baseball

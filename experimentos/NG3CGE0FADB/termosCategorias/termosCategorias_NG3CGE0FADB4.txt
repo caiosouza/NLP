@@ -1,0 +1,12 @@
+livesei;alt.atheism
+polygon;comp.graphics
+brave;rec.sport.baseball
+comp;comp.graphics
+moral;alt.atheism
+sox;rec.sport.baseball
+hitter;rec.sport.baseball
+islam;alt.atheism
+atheism;alt.atheism
+pixel;comp.graphics
+pitcher;rec.sport.baseball
+tiff;comp.graphics

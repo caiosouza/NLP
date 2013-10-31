@@ -1,0 +1,6 @@
+feustel;talk.politics.guns
+homicid;talk.politics.guns
+atheism;soc.religion.christian
+heterosexu;soc.religion.christian
+gvg;soc.religion.christian
+glock;talk.politics.guns

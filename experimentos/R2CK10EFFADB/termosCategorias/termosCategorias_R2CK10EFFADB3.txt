@@ -1,0 +1,6 @@
+usair;acq
+qtly;earn
+twa;acq
+loss;earn
+vs;earn
+blah;acq

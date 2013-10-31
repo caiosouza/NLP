@@ -1,0 +1,8 @@
+acquir;acq
+shr;earn
+tender;acq
+merger;acq
+vs;earn
+offer;acq
+net;earn
+ct;earn

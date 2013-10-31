@@ -1,0 +1,10 @@
+feustel;talk.politics.guns
+file;talk.politics.guns
+heterosexu;soc.religion.christian
+gvg;soc.religion.christian
+robi;talk.politics.guns
+glock;talk.politics.guns
+homosexu;soc.religion.christian
+arsenokoitai;soc.religion.christian
+atheist;soc.religion.christian
+kratz;talk.politics.guns

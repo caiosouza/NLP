@@ -1,0 +1,6 @@
+brave;rec.sport.baseball
+moral;alt.atheism
+islam;alt.atheism
+pixel;comp.graphics
+pitcher;rec.sport.baseball
+tiff;comp.graphics

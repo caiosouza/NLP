@@ -1,0 +1,8 @@
+fbi;talk.politics.guns
+firearm;talk.politics.guns
+christian;soc.religion.christian
+god;soc.religion.christian
+church;soc.religion.christian
+sin;soc.religion.christian
+batf;talk.politics.guns
+gun;talk.politics.guns
