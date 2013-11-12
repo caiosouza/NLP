@@ -97,6 +97,45 @@ public class ProcessaClusters {
 		return mapTermosCategoriasFrequencia;
 	}
 	
+	public HashMap<String, Map<String,Integer>> getTermosEstruturaPresencas(Map<String, List<String>> estruturaDocumentos){
+		
+		HashMap<String, Map<String,Integer>> mapTermosEstruturaPresenca = new HashMap<String, Map<String, Integer>>();
+		
+		HashMap<String, Map<String,Integer>> mapEstruturaTermosPresenca = getEstruturaTermosPresencas(estruturaDocumentos);
+		
+		//inverte o hashMap de categoriaTermoFrequencia para termoCategoriaFrequencia
+		Map<String, Integer> mapTermosPresenca;
+		Map<String, Integer> mapEstruturaPresencas = new HashMap<String, Integer>();
+		
+		String termoAtual;
+		String estruturaAtual;
+		int presencaAtual;
+		
+		for ( Entry<String, Map<String,Integer>>  mapEstruturaTermoPresenca : mapEstruturaTermosPresenca.entrySet()){
+			
+			estruturaAtual = mapEstruturaTermoPresenca.getKey();
+			mapTermosPresenca = mapEstruturaTermoPresenca.getValue();
+			for (Map.Entry<String, Integer> mapTermoPresenca : mapTermosPresenca.entrySet()) {
+				
+				termoAtual = mapTermoPresenca.getKey();
+				presencaAtual = mapTermoPresenca.getValue();
+				
+				if(mapTermosEstruturaPresenca.containsKey(termoAtual)){
+					mapEstruturaPresencas = mapTermosEstruturaPresenca.get(termoAtual);
+					mapEstruturaPresencas.put(estruturaAtual, presencaAtual);
+				} else {
+					mapEstruturaPresencas = new HashMap<String, Integer>();
+					mapEstruturaPresencas.put(estruturaAtual, presencaAtual);
+					mapTermosEstruturaPresenca.put(termoAtual, mapEstruturaPresencas);
+				}
+			}
+				
+		}
+		
+		return mapTermosEstruturaPresenca;
+	}
+	
+	
 	
 	public HashMap<String, Map<String,Integer>> getClustersTermosFrequencias(){
 				
@@ -106,7 +145,6 @@ public class ProcessaClusters {
 		String clusterId;
 		for (Entry<String, List<String>> cluster : clustersDocumentos.entrySet()){
 			
-			//cluster = clusterCategoria.get(cluster.getKey());
 			clusterId = cluster.getKey();
 			termosFrequencias = ContaPalavras.contaFrequencia(cluster.getValue(), 0, null);
 			mapClustersTermosFrequencia.put(clusterId, termosFrequencias);
@@ -123,7 +161,6 @@ public class ProcessaClusters {
 		String categoriaId;
 		for (Entry<String, List<String>> categoria : categoriasDocumentos.entrySet()){
 			
-			//cluster = clusterCategoria.get(cluster.getKey());
 			categoriaId = categoria.getKey();
 			termosFrequencias = ContaPalavras.contaFrequencia(categoria.getValue(), 0, null);
 			mapCategoriasTermosFrequencia.put(categoriaId, termosFrequencias);
@@ -131,6 +168,43 @@ public class ProcessaClusters {
 		return mapCategoriasTermosFrequencia;
 		
 	}
+	
+	private Map<String, Map<String, Integer>> getTermosEstruturaFrequencias(Map<String, List<String>> estruturaDocumentos) {
+		
+		HashMap<String, Map<String,Integer>> mapEstruturaTermosFrequencia = new HashMap<String, Map<String, Integer>>();
+		
+		Map<String,Integer> termosPresencas;
+		String estruturaId;
+		for (Entry<String, List<String>> estrutura : estruturaDocumentos.entrySet()){
+			estruturaId = estrutura.getKey();
+			termosPresencas = ContaPalavras.contaFrequencia(estrutura.getValue(), 0, null);
+			mapEstruturaTermosFrequencia.put(estruturaId, termosPresencas);
+		}
+		return mapEstruturaTermosFrequencia;
+	}
+	
+	public Map<String, Map<String, Integer>> getTermosClustersPresencas() {
+		return getTermosEstruturaPresencas(clustersDocumentos);
+	}
+	
+	public Map<String, Map<String, Integer>> getTermosCategoriasPresencas() {
+		return getTermosEstruturaPresencas(categoriasDocumentos);
+	}
+
+	private  HashMap<String, Map<String, Integer>> getEstruturaTermosPresencas(Map<String, List<String>> estruturaDocumentos) {
+		
+		HashMap<String, Map<String,Integer>> mapEstruturaTermosPresenca = new HashMap<String, Map<String, Integer>>();
+		
+		Map<String,Integer> termosPresencas;
+		String estruturaId;
+		for (Entry<String, List<String>> estrutura : estruturaDocumentos.entrySet()){
+			estruturaId = estrutura.getKey();
+			termosPresencas = ContaPalavras.contaPresenca(estrutura.getValue(), 0, null);
+			mapEstruturaTermosPresenca.put(estruturaId, termosPresencas);
+		}
+		return mapEstruturaTermosPresenca;
+	}
+
 	
 	
 	public Map<String, Integer> getClustersNumDocs() {

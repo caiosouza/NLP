@@ -1,16 +1,8 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
-import removidos.CalculaAcerto;
-
-import entities.Termo;
-
-import utils.ArquivoUtils;
 import utils.Utils;
 
 public class NLP {
@@ -28,7 +20,6 @@ public class NLP {
 	private String categoriasFileName;
 	
 	private String categoriasCorretasFileName;
-	private String categoriasEncontradasTXT;
 	private String resultados;
 	private boolean balanceado;
 	private String termosOrdenadosTXT;
@@ -57,6 +48,8 @@ public class NLP {
 	
 	public void teste(){
 		
+		List<String[]> experimentos = new ArrayList<String[]>();
+		
 		//String[] args1 = {"0", "1", "1", experimentoFolder + "reutersCSV/TrainTop100.csv", corpusTxtPath};
 		//exec(args1);
 		//String[] args2 = {"0", "0", "0", "reuters_test.csv"};
@@ -72,7 +65,6 @@ public class NLP {
 		//exec(args4);
 		
 		//String[] args5 ={"5","1","0","0","0","0","0","0"};
-		List<String[]> experimentos = new ArrayList<String[]>();
 		
 		/*
 		experimentos.add(new String[]{"6","1"});
@@ -92,37 +84,113 @@ public class NLP {
 		experimentos.add(new String[]{"5","1","1","0","0","0","0","0"});
 		experimentos.add(new String[]{"5","1","1","1","0","0","0","0"});
 		*/
+		
+		
+		/* CODIGO ANTIGO:
 		// base reuters 2
+		//clusterGabarito
 		experimentos.add(new String[]{"5","0","0","0","1","0","0","0"});
 		experimentos.add(new String[]{"5","0","0","1","1","0","0","0"});
-		//experimentos.add(new String[]{"5","0","1","0","1","0","0","0"});
-		//experimentos.add(new String[]{"5","0","1","1","1","0","0","0"});
-		// base news2
-		experimentos.add(new String[]{"5","0","0","0","2","0","0","0"});
-		experimentos.add(new String[]{"5","0","0","1","2","0","0","0"});
-		//experimentos.add(new String[]{"5","0","1","0","0","0","0","0"});
-		//experimentos.add(new String[]{"5","0","1","1","0","0","0","0"});
-		// base new3
-		experimentos.add(new String[]{"5","0","0","0","3","0","0","0"});
-		experimentos.add(new String[]{"5","0","0","1","3","0","0","0"});
-		//experimentos.add(new String[]{"5","0","1","0","0","0","0","0"});
-		//experimentos.add(new String[]{"5","0","1","1","0","0","0","0"});
 		
+		//kmeans k=2
+		experimentos.add(new String[]{"5","0","1","0","1","0","0","0"});
+		experimentos.add(new String[]{"5","0","1","1","1","0","0","0"});
+		
+		//kmeans k=5
+		experimentos.add(new String[]{"5","0","2","0","1","0","0","0"});
+		experimentos.add(new String[]{"5","0","2","1","1","0","0","0"});
+		
+		//kmeans k=10
+		experimentos.add(new String[]{"5","0","3","0","1","0","0","0"});
+		experimentos.add(new String[]{"5","0","3","1","1","0","0","0"});
+				
+		//kmeans k=20
+		experimentos.add(new String[]{"5","0","4","0","1","0","0","0"});
+		experimentos.add(new String[]{"5","0","4","1","1","0","0","0"});
+		*/
 		
 		/*
-		 * 
-		boolean balanceado = args[1].contentEquals("1");
-		int clusterId = Integer.parseInt(args[2]);
-		int tipoOrdenacao = Integer.parseInt(args[3]);
-		int baseId = Integer.parseInt(args[4]);
-		int clusterCategoriaId = Integer.parseInt(args[5]);
-		int tipoMapeamentoTermo = Integer.parseInt(args[6]);
-		int numHeuristica = Integer.parseInt(args[7]);
-
-		 * 
-		 * */
+		// BASE news2
+		//clusterGabarito
+		experimentos.add(new String[]{"5","0","0","0","2","0","0","0"});
+		experimentos.add(new String[]{"5","0","0","1","2","0","0","0"});
 		
+		//kmeans k=2
+		experimentos.add(new String[]{"5","0","1","0","2","0","0","0"});
+		experimentos.add(new String[]{"5","0","1","1","2","0","0","0"});
+		
+		//kmeans k=5
+		experimentos.add(new String[]{"5","0","2","0","2","0","0","0"});
+		experimentos.add(new String[]{"5","0","2","1","2","0","0","0"});
+		
+		//kmeans k=10
+		experimentos.add(new String[]{"5","0","3","0","2","0","0","0"});
+		experimentos.add(new String[]{"5","0","3","1","2","0","0","0"});
+				
+		//kmeans k=20
+		experimentos.add(new String[]{"5","0","4","0","2","0","0","0"});
+		experimentos.add(new String[]{"5","0","4","1","2","0","0","0"});
+		*/
+		
+		/*
+		// BASE new3
+		//clusterGabarito
+		experimentos.add(new String[]{"5","0","0","0","3","0","0","0"});
+		experimentos.add(new String[]{"5","0","0","1","3","0","0","0"});
+		
+		//kmeans k=3
+		experimentos.add(new String[]{"5","0","1","0","3","0","0","0"});
+		experimentos.add(new String[]{"5","0","1","1","3","0","0","0"});
+		
+		//kmeans k=5
+		experimentos.add(new String[]{"5","0","2","0","3","0","0","0"});
+		experimentos.add(new String[]{"5","0","2","1","3","0","0","0"});
+		
+		//kmeans k=10
+		experimentos.add(new String[]{"5","0","3","0","3","0","0","0"});
+		experimentos.add(new String[]{"5","0","3","1","3","0","0","0"});
+				
+		//kmeans k=20
+		experimentos.add(new String[]{"5","0","4","0","3","0","0","0"});
+		experimentos.add(new String[]{"5","0","4","1","3","0","0","0"});
+		*/
+		
+		
+		//Substituido por:
+		String opCode = "5";
+		String [] balanceamentos = {"0"};//0-balanceado; 1-desbalanceado. na pratica com poucas categorias nao afeta resultado
+		String [] clustersIds = {"0","1","2","3","4"};
+		String [] entropias = {"0","1"}; //tipoOrdenacao: 0-Entropia 0, 1-Todos os termos
+		String [] basesIDs = {"1","2","3"};
+		String [] clusterCategoriaIds = {"0"};
+		String [] tiposMapeamentoTermo = {"1"};//0-Frequencia Absoluta; 1-Frequencia Relativa
+		String [] numsHeuristica = {"0"};
+		
+		for (String balanceamento : balanceamentos) {
+			for (String clusterId : clustersIds) {
+				for (String entropia : entropias) {
+					for (String baseID : basesIDs) {
+						for (String clusterCategoriaId : clusterCategoriaIds) {
+							for (String tipoMapeamentoTermo : tiposMapeamentoTermo) {
+								for (String numHeuristica : numsHeuristica) {
+									experimentos.add(new String[]{opCode, balanceamento, clusterId, entropia, baseID, clusterCategoriaId,
+											tipoMapeamentoTermo, numHeuristica});
+								}
+							}
+						}
+					}			
+				}
+			}
+		} 
+		
+		
+		String parametros="";		
 		for (String[] experimento : experimentos) {
+			parametros = "";
+			for(int i=0; i< experimento.length ; i++){
+				parametros = parametros + " " + experimento[i];
+			}
+			System.out.println("Comecando a rodar o experimento:" + parametros);
 			exec(experimento);
 			System.out.println("Resultados salvos em: "+ this.experimentoFolder);
 		}
@@ -189,24 +257,6 @@ public class NLP {
 			}
 		}
 		
-		if (opCode == 4){
-			
-			int topN = 0;
-			
-			for (int i = 0; i < topNs.length; i++) {
-				
-				topN = topNs[i];
-				
-				
-				String arquivoResultados = this.resultados.replace(".txt", topN+".txt");
-				String arquivoCategoriasEncontradasTXT = this.categoriasEncontradasTXT.replace(".txt", topN+".txt");
-				
-				CalculaAcerto calc = new CalculaAcerto(arquivoCategoriasEncontradasTXT, categoriasCorretasFileName, arquivoResultados, categorias);
-				calc.exec();
-				
-			}	
-		}
-		
 		if(opCode == 5){
 			
 			boolean balanceado = args[1].contentEquals("1");
@@ -220,7 +270,7 @@ public class NLP {
 			getPorperties(balanceado, baseId, clusterId, clusterCategoriaId, tipoOrdenacao, tipoMapeamentoTermo, numHeuristica);
 			
 			Exec.rodaExperimento(this.clusterOrderFileName, this.allTextBaseTxtFileName, this.clusterCategoriaFileName, this.categoriasCorretasFileName, 
-					tipoOrdenacao, tipoMapeamentoTermo, balanceado, this.topNs, this.termosCategoria, numHeuristica, this.resultados,
+					this.tipoOrdenacao, this.tipoMapeamentoTermo, balanceado, this.topNs, this.termosCategoria, this.numHeuristica, this.resultados,
 					this.categoriasFileName, this.experimentoFolder);
 			
 		}
@@ -248,8 +298,11 @@ public class NLP {
 			//base newsgroup_3cat
 			pathCategorias = "ArquivosEntrada/bases/newsgroup_3cat/dataset/";
 		} else if (idBase == 4){
-			//novas bases
-			pathCategorias = "";
+			//base newsgroup_3cat
+			pathCategorias = "ArquivosEntrada/bases/newsgroup_4cat/dataset/";
+		} else if (idBase == 5){
+			//base newsgroup_3cat
+			pathCategorias = "ArquivosEntrada/bases/newsgroup_5cat/dataset/";
 		}
 		
 		return pathCategorias;
@@ -269,17 +322,24 @@ public class NLP {
 			
 		} else if (baseId == 1 ){
 			this.pathBase = "ArquivosEntrada/bases/reutersSS_2cat/";
-			this.nomeExperimento = this.nomeExperimento+ "R2";
+			this.nomeExperimento = this.nomeExperimento+ "R2/";
 		
 		}else if (baseId == 2 ){
 			this.pathBase = "ArquivosEntrada/bases/newsgroup_2cat/";
-			this.nomeExperimento = this.nomeExperimento+ "NG2";
+			this.nomeExperimento = this.nomeExperimento+ "NG2/";
 		
 		} else if (baseId == 3 ){
 			this.pathBase = "ArquivosEntrada/bases/newsgroup_3cat/";
-			this.nomeExperimento = this.nomeExperimento+ "NG3";
-		} 
+			this.nomeExperimento = this.nomeExperimento+ "NG3/";
 		
+		} else if (baseId == 4 ){
+			this.pathBase = "ArquivosEntrada/bases/newsgroup_4cat/";
+			this.nomeExperimento = this.nomeExperimento+ "NG4/";
+		
+ 		} else if (baseId == 5 ){
+			this.pathBase = "ArquivosEntrada/bases/newsgroup_5cat/";
+			this.nomeExperimento = this.nomeExperimento+ "NG5/";
+		} 		
 		
 		this.allTextBaseTxtFileName = pathBase + baseId+ "_allTextBaseTxtFile.txt";
 		this.categoriasCorretasFileName = pathBase + baseId+ "_categoriasCorretas.txt";
@@ -294,11 +354,23 @@ public class NLP {
 			this.nomeExperimento = this.nomeExperimento+ "CG";
 			this.clusterOrderFileName = pathBase + baseId+ "_clusterGabaritoOrdem.txt";
 		} else if (clusterId == 1 ){
-			//1- Cluster usando o k-means
+			//1- Cluster usando o k-means k=numcat
 			this.nomeExperimento = this.nomeExperimento+ "CK";
 			this.clusterOrderFileName = pathBase + baseId+ "_clusterKMeans.txt";
+		} else if (clusterId == 2 ){
+			//2- Cluster usando o k-means k=5
+			this.nomeExperimento = this.nomeExperimento+ "CK5";
+			this.clusterOrderFileName = pathBase + baseId+ "_clusterKMeans5.txt";
+		} else if (clusterId == 3 ){
+			//1- Cluster usando o k-means
+			this.nomeExperimento = this.nomeExperimento+ "CK10";
+			this.clusterOrderFileName = pathBase + baseId+ "_clusterKMeans10.txt";
+		} else if (clusterId == 4 ){
+			//1- Cluster usando o k-means
+			this.nomeExperimento = this.nomeExperimento+ "CK20";
+			this.clusterOrderFileName = pathBase + baseId+ "_clusterKMeans20.txt";
 		}
-		
+
 		if (tipoOrdenacao == 0 ){
 			//0 - termosByFrequenciaEntropiaZero
 			this.nomeExperimento = this.nomeExperimento+ "E0";

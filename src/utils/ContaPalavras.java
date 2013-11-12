@@ -141,7 +141,60 @@ public class ContaPalavras {
 
         return filtraFrequencia(mapPalavras,minFrequencia);
     }
-    
+
+	public static Map<String, Integer> contaPresenca(List<String> linhas, int minFrequencia, Set<String> filtroTermos) {
+
+		Map<String,Integer> mapPalavrasConsolidado = new HashMap<String,Integer>(); 
+    	
+		
+		for (String curLine : linhas) {
+			
+			Map<String,Integer> mapPalavrasAtual = new HashMap<String,Integer>(); 
+			String minusculo = curLine.toLowerCase();
+            
+            //limpa removendo acentos, cedilhas etc...
+            minusculo = limpacaracteres(minusculo);
+            minusculo = removeNumeros(minusculo);
+        	Pattern p = Pattern.compile("([a-záéíóúçãõôê]+)");
+            //Pattern p = Pattern.compile("(\\d+)|([a-z]+)");
+            Matcher m = p.matcher(minusculo);
+            
+            while(m.find())
+            {
+            	String token = m.group(); //pega um token
+            	Integer freq = null;
+            	if(token.length()>1){
+	            	freq = mapPalavrasAtual.get(token); //verifica se esse token ja esta no mapa   
+	            	
+	            	if(filtroTermos!= null) {
+	            		if (filtroTermos.contains(token)){
+	            			if (freq != null) { // se palavra nao existe, insiro com um novo id e freq=1.
+	            				//mapPalavrasAtual.put(token, freq+1);
+	      	                } else{ //se palavra existe, nao faz nada
+	      	                	mapPalavrasAtual.put(token,1);
+	      	            	}
+	      	                
+	            		}
+	            	} 
+	            	else {
+		            	if (freq != null) { // se palavra nao existe, insiro com um novo id e freq=1.
+		            		//mapPalavrasAtual.put(token, freq+1);
+		                } else { //se palavra existe, nao faz nada
+		            		mapPalavrasAtual.put(token,1);
+		            	}
+	            	}
+            	}
+            }
+            
+            //consolita map de presencas
+            consolidaTermoFrequencia(mapPalavrasAtual, mapPalavrasConsolidado);
+        }
+
+        return filtraFrequencia(mapPalavrasConsolidado,minFrequencia);
+    }
+
+	
+	
     public static String removeNumeros(String passa){
     	
     	passa = passa.replaceAll("[1234567890]", "");
@@ -186,7 +239,14 @@ public class ContaPalavras {
 			Map<String, Integer> termoFrequenciaCategoria) {
 
 		if (termoFrequenciaCategoria.isEmpty()){
-			termoFrequenciaCategoria = termoFrequenciaDocumento;
+			
+			//para toda chave no mapa do documento
+			for (Map.Entry<String, Integer> entry : termoFrequenciaDocumento.entrySet()) {
+				String termo = entry.getKey();
+				int freqDoc = entry.getValue();
+				termoFrequenciaCategoria.put(termo, freqDoc);
+			}
+			//termoFrequenciaCategoria = termoFrequenciaDocumento;
 		}
 		else 
 		{

@@ -2,6 +2,7 @@ package main;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,7 +98,7 @@ public class Exec {
 			Integer[] topNs, String termosCategoria, int numHeuristica, String resultados, String categoriasFileName,
 			String experimentoPath) {
 		
-
+		System.out.println(new Date()+ " carregando a base...");
 		//carrega a base e os clusters gerados para a memoria
 		CarregaDados load = new CarregaDados(clusterOrderFileName, allTextBaseTxtFileName, clusterCategoriaFileName, 
 				categoriasCorretasFileName,categoriasFileName);
@@ -105,37 +106,48 @@ public class Exec {
 		Map<String, List<String>> categoriasDocumentos = load.carregaCategoriasDocumentos();
 		Map<String, String> mapClusterCategoria = load.carregaClusterCategoria();
 		
+		System.out.println(new Date()+ " montanto a estrutura com termpoclusterfrequencia...");
 		//processa o cluster montanto a estrutura com termpoclusterfrequencia
 		ProcessaClusters clustersProcessados = new ProcessaClusters(clustersDocumentos, categoriasDocumentos, mapClusterCategoria);
 		Map<String, Map<String, Integer>> mapTermosClustersFrequencias = clustersProcessados.getTermosClustersFrequencias();
 		Map<String, Map<String, Integer>> mapTermosCategoriasFrequencias = clustersProcessados.getTermosCategoriasFrequencias();
+		Map<String, Map<String, Integer>> mapTermosClustersPresencas = clustersProcessados.getTermosClustersPresencas();
+		Map<String, Map<String, Integer>> mapTermosCategoriasPresencas = clustersProcessados.getTermosCategoriasPresencas();
 		
+		imprimeTermoEstrutura(mapTermosClustersFrequencias, experimentoPath+ "TermoClusterFrequencias.txt");
+		imprimeTermoEstrutura(mapTermosCategoriasFrequencias, experimentoPath+ "TermosCategoriasFrequencias.txt");
+		imprimeTermoEstrutura(mapTermosClustersPresencas, experimentoPath+ "TermosClustersPresencas.txt");
+		imprimeTermoEstrutura(mapTermosCategoriasPresencas, experimentoPath+ "TermosCategoriasPresencas.txt");
+		
+		
+		System.out.println(new Date()+ " processando as categorias...");
 		//Map<String, Integer> mapClusterNumDocs = clustersProcessados.getClustersNumDocs();
-		Map<String, Integer> mapCategoriaNumDocs = clustersProcessados.getClustersNumDocs();
+		Map<String, Integer> mapCategoriaNumDocs = clustersProcessados.getCategoriasNumDocs();
 		
+		System.out.println(new Date()+ " ordenando os termos...");
 		//dado os termos e suas frequencias em cada categoria, ordena os termos a serem usados
 		OrdenaTermos ordenaTermosCluster = new OrdenaTermos(mapTermosClustersFrequencias);
 		//OrdenaTermos ordenaTermosCategoria = new OrdenaTermos(mapTermosCategoriasFrequencias);
-		
 		List<Termo> termosCluster = ordenaTermosCluster.getTermosOrdenados(tipoOrdenacao);
 		//List<Termo> termosCategoriaOrdem = ordenaTermosCategoria.getTermosOrdenados(tipoOrdenacao);
 		
-		
+		System.out.println(new Date()+ " mapeando suas categorias...");
 		//descobre de maneira automatica a categoria de cada um dos termpos
 		GeraTermoCategoria geraTermoCategoria = new GeraTermoCategoria(mapTermosCategoriasFrequencias, mapCategoriaNumDocs);
 		Map<String, String> mapTermosCategorias = geraTermoCategoria.getTermosCategorias(tipoMapeamentoTermo);
 		imprime(mapTermosCategorias,experimentoPath+ "termoCategoria.txt");
 		
+		System.out.println(new Date()+ " carregando as categorias corretas...");
 		MontaListaTermos montaListaTermos = new MontaListaTermos(termosCluster, mapTermosCategorias, load.getCategorias());
 		List<String> documentos = load.getDocumentos();
 		List<String> categoriasCorretas = load.carregaCategoriasCorretas();
-		
 		
 		List<String> resultadosGerais = new ArrayList<String>();
 		resultadosGerais.add("N;numero arquivos;N‹o Encontrados;% N‹o Encontrados;Acertos em documentos definidos;Total Definido;" +
 				"Acur‡cia em Definidos;Acur‡cia Global");
 		for (int topN : topNs) {
-			
+		
+			System.out.println(new Date()+ " montando a lista de topN termos para topN = "+ topN);
 			//monta a lista de termos a ser usada nesse experimento
 			Map<String, String> topNTermosCategorias = montaListaTermos.getTopNTermos(topN, balanceado);
 			
@@ -147,10 +159,12 @@ public class Exec {
 			String arquivoTermosCategorias = termosCategoria.replace(".txt", topN+".txt");
 			ArquivoUtils.salvaArquivo(topNTC, arquivoTermosCategorias);
 			
+			System.out.println(new Date()+ " rodando a heuristica...");
 			//pega a base, a lista de termos e gera uma lista das categorias encontradas
 			RodaHeuristica rodaHeuristica = new RodaHeuristica(documentos, topNTermosCategorias);
 			List<String> categoriasEncontradas = rodaHeuristica.exec(numHeuristica);
 			
+			System.out.println(new Date()+ " calculando taxa de acerto...");
 			//calcula acerto
 			CalculaAcertoNew calculaAcerto = new CalculaAcertoNew(categoriasCorretas, categoriasEncontradas, load.getCategorias(), topN);
 			List<String> resultado = calculaAcerto.exec();
@@ -163,6 +177,23 @@ public class Exec {
 		ArquivoUtils.salvaArquivo(resultadosGerais, resultados);
 	
 		
+	}
+
+	private static void imprimeTermoEstrutura(Map<String, Map<String, Integer>> mapTermosEstruturaOcorrencias, String arqTermoEstrutura) {
+		
+		List<String> termoEstrutura = new ArrayList<String>();
+		
+		for (Entry<String, Map<String, Integer>> mapTermoEstruturaOcorrencia: mapTermosEstruturaOcorrencias.entrySet()){
+			
+			String termo = mapTermoEstruturaOcorrencia.getKey();
+			Map<String, Integer> mapEstruturasOcorrencias = mapTermoEstruturaOcorrencia.getValue();
+			String estruturaOcorrencias = "";
+			for (Entry<String, Integer> mapEstruturaOcorrencias : mapEstruturasOcorrencias.entrySet()) {
+				estruturaOcorrencias = mapEstruturaOcorrencias.getKey() +":"+ mapEstruturaOcorrencias.getValue() +";"+ estruturaOcorrencias;
+			}
+			termoEstrutura.add(termo +":"+ estruturaOcorrencias);
+		}
+		ArquivoUtils.salvaArquivo(termoEstrutura, arqTermoEstrutura);
 	}
 
 	private static void imprime(Map<String, String> mapTermosCategorias, String arqTermoCategoria) {

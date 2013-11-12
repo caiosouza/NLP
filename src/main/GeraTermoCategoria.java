@@ -18,12 +18,12 @@ public class GeraTermoCategoria {
 		
 		Map<String,String> termosCategorias = new HashMap<String, String>();
 		
-		//retorna a categoria referente ao cluster de maior frequencia
+		//retorna a categoria referente a categoria de maior frequencia
 		if(code == 0){
 			
 			termosCategorias = getCategoriaFrequenciaAbsoluta();
 		} 
-		//retorna a categoria referente ao cluster de maior frequencia relativa
+		//retorna a categoria referente a categora de maior frequencia relativa
 		else if (code == 1){
 			termosCategorias = getCategoriaFrequenciaRelativa();
 		}
@@ -44,11 +44,13 @@ public class GeraTermoCategoria {
 		for ( Entry<String,Map<String,Integer>> termoCategoriasFrequencias : mapTermosCategoriasFrequencias.entrySet()) {
 			
 			atualCategoriasFrequencias = termoCategoriasFrequencias.getValue();
+			categoriaPrincipal = "";
+			maiorFrequencia = 0.0;
 			
 			for (Entry<String, Integer> categoriaFrequencia : atualCategoriasFrequencias.entrySet()) {
 			
 				numDocsCategoriaAtual = mapCategoriaNumDocs.get(categoriaFrequencia.getKey());
-				frequenciaRelativa = 1.0* (categoriaFrequencia.getValue()/numDocsCategoriaAtual);
+				frequenciaRelativa = 1.0* ((categoriaFrequencia.getValue()*10000)/numDocsCategoriaAtual);
 				
 				if (frequenciaRelativa > maiorFrequencia){
 					maiorFrequencia = frequenciaRelativa;

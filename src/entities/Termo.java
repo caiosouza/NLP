@@ -141,20 +141,6 @@ public class Termo {
 		
 	}
 
-	public void defineCategoria() {
-		
-		Double frequenciaRelativa = 0.0;
-		int maiorFrequencia = 0;
-		for (Entry<String, Integer> categoriaFrequencia : clustersFrequencia.entrySet()) {
-			
-			if (categoriaFrequencia.getValue() > maiorFrequencia){
-				maiorFrequencia = categoriaFrequencia.getValue();
-				categoriaPrincipal = categoriaFrequencia.getKey();
-			}
-			
-		}
-	}
-
 	public void init() {
 		
 		//atualiza a frequencia total
