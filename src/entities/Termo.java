@@ -47,11 +47,11 @@ public class Termo {
 		setFormulaScoreF(formulaScoreF);
 		setFormulaScoreP(formulaScoreP);
 	}
-	private void setEntropiaP(Map<String, Integer> categoriasPresenca2, int totalPresenca2) {
+	private void setEntropiaP(Map<String, Integer> categoriasPresenca, int totalPresenca) {
 		// TODO Auto-generated method stub
 		
 	}
-	private void setEntropiaF(Map<String, Integer> categoriasFrequencia2, int totalFrequencia2) {
+	private void setEntropiaF(Map<String, Integer> categoriasFrequencia, int totalFrequencia) {
 		// TODO Auto-generated method stub
 		
 	}

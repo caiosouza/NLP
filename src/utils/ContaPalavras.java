@@ -33,7 +33,7 @@ public class ContaPalavras {
 			System.out.println("[ERROR] Erro ao ler arquivo");
 			System.exit(-1);
 		}
-    	Map<String,Integer> mapPalavras = contaFrequencia(linhas, frequenciaMin, null);
+    	Map<String,Integer> mapPalavras = contaFrequenciaNgrama(linhas, frequenciaMin, null,1);
     	imprimeFrequencias(mapPalavras);
     }
     
@@ -91,59 +91,131 @@ public class ContaPalavras {
 		return mapFiltrado;
 	}
 	
-	public static Map<String, Integer> contaFrequencia(String linha, int minFrequencia, Set<String> filtroTermos) {
+//	public static Map<String, Integer> contaFrequencia(List<String> linhas, int minFrequencia, Set<String> filtroTermos, int ngrama) {
+//		
+//		if (ngrama == 1){
+//			return contaFrequencia(linhas, minFrequencia, filtroTermos);
+//		}
+//		else return contaFrequenciaNgrama(linhas, minFrequencia, filtroTermos, ngrama);
+//	}
+	
+	public static Map<String, Integer> contaFrequenciaNgrama(List<String> linhas, int minFrequencia, Set<String> filtroTermos, int ngrama) {
+		//TODO
+		//Substituir o conta frequencia anterior por este depois de verificar se os resultados se mantem
+		//Substituir e rodar novamente e verificar se os resultados se mantem
+		//Rodar usando bigrama
+		
+		Map<String,Integer> mapPalavras = new HashMap<String,Integer>(); 
+		
+		for (String curLine : linhas) {
+    		
+			curLine = curLine.toLowerCase().replaceAll("[.,:;<>{}|_1234567890!@#$%&*()/?+=-]", " ");
+			String [] tokens = Utils.limpaTokens(curLine.split(" "));
+			
+			for (int i = 0; i < (tokens.length - ngrama + 1); i++) {
+				String termoAtual = tokens[i];
+				for (int j = 1; j < ngrama; j++) {
+					termoAtual = termoAtual + " " + tokens[i+j]; 
+				}
+	
+				int freqTermoAtual = 0;
+				if (mapPalavras.containsKey(termoAtual)){
+					freqTermoAtual = mapPalavras.get(termoAtual);
+				}
+				//atualiza a frequencia
+				freqTermoAtual = freqTermoAtual + 1;
+				
+				if((filtroTermos == null) || (filtroTermos.contains(termoAtual))){
+					mapPalavras.put(termoAtual, freqTermoAtual);
+				}
+			}		
+		}
+        
+    	return filtraFrequencia(mapPalavras, minFrequencia);
+	}
+
+	public static Map<String, Integer> contaFrequenciaNgrama(String linha, int minFrequencia, Set<String> filtroTermos, int ngrama) {
 		
 		List<String> linhas = new ArrayList<String>();
 		linhas.add(linha);
-		return contaFrequencia(linhas, minFrequencia, filtroTermos);
-			
+		return contaFrequenciaNgrama(linhas, minFrequencia, filtroTermos, ngrama);
 	}	
+	
+	
+//	public static Map<String, Integer> contaFrequencia(String linha, int minFrequencia, Set<String> filtroTermos) {
+//		
+//		List<String> linhas = new ArrayList<String>();
+//		linhas.add(linha);
+//		return contaFrequencia(linhas, minFrequencia, filtroTermos);
+//	}	
 		
-	public static Map<String, Integer> contaFrequencia(List<String> linhas, int minFrequencia, Set<String> filtroTermos) {
+//	public static Map<String, Integer> contaFrequencia(List<String> linhas, int minFrequencia, Set<String> filtroTermos) {
+//
+//		Map<String,Integer> mapPalavras = new HashMap<String,Integer>(); 
+//    	for (String curLine : linhas) {
+//    		String minusculo = curLine.toLowerCase();
+//            
+//            //limpa removendo acentos, cedilhas etc...
+//            minusculo = limpacaracteres(minusculo);
+//            minusculo = removeNumeros(minusculo);
+//        	Pattern p = Pattern.compile("([a-záéíóúçãõôê]+)");
+//            //Pattern p = Pattern.compile("(\\d+)|([a-z]+)");
+//            Matcher m = p.matcher(minusculo);
+//            
+//            while(m.find())
+//            {
+//            	String token = m.group(); //pega um token
+//            	if(token.length()>1){
+//	            	Integer freq = mapPalavras.get(token); //verifica se esse token ja esta no mapa   
+//	            	//totalTermos = totalTermos +1; 
+//	            	if(filtroTermos!= null) {
+//	            		if (filtroTermos.contains(token)){
+//	            			if (freq != null) { //se palavra existe, atualiza a frequencia
+//	      	            	  mapPalavras.put(token, freq+1);
+//	      	            	}
+//	      	                else { // se palavra nao existe, insiro com um novo id e freq=1.
+//	      	                    mapPalavras.put(token,1);
+//	      	                }
+//	            		}
+//	            	} else {
+//		            	if (freq != null) { //se palavra existe, atualiza a frequencia
+//		            	  mapPalavras.put(token, freq+1);
+//		            	}
+//		                else { // se palavra nao existe, insiro com um novo id e freq=1.
+//		                    mapPalavras.put(token,1);
+//		                }
+//	            	}
+//            	}
+//            }
+//        }
+//
+//        return filtraFrequencia(mapPalavras,minFrequencia);
+//    }
 
-		Map<String,Integer> mapPalavras = new HashMap<String,Integer>(); 
-    	for (String curLine : linhas) {
-    		String minusculo = curLine.toLowerCase();
-            
-            //limpa removendo acentos, cedilhas etc...
-            minusculo = limpacaracteres(minusculo);
-            minusculo = removeNumeros(minusculo);
-        	Pattern p = Pattern.compile("([a-záéíóúçãõôê]+)");
-            //Pattern p = Pattern.compile("(\\d+)|([a-z]+)");
-            Matcher m = p.matcher(minusculo);
-            
-            while(m.find())
-            {
-            	String token = m.group(); //pega um token
-            	if(token.length()>1){
-	            	Integer freq = mapPalavras.get(token); //verifica se esse token ja esta no mapa   
-	            	//totalTermos = totalTermos +1; 
-	            	if(filtroTermos!= null) {
-	            		if (filtroTermos.contains(token)){
-	            			if (freq != null) { //se palavra existe, atualiza a frequencia
-	      	            	  mapPalavras.put(token, freq+1);
-	      	            	}
-	      	                else { // se palavra nao existe, insiro com um novo id e freq=1.
-	      	                    mapPalavras.put(token,1);
-	      	                }
-	            		}
-	            	} else {
-		            	if (freq != null) { //se palavra existe, atualiza a frequencia
-		            	  mapPalavras.put(token, freq+1);
-		            	}
-		                else { // se palavra nao existe, insiro com um novo id e freq=1.
-		                    mapPalavras.put(token,1);
-		                }
-	            	}
-            	}
-            }
-        }
-
-        return filtraFrequencia(mapPalavras,minFrequencia);
-    }
+//	public static Map<String, Integer> contaPresenca(List<String> linhas, int minFrequencia, Set<String> filtroTermos, int ngrama) {
+//		
+//		if (ngrama == 1){
+//			return contaPresenca(linhas, minFrequencia, filtroTermos);
+//		}
+//		else return contaPresencaNgrama(linhas, minFrequencia, filtroTermos, ngrama);
+//	}
+	
+	public static Map<String, Integer> contaPresencaNgrama(List<String> linhas, int minFrequencia, Set<String> filtroTermos, int ngrama) {
+		
+		Map<String,Integer> mapPalavrasConsolidado = new HashMap<String,Integer>(); 
+		if (ngrama == 1){
+			return contaPresenca(linhas, minFrequencia, filtroTermos);
+		}
+		else return mapPalavrasConsolidado;//contaPresencaNgrama(linhas, minFrequencia, filtroTermos, ngrama);
+	
+		
+		//Map<String,Integer> mapPalavrasConsolidado = new HashMap<String,Integer>(); 
+    	// TODO implementar metodo
+		//return mapPalavrasConsolidado;
+	}
 
 	public static Map<String, Integer> contaPresenca(List<String> linhas, int minFrequencia, Set<String> filtroTermos) {
-
+			
 		Map<String,Integer> mapPalavrasConsolidado = new HashMap<String,Integer>(); 
     	
 		

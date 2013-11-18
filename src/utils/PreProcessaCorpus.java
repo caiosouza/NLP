@@ -85,7 +85,7 @@ public class PreProcessaCorpus {
 
 	public static String preProcessaLinha(String linha, Boolean removeStopWords, Boolean reduzStemme, String stopListNameFile) {
 
-		linha = linha.toLowerCase().replaceAll("[.,:;<>{}|_1234567890!@#$%&*()/?+=-']", " ");
+		linha = linha.toLowerCase().replaceAll("[.,:;<>{}|_1234567890!@#$%&*()/?+=-]", " ");
 		String outPutText = linha;
 		
 		if (removeStopWords){

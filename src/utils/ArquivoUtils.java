@@ -247,5 +247,48 @@ public class ArquivoUtils {
 		}
 		return linhaFinal;
 	}
+
+	public static boolean comparaArquivos(File oldResult, File newResult) {
+		
+		List<String> linhasNovo = abreArquivo(newResult);
+		List<String> linhasAntigo = abreArquivo(oldResult);
+		String parteAntigo = "";
+		String parteNovo = "";
+		boolean diferente = false ;
+		if (linhasAntigo.size() == linhasNovo.size()){
+			for (int i = 0; i < linhasAntigo.size(); i++) {
+				if (! (linhasAntigo.get(i).equals(linhasNovo.get(i))) ){
+					String [] tokensAntigo = linhasAntigo.get(i).replaceAll(" ",";").split(";");
+					String [] tokensNovo = linhasNovo.get(i).replaceAll(" ",";").split(";");
+					parteAntigo = "";
+					parteNovo = "";
+					for (int j = 0; j < tokensNovo.length; j++) {
+						if (!(tokensAntigo[j].equals(tokensNovo[j])) && (tokensAntigo[j].length() > 2))
+						{
+							try{
+								Double antigo = Double.valueOf(tokensAntigo[j]);
+								Double novo = Double.valueOf(tokensNovo[j]);
+								
+								if (Math.abs(1 - (antigo/novo)) > 0.1)
+								{
+									parteAntigo = linhasAntigo.get(i);
+									parteNovo = linhasNovo.get(i);
+								}
+							}catch (Exception e) {
+								// TODO: handle exception
+							}
+						}
+					}
+					if(parteAntigo.trim().length() > 0){
+						System.out.println("A "+ parteAntigo);
+						System.out.println("N "+ parteNovo);
+					}
+					diferente = true;
+					i = linhasAntigo.size();
+				}
+			}
+		}
+		return diferente;
+	}
 	
 }

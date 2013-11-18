@@ -170,7 +170,7 @@ public class ClusterEntropyClassifier {
 		
 		doc = doc.toLowerCase().replaceAll("[.,:;<>{}|_1234567890!@#$%&*()/?+=-]", " ");
 		//pega do documento frequencia referente apenas aos termos da heuristica
-		Map<String, Integer> termosFrequenciaDocumento = ContaPalavras.contaFrequencia(doc, 0, termosHeuristica);
+		Map<String, Integer> termosFrequenciaDocumento = ContaPalavras.contaFrequenciaNgrama(doc, 0, termosHeuristica, 1);
 		
 		//cria um mapa para guardar os pontos de cada categoria, e vai atualizando a cada termo do documento
 		int maxPontos = 0;

@@ -27,7 +27,7 @@ public class Exec {
 		return null;
 	}
 
-	public static Map<String, Integer> montaAllTokensFrequencia(String nomePath, int minFrequenciaArquivo, int minFrequenciaGlobal){
+	public static Map<String, Integer> montaAllTokensFrequencia(String nomePath, int minFrequenciaArquivo, int minFrequenciaGlobal, int ngrama){
 		
 		List<File> arquivos = ArquivoUtils.getAllFilesRecursive(nomePath);
 		Map<String, Integer> dicionarioFrequencia = new HashMap<String, Integer>();
@@ -36,7 +36,7 @@ public class Exec {
 		for (File arquivo : arquivos) {
 			
 			List<String> linhas = ArquivoUtils.abreArquivo(arquivo);
-			arquivoFrequencia = ContaPalavras.contaFrequencia(linhas, minFrequenciaArquivo, null);
+			arquivoFrequencia = ContaPalavras.contaFrequenciaNgrama(linhas, minFrequenciaArquivo, null, ngrama);
 			dicionarioFrequencia = ContaPalavras.consolidaTermoFrequencia(arquivoFrequencia, dicionarioFrequencia);
 			
 		}
@@ -72,11 +72,11 @@ public class Exec {
     	return dicHead;	
     }
 
-	public static String[][] montaTF_IDF(String nomePasta, int minArquivoFrequencia, int minDicionarioFrequencia) {
+	public static String[][] montaTF_IDF(String nomePasta, int minArquivoFrequencia, int minDicionarioFrequencia, int ngrama) {
 		
 		//PROCESSA TODOS OS TEXTOS DE UMA PASTA
 		//MONTA O DICIONARIO - TOKEN FREQUENCIA
-		Map<String, Integer> dicionarioFrequencia = Exec.montaAllTokensFrequencia(nomePasta,minArquivoFrequencia, minDicionarioFrequencia);
+		Map<String, Integer> dicionarioFrequencia = Exec.montaAllTokensFrequencia(nomePasta,minArquivoFrequencia, minDicionarioFrequencia, ngrama);
 		
 		//SALVA O DICIONARIO
 		String dicName = nomePasta.replace("corpusTxt", "dicFrequencia") + ".txt";
@@ -95,7 +95,7 @@ public class Exec {
 
 	public static void rodaExperimento(String clusterOrderFileName, String allTextBaseTxtFileName, String clusterCategoriaFileName, 
 			String categoriasCorretasFileName, int tipoOrdenacao, int tipoMapeamentoTermo, boolean balanceado, 
-			Integer[] topNs, String termosCategoria, int numHeuristica, String resultados, String categoriasFileName,
+			Integer[] topNs, String termosCategoria, int numHeuristica, int ngrama, String resultados, String categoriasFileName,
 			String experimentoPath) {
 		
 		System.out.println(new Date()+ " carregando a base...");
@@ -104,32 +104,29 @@ public class Exec {
 				categoriasCorretasFileName,categoriasFileName);
 		Map<String, List<String>> clustersDocumentos = load.carregaClustersDocumentos();
 		Map<String, List<String>> categoriasDocumentos = load.carregaCategoriasDocumentos();
-		Map<String, String> mapClusterCategoria = load.carregaClusterCategoria();
+		//Map<String, String> mapClusterCategoria = load.carregaClusterCategoria();
 		
 		System.out.println(new Date()+ " montanto a estrutura com termpoclusterfrequencia...");
 		//processa o cluster montanto a estrutura com termpoclusterfrequencia
-		ProcessaClusters clustersProcessados = new ProcessaClusters(clustersDocumentos, categoriasDocumentos, mapClusterCategoria);
-		Map<String, Map<String, Integer>> mapTermosClustersFrequencias = clustersProcessados.getTermosClustersFrequencias();
-		Map<String, Map<String, Integer>> mapTermosCategoriasFrequencias = clustersProcessados.getTermosCategoriasFrequencias();
-		Map<String, Map<String, Integer>> mapTermosClustersPresencas = clustersProcessados.getTermosClustersPresencas();
-		Map<String, Map<String, Integer>> mapTermosCategoriasPresencas = clustersProcessados.getTermosCategoriasPresencas();
+		ProcessaEstrutura clustersProcessados = new ProcessaEstrutura(clustersDocumentos);
+		ProcessaEstrutura categoriasProcessados = new ProcessaEstrutura(categoriasDocumentos);
+		Map<String, Map<String, Integer>> mapTermosClustersFrequencias = clustersProcessados.getTermosEstruturasFrequencias(ngrama);
+		Map<String, Map<String, Integer>> mapTermosCategoriasFrequencias = categoriasProcessados.getTermosEstruturasFrequencias(ngrama);
+		Map<String, Map<String, Integer>> mapTermosClustersPresencas = clustersProcessados.getTermosEstruturaPresencas(ngrama);
+		Map<String, Map<String, Integer>> mapTermosCategoriasPresencas = categoriasProcessados.getTermosEstruturaPresencas(ngrama);
 		
 		imprimeTermoEstrutura(mapTermosClustersFrequencias, experimentoPath+ "TermoClusterFrequencias.txt");
 		imprimeTermoEstrutura(mapTermosCategoriasFrequencias, experimentoPath+ "TermosCategoriasFrequencias.txt");
 		imprimeTermoEstrutura(mapTermosClustersPresencas, experimentoPath+ "TermosClustersPresencas.txt");
 		imprimeTermoEstrutura(mapTermosCategoriasPresencas, experimentoPath+ "TermosCategoriasPresencas.txt");
 		
-		
 		System.out.println(new Date()+ " processando as categorias...");
-		//Map<String, Integer> mapClusterNumDocs = clustersProcessados.getClustersNumDocs();
-		Map<String, Integer> mapCategoriaNumDocs = clustersProcessados.getCategoriasNumDocs();
+		Map<String, Integer> mapCategoriaNumDocs = categoriasProcessados.getEstruturasNumDocs();
 		
 		System.out.println(new Date()+ " ordenando os termos...");
 		//dado os termos e suas frequencias em cada categoria, ordena os termos a serem usados
 		OrdenaTermos ordenaTermosCluster = new OrdenaTermos(mapTermosClustersFrequencias);
-		//OrdenaTermos ordenaTermosCategoria = new OrdenaTermos(mapTermosCategoriasFrequencias);
 		List<Termo> termosCluster = ordenaTermosCluster.getTermosOrdenados(tipoOrdenacao);
-		//List<Termo> termosCategoriaOrdem = ordenaTermosCategoria.getTermosOrdenados(tipoOrdenacao);
 		
 		System.out.println(new Date()+ " mapeando suas categorias...");
 		//descobre de maneira automatica a categoria de cada um dos termpos
@@ -161,7 +158,7 @@ public class Exec {
 			
 			System.out.println(new Date()+ " rodando a heuristica...");
 			//pega a base, a lista de termos e gera uma lista das categorias encontradas
-			RodaHeuristica rodaHeuristica = new RodaHeuristica(documentos, topNTermosCategorias);
+			RodaHeuristica rodaHeuristica = new RodaHeuristica(documentos, topNTermosCategorias, ngrama);
 			List<String> categoriasEncontradas = rodaHeuristica.exec(numHeuristica);
 			
 			System.out.println(new Date()+ " calculando taxa de acerto...");
@@ -255,12 +252,138 @@ public class Exec {
 		ArquivoUtils.salvaArquivo(clusterGabaritoOrdem, baseName + idBase+"_clusterGabaritoOrdem.txt");
 		ArquivoUtils.salvaArquivo(clusterCategoria, baseName + idBase+"_clusterCategoria.txt");
 		ArquivoUtils.salvaArquivo(categorias, baseName + idBase+"_categorias.txt");
-	
-		
 		
 	}
 
+	public static Double comparaExperimentos(String oldExperimentos, String newExperimentos){
+		
+		int numDiff = 0;
+		List<File> newResults = ArquivoUtils.getAllFilesRecursive(newExperimentos);
+		boolean diferente = false;
+		int lidos = 0;
+		int numEguais = 0;
+		for (File newResult : newResults) {
+			lidos = lidos + 1;
+			if (newResult.getName().contains("1GR")){
+				File oldResult = new File(newResult.getAbsolutePath().replace(newExperimentos, oldExperimentos));
+				diferente = ArquivoUtils.comparaArquivos(oldResult, newResult);
+				if (diferente){
+					numDiff = numDiff +  1;
+//					System.out.println("Arquivos Diferentes: " );
+//					System.out.println(newResult.getAbsoluteFile());
+//					System.out.println(oldResult.getAbsolutePath());
+//					System.out.println("Arquivos Diferentes encontrados: "+ numDiff);
+				} else numEguais = numEguais + 1;
+				
+				if(lidos%1000==0){
+					System.out.println("Arquivo "+ lidos + " de "+ newResults.size());
+				}
+//				System.out.println("Arquivo "+ lidos + " de "+ newResults.size());
+				
+			}
+			
+		}
+		System.out.println("Eguais: "+ numEguais);
+		System.out.println("Diferentes: " + numDiff);
+		
+		
+		return 1.0 * (numDiff/newResults.size());
+	}
+
+	public static void consolidaResultados() {
+		
+		String [] clusters = {"CK20","CK10","CK5","CK","CG"};
+		String [] entropias = {"EF", "E0"};
+		String [] frequencias = {"FR","FA"};
+		String [] balanceados = {"BL", "DB"};
+		
+		String folderAtual;
+				
+		File[] ngramaBaseDirs = new File("experimentos").listFiles();
+		for (File ngramaBase : ngramaBaseDirs) {
+			folderAtual= "";
+			for (String entropia : entropias) {
+				for (String frequencia : frequencias) {
+					for (String balanceado : balanceados) {
+						folderAtual = entropia + frequencia + balanceado;
+						List<String> resultadosConsolidados = new ArrayList<String>();
+						for (String cluster : clusters) {
+							//folderAtual = ngramaBase.getAbsolutePath()+"/" + cluster+ folderAtual;
+							resultadosConsolidados.add(getAcuracia(ngramaBase.getAbsolutePath()+"/" + cluster+ folderAtual));
+						}
+						ArquivoUtils.salvaArquivo(resultadosConsolidados, ngramaBase+ "/"+ folderAtual+ ".txt");
+					}
+				}
+			}
+		}
+		 
+	}
+
+	private static String getAcuracia(String dirPath) {
+		
+
+		File pathResultados = new File(dirPath + "/resultados/"); 
+		File [] resultados = pathResultados.listFiles();
+		int menorPath = 1000;
+		File resultadoConsolidado = null;
+		for (File resultado : resultados) {
+			if (resultado.getName().length() < menorPath){
+				menorPath = resultado.getName().length();
+				resultadoConsolidado = resultado;
+			}
+		}
+		
+		List<String> linhas = ArquivoUtils.abreArquivo(resultadoConsolidado);
+		String acuracias = "";
+		for (int i = 1; i < linhas.size(); i++) {
+			String [] tokens = linhas.get(i).split(";");
+			acuracias = acuracias + tokens[tokens.length-1]+ ";";
+		}
+		
+		return acuracias;
+	}
+
+	public static void analisaClusters(String pathbase, String clusterGabaritoFile, String clusterEncontradoFile, int numCategoria, int numCluster) {
+		
+		
+		int [][] matrizConfusao = new int [numCategoria][numCluster];
+		
+		List<String> linhasClustersGabarito = ArquivoUtils.abreArquivo(clusterGabaritoFile);
+		List<String> linhasClustersEncontrados = ArquivoUtils.abreArquivo(clusterEncontradoFile);
+		
+		int clusterGabaritoAtual = 0;
+		int clusterEncontradoAtual = 0;
+		
+		for (int i = 0; i < linhasClustersGabarito.size(); i++) {
+			
+			clusterGabaritoAtual = Integer.parseInt(linhasClustersGabarito.get(i)) -1;
+			clusterEncontradoAtual = Integer.parseInt(linhasClustersEncontrados.get(i)) -1;
+			
+			matrizConfusao[clusterGabaritoAtual][clusterEncontradoAtual] = matrizConfusao[clusterGabaritoAtual][clusterEncontradoAtual] + 1;
+		}	
+			
+		List<String> linhasSaida = new ArrayList<String>();
+		String linha;
+		
+		//imprime cabecalho
+		linha = "idCat";
+		for (int j = 0; j < numCluster; j++) {
+			linha = linha + ";cluster" + (j+1);
+		}
+		linhasSaida.add(linha);
 	
+		for (int i = 0; i < numCategoria; i++) {
+			linha = "idCat"+ (i+1);
+			for (int j = 0; j < numCluster; j++) {
+				linha = linha + ";" + matrizConfusao[i][j];
+			}
+			linhasSaida.add(linha);
+		}
+		File arquivoSaidaNomePath = new File(pathbase);
+		String arquivoSaida = pathbase+ arquivoSaidaNomePath.getName()+ "_analiseCluster"+numCluster+".txt";
+		ArquivoUtils.salvaArquivo(linhasSaida, arquivoSaida);
+		
+	}
 	
 	
 }

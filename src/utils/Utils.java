@@ -18,4 +18,22 @@ public class Utils {
 		}		
 		return arrayParts;
 	}
+	
+	public static String[] limpaTokens(String[] tokens) {
+		
+		List<String> tokensArray = new ArrayList<String>();
+		for (String token : tokens) {
+			if (!token.trim().contentEquals("")){
+				tokensArray.add(token);
+			}
+		}
+		
+		String [] tokensFiltrados = new String[tokensArray.size()];
+		for (int i = 0; i < tokensArray.size(); i++) {
+			tokensFiltrados[i] = tokensArray.get(i);
+		}
+		
+		return tokensFiltrados;
+	}
+
 }

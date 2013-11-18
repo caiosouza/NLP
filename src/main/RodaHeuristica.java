@@ -12,10 +12,12 @@ public class RodaHeuristica {
 
 	private List<String> documentos;
 	private Map<String, String> topNTermosCategorias;
+	private int ngrama;
 	
-	public RodaHeuristica(List<String> documentos2, Map<String, String> topNTermosCategorias) {
+	public RodaHeuristica(List<String> documentos2, Map<String, String> topNTermosCategorias, int ngrama) {
 		this.documentos = documentos2;
 		this.topNTermosCategorias = topNTermosCategorias;
+		this.ngrama = ngrama;
 	}
 
 	public List<String> exec(int numHeuristica) {
@@ -45,7 +47,9 @@ public class RodaHeuristica {
 		
 		doc = doc.toLowerCase().replaceAll("[.,:;<>{}|_1234567890!@#$%&*()/?+=-]", " ");
 		//pega do documento frequencia referente apenas aos termos da heuristica
-		Map<String, Integer> termosFrequenciaDocumento = ContaPalavras.contaFrequencia(doc, 0, termosHeuristica);
+		//Map<String, Integer> termosFrequenciaDocumento = ContaPalavras.contaFrequencia(doc, 0, termosHeuristica);
+		Map<String, Integer> termosFrequenciaDocumento = ContaPalavras.contaFrequenciaNgrama(doc, 0, termosHeuristica, this.ngrama);
+		
 		
 		//cria um mapa para guardar os pontos de cada categoria, e vai atualizando a cada termo do documento
 		int maxPontos = 0;
