@@ -290,7 +290,7 @@ public class Exec {
 		return 1.0 * (numDiff/newResults.size());
 	}
 
-	public static void consolidaResultados() {
+	public static void consolidaResultados(String ngramaBasePathName ) {
 		
 		String [] clusters = {"CK20","CK10","CK5","CK","CG"};
 		String [] entropias = {"EF", "E0"};
@@ -298,9 +298,9 @@ public class Exec {
 		String [] balanceados = {"BL", "DB"};
 		
 		String folderAtual;
-				
-		File[] ngramaBaseDirs = new File("experimentos").listFiles();
-		for (File ngramaBase : ngramaBaseDirs) {
+		File ngramaBase = new File(ngramaBasePathName);
+		//File[] ngramaBaseDirs = new File("experimentos").listFiles();
+		//for (File ngramaBase : ngramaBaseDirs) {
 			folderAtual= "";
 			for (String entropia : entropias) {
 				for (String frequencia : frequencias) {
@@ -315,7 +315,7 @@ public class Exec {
 					}
 				}
 			}
-		}
+		//}
 		 
 	}
 

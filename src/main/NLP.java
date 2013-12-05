@@ -40,17 +40,19 @@ public class NLP {
 	public void teste(){
 		
 		//formataBases();
-		//rodaExperimentos();
+		rodaExperimentos();
 		//verificaExperimentos();
-		//consolidaExperimentos();
+		consolidaExperimentos();
 		analisaClusters();
 	}
 	
 	private void analisaClusters() {
 		
 		String opCode = "9";
-		String [] bases = {"1","2","3"};
-		String [] numCategorias = {"2", "2", "3"};
+//		String [] bases = {"1","2","3"};
+//		String [] numCategorias = {"2", "2", "3"};
+		String [] bases = {"4","5"};
+		String [] numCategorias = {"4", "5"};
 		String [] clusters = {"", "5", "10", "20"};
 		String [] numClusters = {"0", "5", "10", "20"};
 		for (int i = 0; i < bases.length; i++) {
@@ -72,7 +74,15 @@ public class NLP {
 	private void consolidaExperimentos() {
 		
 		String opCode = "8";
-		exec(new String []{opCode});
+		//String [] basesIds = {"1", "2","3"};
+		String [] basesIds = {"4", "5"};
+		String [] ngramas = {"1", "2", "3"};
+		for (String basesId : basesIds) {
+			for (String ngrama : ngramas) {
+				exec(new String []{opCode, "experimentos/NG" + basesId + "NGR" + ngrama+"/"});
+			}
+		}
+		
 		
 	}
 
@@ -124,7 +134,8 @@ public class NLP {
 		String [] balanceamentos = {"0","1"};//0-desbalanceado, 1-balanceado; na pratica com poucas categorias nao afeta resultado
 		String [] clustersIds = {"0","1","2","3","4"};
 		String [] entropias = {"0","1"}; //tipoOrdenacao: 0-Entropia=0, 1-Todos os termos
-		String [] basesIDs = {"1","2","3"};
+		//String [] basesIDs = {"1","2","3"};
+		String [] basesIDs = {"4","5"};
 		//String [] clusterCategoriaIds = {"0"};
 		String [] tiposMapeamentoTermo = {"0","1"};//0-Frequencia Absoluta; 1-Frequencia Relativa
 		String [] numsHeuristica = {"0"};
@@ -199,7 +210,8 @@ public class NLP {
 			System.out.println("Percentual de arquivos diferente: "+ percentDiff);
 		}
 		else if (opCode == 8){
-			Exec.consolidaResultados();
+			String ngramaBasePath = args[1];
+			Exec.consolidaResultados(ngramaBasePath);
 		}
 
 		else if (opCode == 9){
