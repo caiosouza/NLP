@@ -1,0 +1,2 @@
+soc.religion.christian
+talk.politics.guns

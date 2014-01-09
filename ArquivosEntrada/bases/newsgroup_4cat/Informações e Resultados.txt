@@ -1,0 +1,80 @@
+DATASET NEWSGROUP
+Link: http://qwone.com/~jason/20Newsgroups/
+
+Utilizado 4 classes:
+- alt.atheism (799)
+- comp.graphics (973)
+- rec.sport.baseball (994)
+- rec.sport.hockey (999)
+
+Total: 3765 itens.
+
+
+
+RESULTADOS
+
+=== Evaluation on training set ===
+=== Summary ===
+
+Correctly Classified Instances        3490               92.6959 %
+Incorrectly Classified Instances       275                7.3041 %
+Kappa statistic                          0.9024
+Mean absolute error                      0.0369
+Root mean squared error                  0.1816
+Relative absolute error                  9.8523 %
+Root relative squared error             41.9827 %
+Total Number of Instances             3765     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.929     0.016      0.94      0.929     0.935      0.994    alt.atheism
+                 0.967     0.052      0.866     0.967     0.914      0.991    comp.graphics
+                 0.899     0.019      0.944     0.899     0.921      0.987    rec.sport.baseball
+                 0.914     0.011      0.968     0.914     0.94       0.993    rec.sport.hockey
+Weighted Avg.    0.927     0.025      0.93      0.927     0.927      0.991
+
+=== Confusion Matrix ===
+
+   a   b   c   d   <-- classified as
+ 742  38  17   2 |   a = alt.atheism
+  28 941   2   2 |   b = comp.graphics
+  13  61 894  26 |   c = rec.sport.baseball
+   6  46  34 913 |   d = rec.sport.hockey
+
+----------------------------------------------------------------------------------------------
+
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances        1023               90.6112 %
+Incorrectly Classified Instances       106                9.3888 %
+Kappa statistic                          0.8742
+Mean absolute error                      0.0479
+Root mean squared error                  0.2079
+Relative absolute error                 12.7947 %
+Root relative squared error             48.1029 %
+Total Number of Instances             1129     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.893     0.021      0.913     0.893     0.903      0.992    alt.atheism
+                 0.955     0.06       0.847     0.955     0.898      0.988    comp.graphics
+                 0.873     0.026      0.931     0.873     0.901      0.979    rec.sport.baseball
+                 0.904     0.019      0.943     0.904     0.923      0.988    rec.sport.hockey
+Weighted Avg.    0.906     0.032      0.909     0.906     0.906      0.986
+
+=== Confusion Matrix ===
+
+   a   b   c   d   <-- classified as
+ 200  15   7   2 |   a = alt.atheism
+  12 276   0   1 |   b = comp.graphics
+   6  22 283  13 |   c = rec.sport.baseball
+   1  13  14 264 |   d = rec.sport.hockey
+
+
+
+
+

@@ -1,0 +1,5 @@
+idCat;cluster1;cluster2;cluster3;cluster4
+idCat1;0;4;8;787
+idCat2;0;1;964;8
+idCat3;27;930;34;3
+idCat4;962;24;12;1

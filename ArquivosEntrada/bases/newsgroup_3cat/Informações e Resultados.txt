@@ -1,0 +1,73 @@
+DATASET NEWSGROUP
+Link: http://qwone.com/~jason/20Newsgroups/
+
+Utilizado apenas 3 classes:
+- alt.atheism (799)
+- comp.graphics (973)
+- rec.sport.baseball (994)
+
+Total: 2746 itens.
+
+
+
+RESULTADOS
+
+=== Evaluation on training set ===
+=== Summary ===
+
+Correctly Classified Instances        2505               90.564  %
+Incorrectly Classified Instances       261                9.436  %
+Kappa statistic                          0.8578
+Mean absolute error                      0.0622
+Root mean squared error                  0.2412
+Relative absolute error                 14.0691 %
+Root relative squared error             51.29   %
+Total Number of Instances             2766     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.886     0.035      0.911     0.886     0.898      0.98     alt.atheism
+                 0.948     0.089      0.852     0.948     0.897      0.979    comp.graphics
+                 0.88      0.018      0.965     0.88      0.921      0.987    rec.sport.baseball
+Weighted Avg.    0.906     0.048      0.91      0.906     0.906      0.982
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 708  62  29 |   a = alt.atheism
+  48 922   3 |   b = comp.graphics
+  21  98 875 |   c = rec.sport.baseball
+
+----------------------------------------------------------------------------------------------
+
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances         729               87.8313 %
+Incorrectly Classified Instances       101               12.1687 %
+Kappa statistic                          0.8169
+Mean absolute error                      0.0806
+Root mean squared error                  0.2749
+Relative absolute error                 18.2126 %
+Root relative squared error             58.4019 %
+Total Number of Instances              830     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.862     0.048      0.883     0.862     0.872      0.963    alt.atheism
+                 0.902     0.11       0.811     0.902     0.854      0.96     comp.graphics
+                 0.869     0.024      0.952     0.869     0.909      0.985    rec.sport.baseball
+Weighted Avg.    0.878     0.061      0.883     0.878     0.879      0.97 
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 212  25   9 |   a = alt.atheism
+  24 258   4 |   b = comp.graphics
+   4  35 259 |   c = rec.sport.baseball
+
+
+

@@ -1,0 +1,64 @@
+DATASET ROUTERS_SS
+
+Utilizado apenas 2 classes:
+- acq (2369)
+- earn (3964)
+
+Total: 6333 itens.
+
+
+
+=== Evaluation on training set ===
+=== Summary ===
+
+Correctly Classified Instances        5783               91.3153 %
+Incorrectly Classified Instances       550                8.6847 %
+Kappa statistic                          0.8225
+Mean absolute error                      0.0874
+Root mean squared error                  0.2906
+Relative absolute error                 18.656  %
+Root relative squared error             60.0497 %
+Total Number of Instances             6333     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.996     0.136      0.814     0.996     0.896      0.964    acq
+                 0.864     0.004      0.997     0.864     0.926      0.967    earn
+Weighted Avg.    0.913     0.054      0.928     0.913     0.914      0.966
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 2359   10 |    a = acq
+  540 3424 |    b = earn
+
+
+------------------------------------------------------------------------
+
+
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances        1726               90.8421 %
+Incorrectly Classified Instances       174                9.1579 %
+Kappa statistic                          0.8132
+Mean absolute error                      0.0917
+Root mean squared error                  0.2989
+Relative absolute error                 19.586  %
+Root relative squared error             61.7958 %
+Total Number of Instances             1900     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.996     0.144      0.805     0.996     0.89       0.958    acq
+                 0.856     0.004      0.997     0.856     0.921      0.961    earn
+Weighted Avg.    0.908     0.056      0.925     0.908     0.91       0.96 
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+  706    3 |    a = acq
+  171 1020 |    b = earn

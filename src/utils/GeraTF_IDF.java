@@ -173,7 +173,7 @@ public class GeraTF_IDF {
 
 				linhas = ArquivoUtils.abreArquivo(arquivo.getAbsolutePath());
 				String categoria = pegaCategoria(arquivo.getParent());
-				Map<String, Integer> termoFrequenciaDocumento = ContaPalavras.contaFrequencia(linhas, minArquivoFrequencia, dicionarioFrequencia.keySet());
+				Map<String, Integer> termoFrequenciaDocumento = ContaPalavras.contaFrequenciaNgrama(linhas, minArquivoFrequencia, dicionarioFrequencia.keySet(),1);
 				//prepara lista para montar matriz TF_IDF
 				docsFrequencias.add(new DocFrequencia(categoria+"_"+arquivo.getName(),categoria, termoFrequenciaDocumento));
 				//atualiza a lista de categorias e a lista de termos do dicionario

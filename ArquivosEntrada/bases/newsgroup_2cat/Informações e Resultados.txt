@@ -1,0 +1,66 @@
+DATASET NEWSGROUP
+Link: http://qwone.com/~jason/20Newsgroups/
+
+Utilizado apenas 2 classes:
+- soc.religion.christian (997)
+- talk.politics.guns (910)
+
+Total: 1907 itens
+
+
+
+=== Evaluation on training set ===
+=== Summary ===
+
+Correctly Classified Instances        1833               96.1196 %
+Incorrectly Classified Instances        74                3.8804 %
+Kappa statistic                          0.9225
+Mean absolute error                      0.0388
+Root mean squared error                  0.1876
+Relative absolute error                  7.779  %
+Root relative squared error             37.5552 %
+Total Number of Instances             1907     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.928     0.002      0.998     0.928     0.962      0.998    soc.religion.christian
+                 0.998     0.072      0.927     0.998     0.961      0.999    talk.politics.guns
+Weighted Avg.    0.961     0.036      0.964     0.961     0.961      0.999
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 925  72 |   a = soc.religion.christian
+   2 908 |   b = talk.politics.guns
+
+
+---------------------------------------------------------------------------
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances         552               96.5035 %
+Incorrectly Classified Instances        20                3.4965 %
+Kappa statistic                          0.9297
+Mean absolute error                      0.0361
+Root mean squared error                  0.1821
+Relative absolute error                  7.1893 %
+Root relative squared error             36.1551 %
+Total Number of Instances              572     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.927     0          1         0.927     0.962      0.999    soc.religion.christian
+                 1         0.073      0.937     1         0.968      0.999    talk.politics.guns
+Weighted Avg.    0.965     0.038      0.967     0.965     0.965      0.999
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 253  20 |   a = soc.religion.christian
+   0 299 |   b = talk.politics.guns
+
+
+

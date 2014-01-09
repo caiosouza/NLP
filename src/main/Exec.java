@@ -170,6 +170,10 @@ public class Exec {
 			ArquivoUtils.salvaArquivo(resultado, arquivoResultados);
 			
 			resultadosGerais.add(resultado.get(1));
+			
+			//gera novo dataset com documentos de acordo com as categorias encontradas por esse metodo
+			String nomeDataSet = experimentoPath + "novoDataSet/Top" + topN+"/";
+			GeraDataSet.novoDataSet(nomeDataSet, documentos, categoriasEncontradas);
 		}
 		ArquivoUtils.salvaArquivo(resultadosGerais, resultados);
 	
@@ -292,10 +296,16 @@ public class Exec {
 
 	public static void consolidaResultados(String ngramaBasePathName ) {
 		
-		String [] clusters = {"CK20","CK10","CK5","CK","CG"};
+//		String [] clusters = {"CK20","CK10","CK5","CK","CG"};
+//		String [] entropias = {"EF", "E0"};
+//		String [] frequencias = {"FR","FA"};
+//		String [] balanceados = {"BL", "DB"};
+		
+		String [] clusters = {"CK","CG"};
 		String [] entropias = {"EF", "E0"};
-		String [] frequencias = {"FR","FA"};
-		String [] balanceados = {"BL", "DB"};
+		String [] frequencias = {"FR"};
+		String [] balanceados = {"BL"};
+		
 		
 		String folderAtual;
 		File ngramaBase = new File(ngramaBasePathName);
@@ -382,7 +392,7 @@ public class Exec {
 		File arquivoSaidaNomePath = new File(pathbase);
 		String arquivoSaida = pathbase+ arquivoSaidaNomePath.getName()+ "_analiseCluster"+numCluster+".txt";
 		ArquivoUtils.salvaArquivo(linhasSaida, arquivoSaida);
-		
+		System.out.println("Arquivo salvo em:"+ arquivoSaida);
 	}
 	
 	

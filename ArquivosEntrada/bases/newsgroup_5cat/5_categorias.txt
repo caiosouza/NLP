@@ -1,0 +1,5 @@
+alt.atheism
+comp.graphics
+rec.sport.baseball
+rec.sport.hockey
+soc.religion.christian

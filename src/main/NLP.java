@@ -21,7 +21,7 @@ public class NLP {
 	private int tipoOrdenacao;
 	private int numHeuristica;
 	
-	private Integer[] topNs = {1,2,3,4,5,10,15,20,25,30,35,40,45,50,60,70,80,90,100,200};//,300,400,500,600,700,800,900,1000};
+	private Integer[] topNs = {1,/*2,3,4,*/5,10,15,20,25,30,35,40,45,50};//,60,70,80,90,100,200};//,300,400,500,600,700,800,900,1000};
 	private int tipoMapeamentoTermo;
 	private String termosCategoria;
 	private String pathBase;
@@ -42,19 +42,21 @@ public class NLP {
 		//formataBases();
 		rodaExperimentos();
 		//verificaExperimentos();
-		consolidaExperimentos();
-		analisaClusters();
+		//consolidaExperimentos();
+		//analisaClusters();
 	}
 	
 	private void analisaClusters() {
 		
 		String opCode = "9";
-//		String [] bases = {"1","2","3"};
-//		String [] numCategorias = {"2", "2", "3"};
-		String [] bases = {"4","5"};
-		String [] numCategorias = {"4", "5"};
-		String [] clusters = {"", "5", "10", "20"};
-		String [] numClusters = {"0", "5", "10", "20"};
+		String [] bases = {"1","2","3","4","5"};
+		String [] numCategorias = {"2", "2", "3","4","5"};
+//		String [] bases = {"4","5"};
+//		String [] numCategorias = {"4", "5"};
+//		String [] clusters = {"", "5", "10", "20"};
+		String [] clusters = {""};
+		String [] numClusters = {"0"};
+//		String [] numClusters = {"0", "5", "10", "20"};
 		for (int i = 0; i < bases.length; i++) {
 			String base = bases[i];
 			String numCategoria = numCategorias[i];
@@ -74,12 +76,13 @@ public class NLP {
 	private void consolidaExperimentos() {
 		
 		String opCode = "8";
-		//String [] basesIds = {"1", "2","3"};
-		String [] basesIds = {"4", "5"};
-		String [] ngramas = {"1", "2", "3"};
+		String [] basesIds = {"2","3","4","5"};
+//		String [] basesIds = {"4", "5"};
+//		String [] ngramas = {"1", "2", "3"};
+		String [] ngramas = {"1"};
 		for (String basesId : basesIds) {
 			for (String ngrama : ngramas) {
-				exec(new String []{opCode, "experimentos/NG" + basesId + "NGR" + ngrama+"/"});
+				exec(new String []{opCode, "experimentos7030/NG" + basesId + "NGR" + ngrama+"/"});
 			}
 		}
 		
@@ -105,8 +108,8 @@ public class NLP {
 		
 		String opCode = "6";
 		
-		//String [] bases = {"1","2","3"};
-		String [] bases = {"4","5"};
+		String [] bases = {"1","2","3","4","5"};
+		//String [] bases = {};
 		
 		for (String base : bases) {
 			experimentos.add(new String[]{opCode,base});
@@ -131,16 +134,20 @@ public class NLP {
 		
 		//codigo para rodar os experimentos
 		String opCode = "5";
-		String [] balanceamentos = {"0","1"};//0-desbalanceado, 1-balanceado; na pratica com poucas categorias nao afeta resultado
-		String [] clustersIds = {"0","1","2","3","4"};
+//		String [] balanceamentos = {"0","1"};//0-desbalanceado, 1-balanceado; na pratica com poucas categorias nao afeta resultado
+		String [] balanceamentos = {"1"};
+//		String [] clustersIds = {"0","1","2","3","4"};
+//		String [] clustersIds = {"0","1","2","3","4"};
+		String [] clustersIds = {"0","1"};
 		String [] entropias = {"0","1"}; //tipoOrdenacao: 0-Entropia=0, 1-Todos os termos
-		//String [] basesIDs = {"1","2","3"};
-		String [] basesIDs = {"4","5"};
+		String [] basesIDs = {"2"};
+		//String [] basesIDs = {"1","2","3","4","5"};
 		//String [] clusterCategoriaIds = {"0"};
-		String [] tiposMapeamentoTermo = {"0","1"};//0-Frequencia Absoluta; 1-Frequencia Relativa
+		String [] tiposMapeamentoTermo = {"1"};//0-Frequencia Absoluta; 1-Frequencia Relativa
 		String [] numsHeuristica = {"0"};
-		String [] ngramas = {"1","2","3"};
-		
+//		String [] ngramas = {"1", "2", "3"};
+		String [] ngramas = {"1"};
+
 		for (String balanceamento : balanceamentos) {
 			for (String clusterId : clustersIds) {
 				for (String entropia : entropias) {
@@ -238,19 +245,19 @@ public class NLP {
 			pathCategorias = "ArquivosEntrada/bases/reuters25/";
 		} else if (idBase == 1){
 			//base reutersSS_2cat
-			pathCategorias = "ArquivosEntrada/bases/reutersSS_2cat/";
+			pathCategorias = "ArquivosEntrada/bases/reutersSS_2cat_Treino/";
 		} else if (idBase == 2){
 			//base newsgroup_2cat
-			pathCategorias = "ArquivosEntrada/bases/newsgroup_2cat/";
+			pathCategorias = "ArquivosEntrada/bases/newsgroup_2cat_Treino/";
 		} else if (idBase == 3){
 			//base newsgroup_3cat
-			pathCategorias = "ArquivosEntrada/bases/newsgroup_3cat/";
+			pathCategorias = "ArquivosEntrada/bases/newsgroup_3cat_Treino/";
 		} else if (idBase == 4){
 			//base newsgroup_3cat
-			pathCategorias = "ArquivosEntrada/bases/newsgroup_4cat/";
+			pathCategorias = "ArquivosEntrada/bases/newsgroup_4cat_Treino/";
 		} else if (idBase == 5){
 			//base newsgroup_3cat
-			pathCategorias = "ArquivosEntrada/bases/newsgroup_5cat/";
+			pathCategorias = "ArquivosEntrada/bases/newsgroup_5cat_Treino/";
 		}
 		
 		return pathCategorias;
@@ -260,32 +267,27 @@ public class NLP {
 	private void getPorperties(boolean balanceado, int baseId, int clusterId, int tipoOrdenacao, 
 			int tipoMapeamentoTermo, int numHeuristica, int ngramas) {
 		
-		this.experimentoFolder = "experimentos/";
+		this.experimentoFolder = "experimentos7030/";
 		this.nomeExperimento = "";
 		
+		this.pathBase = getBaseName(baseId);
 		//qual base esta sendo usada
 		if (baseId == 0 ){
-			this.pathBase = "ArquivosEntrada/bases/reuters25/";
 			this.nomeExperimento = this.nomeExperimento+ "R25";
 			
 		} else if (baseId == 1 ){
-			this.pathBase = "ArquivosEntrada/bases/reutersSS_2cat/";
 			this.nomeExperimento = this.nomeExperimento+ "R2";
 		
 		}else if (baseId == 2 ){
-			this.pathBase = "ArquivosEntrada/bases/newsgroup_2cat/";
 			this.nomeExperimento = this.nomeExperimento+ "NG2";
 		
 		} else if (baseId == 3 ){
-			this.pathBase = "ArquivosEntrada/bases/newsgroup_3cat/";
 			this.nomeExperimento = this.nomeExperimento+ "NG3";
 		
 		} else if (baseId == 4 ){
-			this.pathBase = "ArquivosEntrada/bases/newsgroup_4cat/";
 			this.nomeExperimento = this.nomeExperimento+ "NG4";
 		
  		} else if (baseId == 5 ){
-			this.pathBase = "ArquivosEntrada/bases/newsgroup_5cat/";
 			this.nomeExperimento = this.nomeExperimento+ "NG5";
 		} 
 		

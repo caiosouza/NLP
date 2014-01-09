@@ -28,7 +28,7 @@ public class TestaContaPalavras {
 		int minFrequencia = 0;
 		Set<String> filtroTermos = null;
 		
-		Map<String, Integer> termosFrequencias = ContaPalavras.contaFrequencia(linhas, minFrequencia, filtroTermos , ngrama);
+		Map<String, Integer> termosFrequencias = ContaPalavras.contaFrequenciaNgrama(linhas, minFrequencia, filtroTermos , ngrama);
 	
 		for (Entry<String, Integer> termoFrequencia : termosFrequencias.entrySet()) {
 			System.out.println(termoFrequencia.getKey() + " " + termoFrequencia.getValue());
